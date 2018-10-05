@@ -1,5 +1,5 @@
 sftp:
-  build: .
+  build: sftp
   volumes:
   - data_sftp:/etc/sftp-users.conf
   ports:
