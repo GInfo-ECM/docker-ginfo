@@ -13,9 +13,5 @@ services:
 
 networks:
   proxy:
-    driver: bridge
-    name: nginx-proxy
-    ipam:
-      config:
-      - subnet: 172.67.89.0/24
-        gateway: 172.67.89.1
+    external:
+      name: nginx-proxy
