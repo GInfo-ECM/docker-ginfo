@@ -6,6 +6,8 @@ services:
     volumes:
     - db_data:/var/lib/mysql
     restart: always
+    networks:
+    - dmz
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_DATABASE_PASSWORD}
       MYSQL_DATABASE: wordpress
@@ -17,8 +19,9 @@ services:
     volumes:
     - wp_site_data:/var/www/html
     networks:
+    - dmz
     - proxy
-    ports:
+    expose:
     - 80
     restart: always
     environment:
