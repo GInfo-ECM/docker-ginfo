@@ -1,5 +1,5 @@
 sftp:
-  build: sftp
+  image: atmoz/sftp
   volumes:
   - data_sftp:/etc/sftp-users.conf
   ports:
