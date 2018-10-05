@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+    - db_data:/var/lib/mysql
+    restart: always
+    networks:
+    - dmz
+    environment:
+      MYSQL_ROOT_PASSWORD: dbtest
+      MYSQL_DATABASE: dbtest
+      MYSQL_USER: dbtest
+      MYSQL_PASSWORD: dbtest
+
+  site:
+    image: php-apache
+    volumes:
+    - site_data:/var/www
+    expose:
+    - 80
+    restart: always
+    networks:
+    - proxy
+    - dmz
+    environment:
+      VIRTUAL_HOST: test9.carpoule.fr
+      DB_HOST: db:3306
+      DB_USER: dbtest
+      DB_PASSWORD: dbtest
+      LETSENCRYPT_HOST: test9.carpoule.fr
+      LETSENCRYPT_EMAIL: ginfo@centrale-marseille.fr
+      TRUSTED_PROXIES: 172.18.0.5
+
+volumes:
+  db_data:
+    name: db_data
+  site_data:
+    name: site_data
+
+networks:
+  proxy:
+    external:
+      name: nginxproxy
