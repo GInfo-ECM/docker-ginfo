@@ -5,10 +5,7 @@ services:
     image: jwilder/nginx-proxy
     ports:
     - "25060:80"
+    networks:
+    - nginx-proxy
     volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
-
-  whoami:
-    image: jwilder/whoami
-    environment:
-    - VIRTUAL_HOST=whoami.local
