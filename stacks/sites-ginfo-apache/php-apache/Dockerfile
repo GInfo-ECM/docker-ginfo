@@ -44,8 +44,8 @@ RUN buildDeps=" \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && ln -s $(composer config --global home) /root/composer
 
-#Install wget
-RUN apt-get update && apt-get install -y wget && apt-get install -y nano
+#Install wget and ping
+RUN apt-get update && apt-get install -y wget && apt-get install -y nano && apt-get install -y iputils-ping
 
 #Install npm and node.js
 RUN apt-get -y install gnupg && apt-get -y install gnupg1 && apt-get -y install gnupg2
