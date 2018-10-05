@@ -10,36 +10,32 @@ services:
     - dmz
     environment:
       MYSQL_ROOT_PASSWORD: dbtest
-      MYSQL_DATABASE: dbtest
-      MYSQL_USER: dbtest
-      MYSQL_PASSWORD: dbtest
+      MYSQL_DATABASE: phpginfo
+      MYSQL_USER: phpginfo
+      MYSQL_PASSWORD: phpginfo
 
   site:
     build: php-apache
     volumes:
     - site_data:/var/www
+    external_links:
+    - reverse-proxy
     expose:
     - 80
     restart: always
     networks:
-    - proxy
     - dmz
     environment:
-      VIRTUAL_HOST: test9.carpoule.fr
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
       DB_HOST: db:3306
-      DB_USER: dbtest
-      DB_PASSWORD: dbtest
-      LETSENCRYPT_HOST: test9.carpoule.fr
-      LETSENCRYPT_EMAIL: ginfo@centrale-marseille.fr
-      TRUSTED_PROXIES: 172.18.0.5
+      DB_USER: phpginfo
+      DB_PASSWORD: phpginfo
+      LETSENCRYPT_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_EMAIL: ${EMAIL_FOR_CERTIFICATION}
+      TRUSTED_PROXIES: reverse-proxy
 
 volumes:
   db_data:
     name: db_data
   site_data:
     name: site_data
-
-networks:
-  proxy:
-    external:
-      name: nginx-proxy
