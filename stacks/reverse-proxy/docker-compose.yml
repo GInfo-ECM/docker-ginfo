@@ -3,9 +3,7 @@ version: '2'
 services:
   nginx-proxy:
     container_name: reverse-proxy
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: proxy
     ports:
     - "25060:80"
     networks:
