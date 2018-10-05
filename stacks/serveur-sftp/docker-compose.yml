@@ -7,7 +7,7 @@ services:
     - data_sftp:/home/users-sftp
     ports:
     - "2222:22"
-    command: foo:pass:1001
+    command: foo:pass:www-data
 
 volumes:
   data_sftp:
