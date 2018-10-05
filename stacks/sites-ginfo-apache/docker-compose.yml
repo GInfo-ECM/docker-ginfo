@@ -15,7 +15,7 @@ services:
       MYSQL_PASSWORD: dbtest
 
   site:
-    image: php-apache
+    build: php-apache
     volumes:
     - site_data:/var/www
     expose:
