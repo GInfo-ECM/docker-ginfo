@@ -22,5 +22,5 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: ${MYSQL_DATABASE_PASSWORD}
 
-volumes:
+
   db_data:
