@@ -1,4 +1,4 @@
-{
+[{
   "type": "stack",
   "title": "Wordpress-Assos",
   "description": "Wordpress simple avec base de donnée",
@@ -22,4 +22,4 @@
       "description": "ex : barbu.ginfo"
     }
   ]
-}
+}]
