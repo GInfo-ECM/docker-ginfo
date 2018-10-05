@@ -1,0 +1,11 @@
+sftp:
+  build: ./
+  volumes:
+  - data_sftp:/etc/sftp-users.conf:ro
+  ports:
+  - "2222:22"
+  command: foo:123:1001
+
+volumes:
+  data_sftp:
+    name: data_sftp
