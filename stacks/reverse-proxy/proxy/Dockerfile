@@ -1,6 +1,5 @@
 FROM jwilder/nginx-proxy
 RUN touch /etc/nginx/proxy.conf
-COPY ./proxy.conf /etc/nginx/
 
 RUN echo "proxy_http_version 1.1;\n" >> /etc/nginx/proxy.conf
 RUN echo "proxy_buffering off;\n" >> /etc/nginx/proxy.conf
