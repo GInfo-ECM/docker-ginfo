@@ -2,15 +2,14 @@ version: '2'
 
 services:
   nginx-proxy:
-    container_name: reverse-proxy
     build: proxy
+    container_name: reverse-proxy
     ports:
     - "25060:80"
     networks:
     - proxy
     volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
-    - ./proxy.conf:/etc/nginx/proxy.conf:ro
 
 networks:
   proxy:
