@@ -3,7 +3,7 @@ version: '2'
 services:
   nginx-proxy:
     container_name: reverse-proxy
-    image: jwilder/nginx-proxy
+    build: .
     ports:
     - "25060:80"
     networks:
