@@ -42,4 +42,4 @@ volumes:
 networks:
   proxy:
     external:
-      name: nginxproxy
+      name: nginx-proxy
