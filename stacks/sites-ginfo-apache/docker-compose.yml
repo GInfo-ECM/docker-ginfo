@@ -25,6 +25,7 @@ services:
     restart: always
     networks:
     - dmz
+    - proxy
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       DB_HOST: db:3306
@@ -39,3 +40,9 @@ volumes:
     name: db_data
   site_data:
     name: site_data
+
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy
