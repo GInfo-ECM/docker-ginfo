@@ -1,9 +1,12 @@
-sftp:
-  build: sftp
-  volumes:
-  - data_sftp:/etc/sftp-users.conf
-  ports:
-  - "2222:22"
+version: '2'
+
+services:
+  sftp:
+    build: sftp
+    volumes:
+    - data_sftp:/etc/sftp-users.conf
+    ports:
+    - "2222:22"
 
 volumes:
   data_sftp:
