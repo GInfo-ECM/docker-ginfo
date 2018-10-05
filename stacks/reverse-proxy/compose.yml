@@ -6,6 +6,11 @@ services:
     ports:
     - "25060:80"
     networks:
-    - nginx-proxy
+    - proxy
     volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy
