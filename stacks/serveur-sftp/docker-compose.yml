@@ -1,6 +1,0 @@
-sftp:
-  image: atmoz/sftp
-  volumes:
-  - data_sftp:/etc/sftp-users.conf
-  ports:
-  - "2222:22"
