@@ -15,7 +15,7 @@
       "name": "MOT DE PASSE ROOT DB",
       "label": "Mot de passe root de la DB",
       "description": "Peut être utile en cas de problème"
-    }
+    },
     {
       "name": "VIRTUAL_HOST",
       "label": "Nom de domaine",
