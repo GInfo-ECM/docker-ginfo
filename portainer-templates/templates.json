@@ -1,0 +1,25 @@
+{
+  "type": "stack",
+  "title": "Wordpress-Assos",
+  "description": "Wordpress simple avec base de donnée",
+  "note": "Déploie une instance de wordpress avec une base de données",
+  "categories": ["CMS"],
+  "platform": "linux",
+  "logo": "https://portainer.io/images/logos/wordpress.png",
+  "repository": {
+    "url": "https://github.com/GInfoECM/DockerStacksAndFiles",
+    "stackfile": "/stacks/wordpress-assos/docker-compose.yml"
+  },
+  "env": [
+    {
+      "name": "MOT DE PASSE ROOT DB",
+      "label": "Mot de passe root de la DB",
+      "description": "Peut être utile en cas de problème"
+    }
+    {
+      "name": "VIRTUAL_HOST",
+      "label": "Nom de domaine",
+      "description": "ex : barbu.ginfo"
+    }
+  ]
+}
