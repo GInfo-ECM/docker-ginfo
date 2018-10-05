@@ -64,7 +64,7 @@ RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername.conf
 
 RUN echo "RemoteIPHeader X-Forwarded-For" >> /etc/apache2/conf-available/remoteip.conf
-RUN echo "RemoteIPTrustedProxy \${TRUSTED_PROXIES}" >> /etc/apache2/conf-available/remoteip.conf
+RUN echo "RemoteIPInternalProxy 127.0.0.1 \${TRUSTED_PROXIES}" >> /etc/apache2/conf-available/remoteip.conf
 RUN a2enconf remoteip.conf
 RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
