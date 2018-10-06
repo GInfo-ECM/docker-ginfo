@@ -33,11 +33,26 @@ services:
       LETSENCRYPT_EMAIL: ${EMAIL_FOR_CERTIFICATION}
       TRUSTED_PROXIES: reverse-proxy
 
+  save:
+    build: save-strategy
+    volumes:
+    - site_data:/var/www
+    - save_data:/var/save
+    restart: always
+    networks:
+    - dmz
+    environment:
+      DB_HOST: db:3306
+      DB_USER: phpginfo
+      DB_PASSWORD: phpginfo
+
 volumes:
   db_data:
     name: db_data
   site_data:
     name: site_data
+  save_data:
+    name: save_data
 
 
 networks:
