@@ -17,13 +17,8 @@ services:
   site:
     build: php-apache
     volumes:
-    - type: volume
-      source: site_data
-      target: /var/www
-    - type: volume
-      source: save_data
-      target: /var/www/saves
-      read-only:
+    - site_data:/var/www
+    - save_data:/var/www/saves:ro
     expose:
     - 80
     restart: always
@@ -42,13 +37,8 @@ services:
   save:
     build: save-strategy
     volumes:
-    - type: volume
-      source: site_data
-      target: /site-to-save
-      read-only:
-    - type: volume
-      source: save_data
-      target: /saves
+    - site_data:/site-to-save:ro
+    - save_data:/saves
     restart: always
     networks:
     - dmz
