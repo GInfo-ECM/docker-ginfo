@@ -47,6 +47,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 #Install wget and ping
 RUN apt-get update && apt-get install -y wget && apt-get install -y nano && apt-get install -y iputils-ping
 
+#Gestion clés ssh
+RUN mkdir /var/www/.ssh
+RUN ln -s /var/www/.ssh /root/.ssh
+
 #Install npm and node.js
 RUN apt-get -y install gnupg && apt-get -y install gnupg1 && apt-get -y install gnupg2
 RUN apt-get -y install curl software-properties-common
