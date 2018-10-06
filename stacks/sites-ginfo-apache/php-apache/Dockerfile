@@ -72,7 +72,5 @@ RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 #Stratégie de sauvegarde
 RUN touch /var/log/cron.log
 COPY crontab /etc/cron.d/cron-sauvegarde
-#RUN touch /etc/cron.d/cron-sauvegarde
-RUN echo "* * * * * echo \"Hello world\" >> /var/log/cron.log 2>&1" >> /etc/cron.d/cron-sauvegarde
 RUN chmod 0644 /etc/cron.d/cron-sauvegarde
 RUN service cron start
