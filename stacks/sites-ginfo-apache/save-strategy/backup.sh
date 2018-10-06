@@ -32,7 +32,7 @@ server_name="localhost"
 backup_path="/saves"
 
 # Script log file
-log_file="/saves/logs/backup.log"
+log_file="/saves/backup.log"
 
 # Files to backup (Multi value)
 backup_files_enable="no"
