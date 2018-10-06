@@ -45,4 +45,4 @@ volumes:
 networks:
   proxy:
     external:
-      name: nginx-proxy-test
+      name: nginx-proxy
