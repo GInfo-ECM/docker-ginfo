@@ -72,3 +72,4 @@ RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 #Stratégie de sauvegarde
 RUN touch /var/log/cron.log
 RUN echo "*  *    * * *   root    echo 'hello mama' >> /var/log/cron.log 2>&1" >> /etc/crontab
+RUN service cron start
