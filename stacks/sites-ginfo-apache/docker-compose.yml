@@ -9,10 +9,10 @@ services:
     networks:
     - dmz
     environment:
-      MYSQL_ROOT_PASSWORD: dbtest
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: phpginfo
       MYSQL_USER: phpginfo
-      MYSQL_PASSWORD: phpginfo
+      MYSQL_PASSWORD: ${DB_PASSWORD}
 
   site:
     build: php-apache
@@ -29,7 +29,7 @@ services:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       DB_HOST: db:3306
       DB_USER: phpginfo
-      DB_PASSWORD: phpginfo
+      DB_PASSWORD: ${DB_PASSWORD}
       LETSENCRYPT_HOST: ${VIRTUAL_HOST}
       LETSENCRYPT_EMAIL: ${EMAIL_FOR_CERTIFICATION}
       TRUSTED_PROXIES: reverse-proxy
@@ -45,7 +45,7 @@ services:
     environment:
       DB_HOST: db
       DB_USER: phpginfo
-      DB_PASSWORD: phpginfo
+      DB_PASSWORD: ${DB_PASSWORD}
 
 volumes:
   db_data:
