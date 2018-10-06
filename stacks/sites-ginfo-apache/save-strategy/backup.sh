@@ -29,10 +29,10 @@
 server_name="localhost"
 
 # Backup path
-backup_path="/var/save"
+backup_path="/saves"
 
 # Script log file
-log_file="/var/www/logs/backup.log"
+log_file="/saves/logs/backup.log"
 
 # Files to backup (Multi value)
 backup_files_enable="no"
@@ -40,7 +40,7 @@ backup_files="/root/.bash_history /etc/passwd"
 
 # Directories to backup (Multi value)
 backup_dir_enable="yes"
-backup_directories="/var/www/html"
+backup_directories="/site-to-save"
 
 # Copy to other media (Multi value)
 external_copy="no"
