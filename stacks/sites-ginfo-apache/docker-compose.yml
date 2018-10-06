@@ -18,8 +18,6 @@ services:
     build: php-apache
     volumes:
     - site_data:/var/www
-    external_links:
-    - reverse-proxy:cnginx
     expose:
     - 80
     restart: always
@@ -33,7 +31,7 @@ services:
       DB_PASSWORD: phpginfo
       LETSENCRYPT_HOST: ${VIRTUAL_HOST}
       LETSENCRYPT_EMAIL: ${EMAIL_FOR_CERTIFICATION}
-      TRUSTED_PROXIES: cnginx
+      TRUSTED_PROXIES: reverse-proxy
 
 volumes:
   db_data:
