@@ -68,3 +68,9 @@ RUN echo "RemoteIPInternalProxy 127.0.0.1 \${TRUSTED_PROXIES}" >> /etc/apache2/c
 RUN a2enconf remoteip.conf
 RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
+
+#Stratégie de sauvegarde
+RUN touch /var/log/cron.log
+COPY crontab /etc/cron.d/cron-sauvegarde
+RUN chmod 0644 /etc/cron.d/cron-sauvegarde
+RUN service cron start
