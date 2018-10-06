@@ -38,11 +38,9 @@ RUN buildDeps=" \
     && a2enmod proxy \
     && a2enmod proxy_http \
     && a2enmod proxy_balancer \
-    && a2enmod lbmethod_byrequests
-
-# Install Composer.
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && ln -s $(composer config --global home) /root/composer
+    && a2enmod lbmethod_byrequests \
+    && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=composer \
+    && chmod +x /usr/local/bin/composer
 
 #Install wget and ping
 RUN apt-get update && apt-get install -y wget && apt-get install -y nano && apt-get install -y iputils-ping
