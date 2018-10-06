@@ -81,9 +81,9 @@ mega_path="/Root/backups" # /Root/ should always be here.
 
 # Full MySQL dump (All Databases)
 mysql_backup="yes"
-mysql_host="db"
-mysql_user="phpginfo"
-mysql_pass="phpginfo"
+mysql_host=${DB_HOST}
+mysql_user=${DB_USER}
+mysql_pass=${DB_PASSWORD}
 
 # Full PostgreSQL dump (All Databases)
 postgres_backup="no"
