@@ -39,4 +39,4 @@ volumes:
 networks:
   proxy:
     external:
-      name: nginx-proxy
+      name: nginx-proxy-wordpress

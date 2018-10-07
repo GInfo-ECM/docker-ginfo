@@ -7,11 +7,15 @@ services:
     ports:
     - "25060:80"
     networks:
-    - proxy
+    - proxy_ginfo
+    - proxy_wordpress
     volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
 
 networks:
-  proxy:
+  proxy_ginfo:
     external:
-      name: nginx-proxy
+      name: nginx-proxy-ginfo
+  proxy_wordpress:
+    external:
+      name: nginx-proxy-wordpress

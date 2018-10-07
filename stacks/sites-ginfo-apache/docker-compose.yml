@@ -68,7 +68,7 @@ volumes:
 networks:
   proxy:
     external:
-      name: nginx-proxy
+      name: nginx-proxy-ginfo
   interne:
     driver: bridge
     internal: true
