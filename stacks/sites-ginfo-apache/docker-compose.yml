@@ -50,7 +50,7 @@ services:
     - site_data:/home/${USER_SFTP}/site
     - save_data:/home/${USER_SFTP}/save
     ports:
-    - "2222+:22"
+    - "22"
     command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}
 
 volumes:
