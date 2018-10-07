@@ -42,8 +42,26 @@ RUN buildDeps=" \
     && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=composer \
     && chmod +x /usr/local/bin/composer
 
-#Install wget and ping
-RUN apt-get update && apt-get install -y wget && apt-get install -y nano && apt-get install -y iputils-ping && apt-get install -y net-tools && apt-get install -y traceroute
+#Install utilities
+RUN apt-get update \
+ && apt-get install -y wget \
+ && apt-get install -y nano \
+ && apt-get install -y iputils-ping \
+ && apt-get install -y net-tools \
+ && apt-get install -y traceroute \
+ && apt-get install -y zip \
+
+#Installation de phpmyadmin et sécurisation
+RUN mkdir /phpmyadmin \
+ && curl https://files.phpmyadmin.net/phpMyAdmin/4.8.3/phpMyAdmin-4.8.3-all-languages.tar.gz | tar xvz -C /phpmyadmin --strip-components=1 \
+ && ln -s /phpmyadmin /var/www/html/phpmyadmin-ginfo \
+ && cp /phpmyadmin/config.sample.inc.php /phpmyadmin/config.inc.php \
+ && sed -i 's/localhost/db/g' /phpmyadmin/config.inc.php \
+ && echo "AuthType Basic" >> /phpmyadmin/.htaccess \
+ && echo "AuthName \"Veuillez rentrer le pre-mot de passe pour acceder a cette page. Definissez le si ce n'est pas deja fait\"" >> /phpmyadmin/.htaccess \
+ && echo "AuthUserFile /phpmyadmin/.htpasswd" >> /phpmyadmin/.htaccess \
+ && echo "Require valid-user" >> /phpmyadmin/.htaccess \
+ && touch /phpmyadmin/.htpasswd
 
 #Gestion clés ssh
 RUN mkdir /var/www/.ssh
