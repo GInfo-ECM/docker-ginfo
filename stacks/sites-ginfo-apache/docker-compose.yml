@@ -49,8 +49,6 @@ services:
     volumes:
     - site_data:/home/${USER_SFTP}/site
     - save_data:/home/${USER_SFTP}/save
-    networks:
-    - none
     ports:
     - "22"
     command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
@@ -71,9 +69,6 @@ networks:
   proxy:
     external:
       name: nginx-proxy
-  none:
-    external:
-      name: none
   dmz:
     driver: bridge
     internal: true
