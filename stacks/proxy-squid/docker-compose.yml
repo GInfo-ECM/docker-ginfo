@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  Squid:
+  squid:
     build: squid
     ports:
     - "3129:3128"
