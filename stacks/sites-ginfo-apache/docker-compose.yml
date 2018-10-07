@@ -39,7 +39,6 @@ services:
     restart: always
     networks:
     - dmz
-    - dmzz
     environment:
       DB_HOST: db
       DB_USER: phpginfo
@@ -70,6 +69,7 @@ networks:
   proxy:
     external:
       name: nginx-proxy
-  dmzz:
-    internal: true
-    name: alalol
+  dmz:
+    ipam:
+      options:
+        internal: true
