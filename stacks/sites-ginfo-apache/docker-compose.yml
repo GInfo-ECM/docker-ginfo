@@ -51,7 +51,7 @@ services:
     - save_data:/home/${USER_SFTP}/save
     ports:
     - "22"
-    command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}
+    command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
 
 volumes:
   db_data:
