@@ -69,3 +69,6 @@ networks:
   proxy:
     external:
       name: nginx-proxy
+  dmz:
+    driver: bridge
+    internal: true
