@@ -7,7 +7,7 @@ services:
     - db_data:/var/lib/mysql
     restart: always
     networks:
-    - dmz
+    - interne
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: phpginfo
@@ -20,7 +20,7 @@ services:
     - site_data:/var/www
     restart: always
     networks:
-    - dmz
+    - interne
     - proxy
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
@@ -38,7 +38,7 @@ services:
     - save_data:/saves
     restart: always
     networks:
-    - dmz
+    - interne
     environment:
       DB_HOST: db
       DB_USER: phpginfo
@@ -69,7 +69,5 @@ networks:
   proxy:
     external:
       name: nginx-proxy
-  dmz:
-    ipam:
-      options:
-        internal: true
+  interne:
+    internal: true
