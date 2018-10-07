@@ -49,7 +49,7 @@ RUN apt-get update \
  && apt-get install -y iputils-ping \
  && apt-get install -y net-tools \
  && apt-get install -y traceroute \
- && apt-get install -y zip \
+ && apt-get install -y zip
 
 #Installation de phpmyadmin et sécurisation
 RUN mkdir /phpmyadmin \
