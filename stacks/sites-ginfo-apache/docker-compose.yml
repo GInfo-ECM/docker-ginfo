@@ -52,6 +52,9 @@ services:
     ports:
     - "22"
     command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
+    environment:
+      USER_SFTP: USER_SFTP
+      PASS_SFTP: PASS_SFTP
 
 volumes:
   db_data:
