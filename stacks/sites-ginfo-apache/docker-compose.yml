@@ -45,7 +45,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
 
   sftp:
-    build: sftp
+    image: atmoz/sftp
     volumes:
     - site_data:/home/${USER_SFTP}/site
     - save_data:/home/${USER_SFTP}/save
