@@ -71,6 +71,9 @@ networks:
   proxy:
     external:
       name: nginx-proxy
+  none:
+    external:
+      name: none
   dmz:
     driver: bridge
     internal: true
