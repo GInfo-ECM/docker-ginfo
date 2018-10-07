@@ -1,11 +1,14 @@
-Squid:
-  build: squid
-  ports:
-  - "3129:3128"
-  volumes:
-  - cache:/var/spool/squid
-  - config:/etc/squid/
-  restart: always
+version: '2'
+
+services:
+  Squid:
+    build: squid
+    ports:
+    - "3129:3128"
+    volumes:
+    - cache:/var/spool/squid
+    - config:/etc/squid/
+    restart: always
 
 volumes:
   cache:
