@@ -49,6 +49,8 @@ services:
     volumes:
     - site_data:/home/${USER_SFTP}/site
     - save_data:/home/${USER_SFTP}/save
+    networks:
+    - sftp
     ports:
     - "22"
     command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
@@ -72,5 +74,9 @@ networks:
   interne:
     driver: bridge
     internal: true
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: 'false'
+  sftp:
+    driver: bridge
     driver_opts:
       com.docker.network.bridge.enable_ip_masquerade: 'false'

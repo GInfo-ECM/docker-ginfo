@@ -43,7 +43,7 @@ RUN buildDeps=" \
     && chmod +x /usr/local/bin/composer
 
 #Install wget and ping
-RUN apt-get update && apt-get install -y wget && apt-get install -y nano && apt-get install -y iputils-ping
+RUN apt-get update && apt-get install -y wget && apt-get install -y nano && apt-get install -y iputils-ping && apt-get install -y net-tools && apt-get install -y traceroute
 
 #Gestion clés ssh
 RUN mkdir /var/www/.ssh
