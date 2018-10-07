@@ -18,7 +18,6 @@ services:
     build: php-apache
     volumes:
     - site_data:/var/www
-    - save_data:/var/www/saves:ro
     expose:
     - 80
     restart: always
@@ -46,6 +45,15 @@ services:
       DB_HOST: db
       DB_USER: phpginfo
       DB_PASSWORD: ${DB_PASSWORD}
+
+  sftp:
+    build: sftp
+    volumes:
+    - site_data:/home/${USER_SFTP}/site
+    - save_data:/home/${USER_SFTP}/save
+    ports:
+    - "2222:22"
+    command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}
 
 volumes:
   db_data:
