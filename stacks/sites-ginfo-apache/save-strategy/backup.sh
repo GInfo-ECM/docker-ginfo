@@ -200,7 +200,7 @@ then
     echo -e "\n ${color}--- $date_now MySQL backup enabled, backing up: \n${nc}"
     echo "$date_now MySQL backup enabled, backing up" >> $log_file
     # Using ionice for MySQL dump
-    ionice -c 3 -h $mysql_host -u $mysql_user -p$mysql_pass --events --all-databases | gzip -9 > $backup_path/Backup/$path_date/MySQL_Full_Dump_$path_date.sql.gz | tee -a $log_file
+    ionice -c 3 mysqldump -h $mysql_host -u $mysql_user -p$mysql_pass --events --all-databases | gzip -9 > $backup_path/Backup/$path_date/MySQL_Full_Dump_$path_date.sql.gz | tee -a $log_file
     if [ $? -eq 0 ]
     then
         echo -e "\n ${color}--- $date_now MySQL backup completed. \n${nc}"
