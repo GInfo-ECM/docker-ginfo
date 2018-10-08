@@ -11,8 +11,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: phpginfo
-      MYSQL_USER: phpginfo
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${USER_SFTP_SQL}
+      MYSQL_PASSWORD: ${PASSWORD_SFTP_SQL}
 
   site:
     build: php-apache
@@ -25,8 +25,8 @@ services:
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       DB_HOST: db:3306
-      DB_USER: phpginfo
-      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USER: ${USER_SFTP_SQL}
+      DB_PASSWORD: ${PASSWORD_SFTP_SQL}
       LETSENCRYPT_HOST: ${VIRTUAL_HOST}
       LETSENCRYPT_EMAIL: ${EMAIL_FOR_CERTIFICATION}
       TRUSTED_PROXIES: reverse-proxy
@@ -41,8 +41,8 @@ services:
     - interne
     environment:
       DB_HOST: db
-      DB_USER: phpginfo
-      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USER: ${USER_SFTP_SQL}
+      DB_PASSWORD: ${PASSWORD_SFTP_SQL}
 
   sftp:
     image: atmoz/sftp
@@ -55,8 +55,8 @@ services:
     - "22"
     command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
     environment:
-      USER_SFTP: USER_SFTP
-      PASS_SFTP: PASS_SFTP
+      USER_SFTP: ${USER_SFTP_SQL}
+      PASS_SFTP: ${PASSWORD_SFTP_SQL}
 
 volumes:
   db_data:
