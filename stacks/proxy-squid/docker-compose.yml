@@ -3,8 +3,15 @@ version: '2'
 services:
   squid:
     build: squid
+    args:
+      subnet_int: 10.48.11.0
+      subnet_ext: 10.48.10.0
     ports:
     - "3129:3128"
+    networks:
+      - bridge-squid-int
+      - internet
+
     volumes:
     - cache:/var/spool/squid
     - config:/etc/squid/
@@ -15,3 +22,11 @@ volumes:
     name: cache
   config:
     name: config
+
+networks:
+  bridge-squid-int:
+    external:
+      name: bridge-squid-int
+  internet:
+    external:
+      name: internet
