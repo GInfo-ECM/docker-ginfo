@@ -48,13 +48,13 @@ services:
   sftp:
     image: atmoz/sftp
     volumes:
-    - site_data:/home/${USER_SFTP}/site
-    - save_data:/home/${USER_SFTP}/save
+    - site_data:/home/${USER_SFTP_SQL}/site
+    - save_data:/home/${USER_SFTP_SQL}/save
     networks:
     - sftp
     ports:
     - "22"
-    command: ${USER_SFTP}:${PASS_SFTP}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
+    command: ${USER_SFTP_SQL}:${PASSWORD_SFTP_SQL}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
     environment:
       USER_SFTP: ${USER_SFTP_SQL}
       PASS_SFTP: ${PASSWORD_SFTP_SQL}
