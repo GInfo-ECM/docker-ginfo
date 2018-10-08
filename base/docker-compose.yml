@@ -30,9 +30,7 @@ services:
 
 volumes:
   portainer_data:
-    name: portainer_data
   certificates:
-    name: certificates
 
 networks:
   proxy-ginfo:
