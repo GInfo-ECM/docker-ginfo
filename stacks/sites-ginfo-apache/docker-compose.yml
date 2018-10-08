@@ -10,7 +10,7 @@ services:
     - interne
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_DATABASE: phpginfo
+      MYSQL_DATABASE: ${USER_SFTP_SQL}
       MYSQL_USER: ${USER_SFTP_SQL}
       MYSQL_PASSWORD: ${PASSWORD_SFTP_SQL}
 
