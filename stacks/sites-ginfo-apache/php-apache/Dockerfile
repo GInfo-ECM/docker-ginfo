@@ -58,7 +58,7 @@ RUN mkdir /phpmyadmin \
  && cp /phpmyadmin/config.sample.inc.php /phpmyadmin/config.inc.php \
  && sed -i 's/localhost/db/g' /phpmyadmin/config.inc.php \
  && echo "AuthType Basic" >> /phpmyadmin/.htaccess \
- && echo "AuthName \"Veuillez rentrer vos identifiants pour acceder a cette page.\"" >> /phpmyadmin/.htaccess \
+ && echo "AuthName \"Veuillez rentrer vos identifiants pour acceder a cette page\"" >> /phpmyadmin/.htaccess \
  && echo "AuthUserFile /phpmyadmin/.htpasswd" >> /phpmyadmin/.htaccess \
  && echo "Require valid-user" >> /phpmyadmin/.htaccess \
  && touch /phpmyadmin/.htpasswd
