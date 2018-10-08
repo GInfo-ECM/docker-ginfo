@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    restart: always
+    command: -H unix:///var/run/docker.sock
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - portainer_data:/data
+    environment:
+      VIRTUAL_HOST: docker-admin.ginfo
+    networks:
+    - nginx-proxy-ginfo
+
+  reverse-proxy:
+    image: jwilder/nginx-proxy
+    container_name: reverse-proxy
+    restart: always
+    networks:
+    - nginx-proxy-wordpress
+    - nginx-proxy-ginfo
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    - certificates:/etc/nginx/certs:ro
+
+volumes:
+  portainer_data:
+    name: portainer_data
+  certificates:
+    name: certificates
+
+networks:
+  proxy-ginfo:
+    external:
+      name: nginx-proxy-wordpress
+  proxy-wordpress:
+    external:
+      name: nginx-proxy-ginfo
