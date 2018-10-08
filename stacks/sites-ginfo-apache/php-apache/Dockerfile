@@ -63,6 +63,9 @@ RUN mkdir /phpmyadmin \
  && echo "Require valid-user" >> /phpmyadmin/.htaccess \
  && touch /phpmyadmin/.htpasswd
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 #Gestion clés ssh
 RUN mkdir /var/www/.ssh
 RUN ln -s /var/www/.ssh /root/.ssh
@@ -88,3 +91,5 @@ RUN echo "RemoteIPInternalProxy 127.0.0.1 \${TRUSTED_PROXIES}" >> /etc/apache2/c
 RUN a2enconf remoteip.conf
 RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
+
+CMD /entrypoint.sh
