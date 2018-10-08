@@ -11,14 +11,14 @@ services:
 
     volumes:
     - cache:/var/spool/squid
-    - config:/etc/squid/
+#    - config:/etc/squid/
     restart: always
 
 volumes:
   cache:
     name: cache
-  config:
-    name: config
+#  config:
+#    name: config
 
 networks:
   bridge-squid-int:
