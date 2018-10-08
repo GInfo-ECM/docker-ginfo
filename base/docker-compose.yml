@@ -12,15 +12,15 @@ services:
     environment:
       VIRTUAL_HOST: docker-admin.ginfo
     networks:
-    - nginx-proxy-ginfo
+    - proxy-ginfo
 
   reverse-proxy:
     image: jwilder/nginx-proxy
     container_name: reverse-proxy
     restart: always
     networks:
-    - nginx-proxy-wordpress
-    - nginx-proxy-ginfo
+    - proxy-wordpress
+    - proxy-ginfo
     ports:
     - "80:80"
     - "443:443"
