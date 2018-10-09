@@ -89,6 +89,10 @@ RUN a2enconf remoteip.conf
 RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 
-RUN printf "htpasswd -b -c /phpmyadmin/.htpasswd \${DB_USER} \${DB_PASSWORD}\napache2-foreground" >> /entrypoint.sh
+RUN touch /var/www/startup.sh && chmod +x /var/www/startup.sh
+
+RUN printf "/var/www/startup.sh &\n htpasswd -b -c /phpmyadmin/.htpasswd \${DB_USER} \${DB_PASSWORD}\napache2-foreground" >> /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+
 CMD /entrypoint.sh

@@ -4,7 +4,7 @@ services:
   squid:
     build: squid
     ports:
-    - "3129:3128"
+    - "3128:3128"
     networks:
       - bridge-squid-int
       - internet
