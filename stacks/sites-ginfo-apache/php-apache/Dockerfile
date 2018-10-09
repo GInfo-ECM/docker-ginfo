@@ -54,14 +54,11 @@ RUN apt-get update \
 #Installation de phpmyadmin et sécurisation
 RUN mkdir /phpmyadmin \
  && curl https://files.phpmyadmin.net/phpMyAdmin/4.8.3/phpMyAdmin-4.8.3-all-languages.tar.gz | tar xvz -C /phpmyadmin --strip-components=1 \
- && ln -s /phpmyadmin /var/www/html/phpmyadmin-ginfo \
  && cp /phpmyadmin/config.sample.inc.php /phpmyadmin/config.inc.php \
  && sed -i 's/localhost/db/g' /phpmyadmin/config.inc.php \
- && echo "AuthType Basic" >> /phpmyadmin/.htaccess \
- && echo "AuthName \"Veuillez rentrer vos identifiants pour acceder a cette page\"" >> /phpmyadmin/.htaccess \
- && echo "AuthUserFile /phpmyadmin/.htpasswd" >> /phpmyadmin/.htaccess \
- && echo "Require valid-user" >> /phpmyadmin/.htaccess \
  && touch /phpmyadmin/.htpasswd
+
+COPY phpmyadmin/.htaccess /phpmyadmin/.htaccess
 
 #Gestion clés ssh
 RUN mkdir /var/www/.ssh
@@ -83,15 +80,15 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername.conf
 
-RUN echo "RemoteIPHeader X-Forwarded-For" >> /etc/apache2/conf-available/remoteip.conf
-RUN echo "RemoteIPInternalProxy 127.0.0.1 \${TRUSTED_PROXIES}" >> /etc/apache2/conf-available/remoteip.conf
+COPY remoteip.conf /etc/apache2/conf-available/remoteip.conf
 RUN a2enconf remoteip.conf
 RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 
-RUN touch /var/www/startup.sh && chmod +x /var/www/startup.sh
 
-RUN printf "/var/www/startup.sh &\n htpasswd -b -c /phpmyadmin/.htpasswd \${DB_USER} \${DB_PASSWORD}\napache2-foreground" >> /entrypoint.sh
+COPY startup.sh /var/www/startup.sh
+RUN chmod +x /var/www/startup.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 
