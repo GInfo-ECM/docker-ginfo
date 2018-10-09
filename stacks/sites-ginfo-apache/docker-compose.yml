@@ -48,6 +48,7 @@ services:
 
   sftp:
     image: atmoz/sftp
+    restart: always
     volumes:
     - site_data:/home/${USER_SFTP_SQL}/site
     - save_data:/home/${USER_SFTP_SQL}/save
