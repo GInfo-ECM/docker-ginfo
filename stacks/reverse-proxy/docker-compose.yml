@@ -5,7 +5,8 @@ services:
     build: proxy
     container_name: reverse-proxy
     ports:
-    - "25060:80"
+    - "80:80"
+    - "443:443"
     networks:
     - proxy_ginfo
     - proxy_wordpress
