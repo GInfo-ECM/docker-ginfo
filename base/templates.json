@@ -1,15 +1,13 @@
 [
   {
-    "type": "container",
-    "title": "Registry",
-    "description": "Docker image registry",
-    "categories": ["docker"],
-    "platform": "linux",
-    "logo": "https://portainer.io/images/logos/registry.png",
-    "image": "registry:latest",
+    "type": 1,
+    "title": "Nginx",
+    "description": "High performance web server",
+    "logo": "https://cloudinovasi.id/assets/img/logos/nginx.png",
+    "image": "nginx:latest",
     "ports": [
-      "5000/tcp"
-    ],
-    "volumes": ["/var/lib/registry"]
+      "8080:80/tcp",
+      "443/tcp"
+    ]
   }
 ]
