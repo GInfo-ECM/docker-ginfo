@@ -6,10 +6,10 @@
     "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les application GInfo",
     "categories": ["PHP"],
     "platform": "linux",
-    "logo": "https://portainer.io/images/logos/wordpress.png",
+    "logo": "https://github.com/GInfo-ECM/docker-ginfo/blob/master/stacks/sites-ginfo-apache/images/httpd.png",
     "repository": {
-      "url": "https://github.com/portainer/templates",
-      "stackfile": "stacks/wordpress/docker-compose.yml"
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/sites-ginfo-apache/docker-compose.yml"
     },
     "env": [
       {
@@ -17,6 +17,41 @@
         "label": "Nom de domaine",
         "description": "Le domaine à partir duquel on accèdera au site",
         "default": "site.ginfo, site.ginfo.ec-m.fr"
+      },
+      {
+        "name": "EMAIL_FOR_CERTIFICATION",
+        "label": "Email pour la certification",
+        "description": "Email pour la certification LetsEncrypt",
+        "default": "ginfo@ginfo.com"
+      },
+      {
+        "name": "UID_UTILISATEUR",
+        "label": "Uid utilisateur",
+        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+        "default": "33"
+      },
+      {
+        "name": "USER_SFTP_SQL",
+        "label": "Utilisateur",
+        "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
+        "default": "ginfo"
+      },
+      {
+        "name": "PASSWORD_SFTP_SQL",
+        "label": "Mot de passe",
+        "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
+        "default": "Remplir absolument"
+      },
+      {
+        "name": "DB_ROOT_PASSWORD",
+        "label": "Mot de passe root",
+        "description": "Mot de passe root de la base de donnée. Ne sera jamais utilisé",
+        "default": "Remplir absolument"
+      },
+      {
+        "name": "WEB_ROOT",
+        "label": "Racine de l'hébergement web",
+        "default": "/var/www/html"
       },
       {
         "name": "NETWORK_ACCESS",
