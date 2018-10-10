@@ -1,3 +1,3 @@
-0 1 * * * root /etc/backup.sh
+0 1 * * * . /.env; /etc/backup.sh
 #Tous les jours à 1h du matin
 # Ne pas supprimer cette ligne, tout fichier cron doit se terminer par une ligne vide
