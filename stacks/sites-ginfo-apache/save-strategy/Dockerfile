@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER pnahoum@ec-m.fr
 
-ADD crontab /var/www/crontab
+COPY crontab /var/www/crontab
 
 RUN touch /var/log/cron.log
 
