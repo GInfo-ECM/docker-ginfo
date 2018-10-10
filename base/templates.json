@@ -70,5 +70,18 @@
         ]
       }
     ]
+  },
+  {
+    "type": 3,
+    "title": "Squid (Proxy HTTP)",
+    "description": "Proxy HTTP/HTTPS pour les applications du GInfo",
+    "note": "Proxy HTTP/HTTPS pour les applications du GInfo",
+    "categories": ["Proxy"],
+    "platform": "linux",
+    "logo": "https://portainer.io/images/logos/filebrowser.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/proxy-squid/docker-compose.yml"
+    }
   }
 ]
