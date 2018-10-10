@@ -14,7 +14,6 @@ RUN apt-get update
 RUN apt-get -y install cron && apt-get -y install nano && apt-get -y install mysql-client
 
 #Gestion de l'heure
-RUN apt install -y tzdata
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 

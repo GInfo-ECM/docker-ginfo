@@ -84,7 +84,6 @@ RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 
 #Gestion de l'heure
-RUN apt install -y tzdata
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
