@@ -15,6 +15,8 @@ RUN apt-get -y install cron && apt-get -y install nano && apt-get -y install mys
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 CMD /entrypoint.sh
