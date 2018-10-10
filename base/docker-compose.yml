@@ -15,7 +15,7 @@ services:
     - proxy-ginfo
 
   reverse-proxy:
-    image: jwilder/nginx-proxy
+    build: reverse-proxy
     container_name: reverse-proxy
     restart: always
     networks:

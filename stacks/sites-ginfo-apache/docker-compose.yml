@@ -2,7 +2,7 @@ version: '2'
 
 services:
   db:
-    image: mysql:5.7
+    build: mysql
     volumes:
     - db_data:/var/lib/mysql
     restart: always
@@ -47,7 +47,7 @@ services:
       DB_PASSWORD: ${PASSWORD_SFTP_SQL}
 
   sftp:
-    image: atmoz/sftp
+    build: sftp
     restart: always
     volumes:
     - site_data:/home/${USER_SFTP_SQL}/site

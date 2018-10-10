@@ -1,5 +1,4 @@
-FROM jwilder/nginx-proxy
-COPY network_internal.conf /etc/nginx/network_internal.conf
+FROM mysql:5.7
 
 #Gestion de l'heure
 RUN apt-get update && apt install -y tzdata

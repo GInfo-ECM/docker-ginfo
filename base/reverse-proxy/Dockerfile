@@ -1,5 +1,4 @@
 FROM jwilder/nginx-proxy
-COPY network_internal.conf /etc/nginx/network_internal.conf
 
 #Gestion de l'heure
 RUN apt-get update && apt install -y tzdata

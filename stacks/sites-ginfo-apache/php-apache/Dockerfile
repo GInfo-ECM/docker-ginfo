@@ -30,8 +30,6 @@ RUN buildDeps=" \
     && docker-php-ext-enable memcached.so redis.so \
     && apt-get purge -y --auto-remove $buildDeps \
     && rm -r /var/lib/apt/lists/* \
-    && pecl install xdebug \
-    && docker-php-ext-enable xdebug \
 	&& pecl install apcu \
 	&& docker-php-ext-enable apcu \
     && a2enmod rewrite \
@@ -85,7 +83,12 @@ RUN a2enconf remoteip.conf
 RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 
+#Gestion de l'heure
+RUN apt install -y tzdata
+ENV TZ=Europe/Paris
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+#Gestion de point d'entrée
 COPY startup.sh /var/www/startup.sh
 RUN chmod +x /var/www/startup.sh
 COPY entrypoint.sh /entrypoint.sh
