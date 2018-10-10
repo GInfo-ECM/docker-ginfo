@@ -4,7 +4,7 @@ MAINTAINER pnahoum@ec-m.fr
 ENV DEBIAN_FRONTEND=noninteractive
 ENV UBUNTU_FRONTEND=noninteractive
 
-COPY crontab /site-to-save/crontab
+COPY crontab /saves/crontab
 
 RUN touch /var/log/cron.log
 

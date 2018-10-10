@@ -29,13 +29,10 @@
 server_name="localhost"
 
 # Backup path
-backup_path="/saves"
-
-#Backup history (days)
-keep="90"
+backup_path="/saves/backups"
 
 # Script log file
-log_file="/saves/backup.log"
+log_file="/saves/backups/backup.log"
 
 # Files to backup (Multi value)
 backup_files_enable="no"
@@ -287,8 +284,6 @@ echo -e "\n ${color}--- $date_now Creating TAR file located in $backup_path/Full
 echo "$date_now Creating TAR file located in $backup_path/Full_Backup_$path_date.tar.bz2" >> $log_file
 tar -cjf $backup_path/Full_Backup_${path_date}.tar.bz2 $backup_path/Backup/$path_date 2> /dev/null
 rm -rf $backup_path/Backup/
-# Removes the backup older than $keep days
-find $backup_path -atime +$keep -name 'Full_Backup_*' -exec rm {} \;
 final_archive="Full_Backup_${path_date}.tar.bz2"
 
 sleep 1

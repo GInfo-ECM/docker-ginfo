@@ -52,8 +52,6 @@ RUN apt-get update \
 #Installation de phpmyadmin et sécurisation
 RUN mkdir /phpmyadmin \
  && curl https://files.phpmyadmin.net/phpMyAdmin/4.8.3/phpMyAdmin-4.8.3-all-languages.tar.gz | tar xvz -C /phpmyadmin --strip-components=1 \
- && cp /phpmyadmin/config.sample.inc.php /phpmyadmin/config.inc.php \
- && sed -i 's/localhost/db/g' /phpmyadmin/config.inc.php \
  && touch /phpmyadmin/.htpasswd
 
 COPY phpmyadmin/.htaccess /phpmyadmin/.htaccess
