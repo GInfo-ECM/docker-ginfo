@@ -12,3 +12,4 @@ ARG gateway
 RUN echo "ip route del default" >> /sbin/entrypoint.sh
 RUN echo "ip route add default via $gateway" >> /sbin/entrypoint.sh
 
+ENTRYPOINT entrypoint.sh
