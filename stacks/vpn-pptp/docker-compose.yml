@@ -8,14 +8,11 @@ services:
     networks:
     - internet
     volumes:
-    - pptp:/etc/ppp/chap-secrets
+    - pptp:/lel
     restart: always
     environment:
       USERNAME: ${USERNAME}
       PASSWORD: ${PASSWORD}
-
-volumes:
-  pptp:
 
 networks:
   internet:
