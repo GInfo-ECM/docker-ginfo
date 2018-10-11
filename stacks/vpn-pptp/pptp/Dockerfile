@@ -1,5 +1,5 @@
 FROM mobtitude/vpn-pptp
 
-RUN mkdir /etc/ppp/
+RUN mkdir -p /etc/ppp/
 
 ADD login.sh /entrypoint.sh
