@@ -87,7 +87,7 @@
       {
         "name": "DEFAULT_GATEWAYs",
         "label": "Accès internet par défaut",
-        "default": "10.48.11.1"
+        "default": "10.48.10.1"
       }]
   },
   {
