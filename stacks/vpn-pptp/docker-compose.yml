@@ -2,12 +2,7 @@ version: '2'
 
 services:
   pptp:
-    build:
-      context: ./pptp
-      dockerfile: Dockerfile
-      args:
-        USERNAME: ${USERNAME}
-        PASSWORD: ${PASSWORD}
+    build: pptp
     ports:
     - "1723:1723"
     networks:
@@ -18,10 +13,6 @@ services:
     environment:
       USERNAME: ${USERNAME}
       PASSWORD: ${PASSWORD}
-
-volumes:
-  pptp:
-    name: pptp
 
 networks:
   internet:
