@@ -9,6 +9,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #On met une gateway par defaut pour acceder a internet
 ARG gateway
-RUN echo "ip route del default" >> /sbin/test
-RUN echo "ip route$gateway add default via $gateway"$gateway >> /sbin/test
+RUN echo "ip route del default" >> /test
+RUN echo "ip route$gateway add default via $gateway"$gateway >> /test
 
