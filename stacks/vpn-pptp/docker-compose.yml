@@ -8,7 +8,7 @@ services:
     networks:
     - internet
     volumes:
-    - pptp:/lel
+    - pptp:/etc/ppp
     restart: always
     environment:
       USERNAME: ${USERNAME}
