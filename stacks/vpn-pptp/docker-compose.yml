@@ -4,21 +4,15 @@ services:
   pptp:
     build: pptp
     ports:
-    - "1723:1723"
-    networks:
-    - internet
+    - "1727:1723"
     volumes:
     - pptp:/etc/ppp
     restart: always
     environment:
       USERNAME: ${USERNAME}
       PASSWORD: ${PASSWORD}
+    network_mode: host
 
 volumes:
   pptp:
     name: pptp
-
-networks:
-  internet:
-    external:
-      name: internet
