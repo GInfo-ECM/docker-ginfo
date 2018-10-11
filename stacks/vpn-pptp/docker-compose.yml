@@ -14,6 +14,10 @@ services:
       USERNAME: ${USERNAME}
       PASSWORD: ${PASSWORD}
 
+volumes:
+  pptp:
+    name: pptp
+
 networks:
   internet:
     external:
