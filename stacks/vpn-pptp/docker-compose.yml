@@ -16,7 +16,6 @@ services:
 
 volumes:
   pptp:
-    name: pptp
 
 networks:
   internet:
