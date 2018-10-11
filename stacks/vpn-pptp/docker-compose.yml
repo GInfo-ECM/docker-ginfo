@@ -2,16 +2,18 @@ version: '2'
 
 services:
   pptp:
-    build: pptp
+    build:
+      context: ./pptp
+      dockerfile: Dockerfile
+      args:
+        username: ${USERNAME}
+        password: ${PASSWORD}
     ports:
     - "1727:1723"
     volumes:
     - pptp:/etc/ppp
     restart: always
     privileged: true
-    environment:
-      USERNAME: ${USERNAME}
-      PASSWORD: ${PASSWORD}
     network_mode: host
 
 volumes:
