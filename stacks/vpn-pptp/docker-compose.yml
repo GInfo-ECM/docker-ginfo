@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  pptp:
+    build: pptp
+    ports:
+    - "1723:1723"
+    networks:
+    - internet
+    volumes:
+    - pptp:/etc/ppp/chap-secrets
+    restart: always
+    environment:
+      USERNAME: ${USERNAME}
+      PASSWORD: ${PASSWORD}
+
+volumes:
+  pptp:
+    name: pptp
+
+networks:
+  internet:
+    external:
+      name: internet
