@@ -5,5 +5,3 @@ ADD login.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 RUN mkdir -p /etc/ppp/
-
-CMD ["tail", "-f", "/entrypoint.sh"]
