@@ -85,7 +85,7 @@
     },
     "env": [
       {
-        "name": "DEFAULT_GATEWAYs",
+        "name": "GATEWAY",
         "label": "Accès internet par défaut",
         "default": "10.48.10.1"
       }]

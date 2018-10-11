@@ -8,7 +8,7 @@ ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #On met une gateway par defaut pour acceder a internet
-ARG GATEWAY
+ARG gateway
 RUN echo "ip route del default" >> /sbin/entrypoint.sh
-RUN echo "ip route add default via $GATEWAY" >> /sbin/entrypoint.sh
+RUN echo "ip route add default via "$gateway >> /sbin/entrypoint.sh
 

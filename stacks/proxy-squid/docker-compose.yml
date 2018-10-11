@@ -5,7 +5,7 @@ services:
     build:
      context: squid
      args:
-       GATEWAY: ${DEFAULT_GATEWAY}
+       gateway: ${GATEWAY}
     cap_add:
     - NET_ADMIN
     networks:
