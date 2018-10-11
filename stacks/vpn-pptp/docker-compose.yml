@@ -8,6 +8,7 @@ services:
     volumes:
     - pptp:/etc/ppp
     restart: always
+    privileged: true
     environment:
       USERNAME: ${USERNAME}
       PASSWORD: ${PASSWORD}
