@@ -82,7 +82,13 @@
     "repository": {
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/proxy-squid/docker-compose.yml"
-    }
+    },
+    "env": [
+      {
+        "name": "DEFAULT_GATEWAYs",
+        "label": "Accès internet par défaut",
+        "default": "10.48.11.1"
+      }]
   },
   {
     "type": 3,

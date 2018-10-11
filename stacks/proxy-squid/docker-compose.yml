@@ -2,13 +2,15 @@ version: '2'
 
 services:
   squid:
-    build: squid
-    ports:
-    - "3128:3128"
+    build:
+     context: squid
+     args:
+       default_gateway: ${DEFAULT_GATEWAY}
+    cap_add:
+    - CAP_NET_ADMIN
     networks:
       - bridge-squid-int
       - internet
-
     volumes:
     - cache:/var/spool/squid
     - config:/etc/squid/
