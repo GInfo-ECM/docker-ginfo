@@ -10,3 +10,4 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 #On met une gateway par defaut pour acceder a internet
 ARG gateway
 RUN sed -i '/bash/a \ip route del default\nip route add default via '$gateway /sbin/entrypoint.sh
+RUN sed -i 'wondershaper eth0 30000 500 ' /sbin/entrypoint.sh
