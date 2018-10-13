@@ -111,5 +111,18 @@
         "name": "PASSWORD",
         "label": "Mot de passe VPN"
       }]
+  },
+  {
+    "type": 3,
+    "title": "Serveur Samba",
+    "description": "Un serveur de fichier pour le GInfo",
+    "note": "Un serveur de fichier pour le GInfo",
+    "categories": ["Samba"],
+    "platform": "linux",
+    "logo": "https://portainer.io/images/logos/filebrowser.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/samba/docker-compose.yml"
+    }
   }
 ]
