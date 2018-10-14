@@ -3,7 +3,7 @@ version: '2'
 services:
   smbd:
     restart: always
-    image: rootlogin/samba
+    build: smbd
     tty: true
     volumes:
     - data_samba_config:/etc/samba
@@ -15,15 +15,6 @@ services:
     - "140:139"
     - "446:445"
 
-  netatalk:
-    restart: always
-    image: rootlogin/netatalk
-    volumes:
-    - data_samba_netatalk_config:/etc/netatalk
-    - data_samba_data:/data/public
-    ports:
-    - "549:548"
-
 volumes:
   data_samba_config:
     name: data_samba_config
@@ -33,5 +24,3 @@ volumes:
     name: data_samba_users
   data_samba_data:
     name: data_samba_data
-  data_samba_netatalk_config:
-    name: data_samba_netatalk_config
