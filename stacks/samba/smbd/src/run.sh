@@ -20,7 +20,7 @@ fi
 if [ ! -d /home/associations ]; then
   #Création du dossier commun aux association
   mkdir /home/associations
-  /opt/rootlogin-fileserver/manage.sh add_group associations
+  /opt/rootlogin-fileserver/manage.sh manage add_group associations
   useradd -m -g associations sambaadmin
   chown -R sambaadmin:associations /home/associations
   chmod -R 770 /home/associations
