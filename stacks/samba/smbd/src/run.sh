@@ -12,8 +12,18 @@ if [ ! -f /var/lib/extrausers/group ]; then
   touch /var/lib/extrausers/group
 fi
 
+
 if [ $(dpkg-query -W -f='${Status}' samba 2>/dev/null | grep -c "ok installed") -eq 1 ]; then
   /opt/rootlogin-fileserver/prepare_samba.sh
+fi
+
+if [ ! -d /home/associations ]; then
+  #Création du dossier commun aux association
+  mkdir /home/associations
+  /opt/rootlogin-fileserver/manage.sh add_group associations
+  useradd -m -g associations sambaadmin
+  chown -R sambaadmin:associations /home/associations
+  chmod -R 770 /home/associations
 fi
 
 if [ "$1" == "manage" ]; then

@@ -16,7 +16,6 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-
 RUN sed -i '/^\(passwd\|group\|shadow\):/{ s/$/ extrausers/; }' /etc/nsswitch.conf
 
 #Configuration des scripts de gestion
@@ -25,12 +24,6 @@ RUN chmod +x /opt/rootlogin-fileserver/*.sh
 
 #Configuration de samba
 COPY smb.conf /etc/samba/smb.conf
-
-#Création du dossier commun aux association
-RUN mkdir /home/associations
-RUN useradd -m -g associations sambaadmin
-RUN chown -R sambaadmin:associations /home/associations
-RUN chmod -R 770 /home/associations
 
 RUN rm /etc/fileserver
 #Installation de samba
