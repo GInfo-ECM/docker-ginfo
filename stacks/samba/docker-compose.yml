@@ -23,7 +23,5 @@ volumes:
     name: data_samba_lib
   data_samba_users:
     name: data_samba_users
-  data_samba_data:
-    name: data_samba_data
   data_samba_data_homes:
     name: data_samba_data_homes
