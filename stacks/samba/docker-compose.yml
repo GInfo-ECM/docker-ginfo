@@ -9,7 +9,8 @@ services:
     - data_samba_config:/etc/samba
     - data_samba_lib:/var/lib/samba
     - data_samba_users:/var/lib/extrausers
-    - data_samba_data:/data/public
+    - data_samba_data_public:/data/public
+    - data_samba_data_homes:/home
     ports:
     - "136:135"
     - "140:139"
@@ -24,3 +25,5 @@ volumes:
     name: data_samba_users
   data_samba_data:
     name: data_samba_data
+  data_samba_data_homes:
+    name: data_samba_data_homes

@@ -23,6 +23,8 @@ case $2 in
     useradd -M "$3"
     echo "$3:$4" | chpasswd
     echo -e "$4\n$4" | (smbpasswd -a -s "$3")
+    mkdir -p /home/$3
+    chown -R $3:$3 /home/$3
     move_user2extrapasswd "$3"
   ;;
   add_group)
