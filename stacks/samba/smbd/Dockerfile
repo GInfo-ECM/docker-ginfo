@@ -40,4 +40,4 @@ EXPOSE 445
 #Lancement
 RUN chmod +x /opt/rootlogin-fileserver/run.sh
 ENTRYPOINT ["/opt/rootlogin-fileserver/run.sh"]
-CMD ["/usr/sbin/smbd", "-s", "/etc/fileserver/smb.conf", "-F", "-S"]
+CMD ["/usr/sbin/smbd", "-s", "/etc/samba/smb.conf", "-F", "-S"]
