@@ -25,7 +25,6 @@ RUN chmod +x /opt/rootlogin-fileserver/*.sh
 #Configuration de samba
 COPY smb.conf /etc/samba/smb.conf
 
-RUN rm /etc/fileserver
 #Installation de samba
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
