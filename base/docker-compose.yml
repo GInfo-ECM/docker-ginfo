@@ -15,6 +15,7 @@ services:
       VIRTUAL_HOST: docker-admin.ginfo, bor.ginfo
     networks:
     - proxy-ginfo
+    - internet
 
   reverse-proxy:
     build: reverse-proxy
@@ -43,3 +44,6 @@ networks:
   proxy-wordpress:
     external:
       name: nginx-proxy-ginfo
+  internet:
+    external:
+      name: internet

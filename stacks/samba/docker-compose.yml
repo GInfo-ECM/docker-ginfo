@@ -12,9 +12,9 @@ services:
     - data_samba_data_public:/data/public
     - data_samba_data_homes:/home
     ports:
-    - "136:135"
-    - "140:139"
-    - "446:445"
+    - "135:135"
+    - "139:139"
+    - "445:445"
 
 volumes:
   data_samba_config:
