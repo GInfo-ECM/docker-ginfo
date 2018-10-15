@@ -9,8 +9,10 @@ services:
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - portainer_data:/data
+    ports:
+    - "9000:9000"
     environment:
-      VIRTUAL_HOST: docker-admin.ginfo
+      VIRTUAL_HOST: docker-admin.ginfo, bor.ginfo
     networks:
     - proxy-ginfo
 
@@ -30,7 +32,9 @@ services:
 
 volumes:
   portainer_data:
+    external: true
   certificates:
+    external: true
 
 networks:
   proxy-ginfo:
