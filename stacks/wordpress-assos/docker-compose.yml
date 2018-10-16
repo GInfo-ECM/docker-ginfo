@@ -15,7 +15,7 @@ services:
   wordpress:
     depends_on:
     - db
-    image: wordpress:latest
+    build: wordpress
     volumes:
       - wp_data:/var/www/html
     ports:
@@ -25,27 +25,6 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-
-  wordpress-cli:
-    depends_on:
-    - db
-    - wordpress
-    image: wordpress:cli
-    # This is required to run wordpress-cli with the same
-    # user-id as wordpress. This way there are no permission problems
-    # when running the cli
-    user: xfs
-    # The sleep 10 is required so that the command is run after
-    # mysql is initialized. Depending on your machine this might take
-    # longer or it can go faster.
-    command: >
-      /bin/sh -c '
-      sleep 10;
-      wp core install --path="/var/www/html" --url="http://localhost:980" --title="Local Wordpress By Docker" --admin_user=admin --admin_password=secret --admin_email=foo@bar.com
-      '
-    # Add shared volume
-    volumes:
-    - wp_data:/var/www/html
 
 volumes:
   db_data:
