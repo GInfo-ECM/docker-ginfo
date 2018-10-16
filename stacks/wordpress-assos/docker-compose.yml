@@ -15,7 +15,7 @@ services:
   wordpress:
     depends_on:
     - db
-    image: wordpress:cli
+    image: wordpress:latest
     volumes:
       - wp_data:/var/www/html
     ports:
@@ -25,6 +25,13 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
+
+  cli:
+    image: wordpress:cli
+    volumes:
+    - wp_data:/var/www/html
+    command: sh -c "sleep 20 && wp core install --path=/var/www/html --url=localhost --title=test --admin_user=test --admin_password=test --admin_email=test@example.com"
+
 volumes:
   db_data:
     name: db_data
