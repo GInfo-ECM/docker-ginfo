@@ -12,7 +12,7 @@ services:
     ports:
     - "9000:9000"
     environment:
-      VIRTUAL_HOST: docker-admin.ginfo, bor.ginfo
+      VIRTUAL_HOST: bor.ginfo, docker-admin.ginfo.ec-m.fr
     networks:
     - proxy-ginfo
     - internet
