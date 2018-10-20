@@ -30,9 +30,9 @@ inet_protocols = all
 transport_maps = hash:/etc/postfix/transport
 
 # Limitation globales
-smtp_destination_concurrency_limit = 1
-smtp_extra_recipient_limit = 1
-smtp_destination_rate_delay = 60s
+default_destination_concurrency_limit = 1
+default_extra_recipient_limit = 1
+default_destination_rate_delay = 60s
 
 # Debridage @centrale-marseille.fr
 polite_destination_concurrency_limit = 50
