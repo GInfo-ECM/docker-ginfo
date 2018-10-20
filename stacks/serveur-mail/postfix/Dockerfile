@@ -21,7 +21,9 @@ RUN echo "fast unix - - n - - smtp -o smtp_fallback_relay=" >> /etc/postfix/mast
 ARG relay
 RUN sed -i 's/relais.adresse.ltd/'$relay'/g' /etc/postfix/main.cf
 RUN sed -i 's/relais.adresse.ltd/'$relay'/g' /etc/postfix/transport
+
 RUN postmap /etc/postfix/transport
+RUN postmap /etc/postfix/allowed_senders
 
 # Lancement
 RUN touch /var/log/syslog
