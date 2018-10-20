@@ -25,3 +25,16 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 inet_protocols = all
+
+# Limitations d'envoi
+transport_maps = hash:/etc/postfix/transport
+
+# Limitation globales
+smtp_destination_concurrency_limit = 1
+smtp_extra_recipient_limit = 1
+smtp_destination_rate_delay = 60s
+
+# Débridage @centrale-marseille.fr
+polite_destination_concurrency_limit = 30
+polite_destination_rate_delay = 0
+polite_destination_recipient_limit = 30

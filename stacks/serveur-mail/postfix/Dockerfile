@@ -14,7 +14,8 @@ RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools \
 && apt-get install -y nano
 
 COPY main.cf /etc/postfix/main.cf
-
+COPY transport /etc/postfix/transport
+RUN echo "\npolite unix - - n - - smtp" >> /etc/postfix/master.cf
 # Lancement
 RUN touch /var/log/syslog
 CMD service postfix start && tail -f /var/log/syslog | grep postfix
