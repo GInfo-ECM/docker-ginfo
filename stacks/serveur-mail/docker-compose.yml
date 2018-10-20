@@ -8,11 +8,14 @@ services:
     ports:
     - "25:25"
     networks:
-    - postfix
+    - internet
     - postfix-ginfo
     - postfix-wordpress
 
 networks:
+  internet:
+    external:
+      name: internet
   postfix-ginfo:
     external:
       name: postfix-ginfo
