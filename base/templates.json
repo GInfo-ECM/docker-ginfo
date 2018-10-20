@@ -6,7 +6,7 @@
     "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
     "categories": ["PHP"],
     "platform": "linux",
-    "logo": "https://portainer.io/images/logos/httpd.png",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
     "repository": {
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/sites-ginfo-apache/docker-compose.yml"
