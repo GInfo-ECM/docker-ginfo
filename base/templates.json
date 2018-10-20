@@ -140,6 +140,13 @@
     "repository": {
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/serveur-mail/docker-compose.yml"
+    },
+    "env": [
+    {
+      "name": "RELAY",
+      "label": "Relais Email",
+      "default": "smtp.centrale-marseille.fr"
     }
+    ]
   }
 ]

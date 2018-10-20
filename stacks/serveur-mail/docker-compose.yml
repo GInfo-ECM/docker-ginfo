@@ -2,7 +2,10 @@ version: '2'
 
 services:
   postfix:
-    build: postfix
+    build:
+      context: postfix
+      args:
+        relay: ${RELAY} #SMTP mx.centrale-marseille.fr
     container_name: postfix
     restart: always
     ports:
