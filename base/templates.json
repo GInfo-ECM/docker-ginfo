@@ -124,5 +124,19 @@
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/samba/docker-compose.yml"
     }
+  },
+  {
+    "type": 3,
+    "name": "Postfix",
+    "title": "Serveur Mail Postfix",
+    "description": "Un serveur pour relayer les mails du GInfo",
+    "note": "Un serveur pour relayer les mails du GInfo",
+    "categories": ["Mail"],
+    "platform": "linux",
+    "logo": "https://portainer.io/images/logos/filebrowser.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/serveur-mail/docker-compose.yml"
+    }
   }
 ]

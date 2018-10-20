@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  postfix:
+    build: postfix
+    container_name: postfix
+    restart: always
+    ports:
+    - "25:25"
+    networks:
+    - postfix
+    - postfix-ginfo
+    - postfix-wordpress
+
+networks:
+  postfix-ginfo:
+    external:
+      name: postfix-ginfo
+  postfix-wordpress:
+    external:
+      name: postfix-wordpress
