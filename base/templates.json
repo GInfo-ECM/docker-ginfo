@@ -73,6 +73,7 @@
   },
   {
     "type": 3,
+    "name": "squid",
     "title": "Squid (Proxy HTTP)",
     "description": "Proxy HTTP/HTTPS pour les applications du GInfo",
     "note": "Proxy HTTP/HTTPS pour les applications du GInfo",
@@ -92,6 +93,7 @@
   },
   {
     "type": 3,
+    "name": "vpn",
     "title": "VPN PPTP",
     "description": "VPN PPTP pour le GInfo",
     "note": "VPN PPTP pour le GInfo",
@@ -114,6 +116,7 @@
   },
   {
     "type": 3,
+    "name": "samba",
     "title": "Serveur Samba",
     "description": "Un serveur de fichier pour le GInfo",
     "note": "Un serveur de fichier pour le GInfo",
@@ -127,7 +130,7 @@
   },
   {
     "type": 3,
-    "name": "Postfix",
+    "name": "postfix",
     "title": "Serveur Mail Postfix",
     "description": "Un serveur pour relayer les mails du GInfo",
     "note": "Un serveur pour relayer les mails du GInfo",
