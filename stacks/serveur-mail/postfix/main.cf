@@ -39,3 +39,12 @@ smtp_destination_rate_delay = 60s
 fast_destination_concurrency_limit = 50
 fast_destination_rate_delay = 0s
 fast_extra_recipient_limit = 100
+
+
+#Blocage des faux domaines
+smtpd_restriction_classes =
+   inside
+
+inside =
+  check_sender_access hash:/etc/postfix/allowed_senders
+  reject
