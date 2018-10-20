@@ -42,9 +42,5 @@ fast_extra_recipient_limit = 100
 
 
 #Blocage des faux domaines
-smtpd_restriction_classes =
-   inside
-
-inside =
-  check_sender_access hash:/etc/postfix/allowed_senders
-  reject
+smtpd_restriction_classes = insiders_only
+insiders_only = check_sender_access hash:/etc/postfix/allowed_senders, reject
