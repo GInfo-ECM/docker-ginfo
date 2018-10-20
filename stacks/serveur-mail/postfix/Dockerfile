@@ -12,7 +12,6 @@ RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools \
 && apt-get install -y net-tools \
 && apt-get install -y iputils-ping
 
-RUN rm /etc/postfix/main.conf
 COPY main.conf /etc/postfix/main.conf
 
 # Lancement
