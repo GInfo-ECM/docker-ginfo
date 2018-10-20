@@ -17,4 +17,4 @@ COPY main.conf /etc/postfix/main.conf
 
 # Lancement
 RUN touch /var/log/syslog
-CMD tail -f /var/log/syslog | grep postfix
+CMD service postfix start && tail -f /var/log/syslog | grep postfix
