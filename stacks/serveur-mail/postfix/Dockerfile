@@ -15,4 +15,5 @@ RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools \
 COPY main.conf /etc/postfix/main.conf
 
 # Lancement
-CMD /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+RUN touch /var/log/syslog
+CMD tail -f /var/log/syslog | grep postfix
