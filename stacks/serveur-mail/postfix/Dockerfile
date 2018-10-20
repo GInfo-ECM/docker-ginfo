@@ -15,7 +15,7 @@ RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools \
 
 COPY main.cf /etc/postfix/main.cf
 COPY transport /etc/postfix/transport
-RUN echo "polite unix - - n - - smtp" >> /etc/postfix/master.cf
+RUN echo "fast unix - - n - - smtp -o smtp_fallback_relay=" >> /etc/postfix/master.cf
 RUN postmap /etc/postfix/transport
 
 # Lancement
