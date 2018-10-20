@@ -34,7 +34,7 @@ smtp_destination_concurrency_limit = 1
 smtp_extra_recipient_limit = 1
 smtp_destination_rate_delay = 60s
 
-# Débridage @centrale-marseille.fr
-polite_destination_concurrency_limit = 30
-polite_destination_rate_delay = 0
-polite_destination_recipient_limit = 30
+# Debridage @centrale-marseille.fr
+polite_destination_concurrency_limit = 50
+polite_destination_rate_delay = 0s
+polite_destination_recipient_limit = 50
