@@ -29,12 +29,13 @@ inet_protocols = all
 # Limitations d'envoi
 transport_maps = hash:/etc/postfix/transport
 
-# Debridage @centrale-marseille.fr
-polite_destination_concurrency_limit = 50
-polite_destination_rate_delay = 0
-polite_destination_recipient_limit = 50
-
 # Limitation globales
-default_destination_concurrency_limit = 1
-default_extra_recipient_limit = 1
-default_destination_rate_delay = 60s
+smtp_destination_concurrency_limit = 1
+smtp_extra_recipient_limit = 1
+smtp_destination_rate_delay = 60s
+
+# Debridage @centrale-marseille.fr
+# Faster rates for internal domains (specified in transport map)
+fast_destination_concurrency_limit = 50
+fast_destination_rate_delay = 0s
+fast_extra_recipient_limit = 100
