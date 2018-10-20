@@ -11,5 +11,5 @@ RUN apt-get update
 RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools
 
 # Run
-touch /test.log
+RUN touch /test.log
 CMD tail -f /test.log
