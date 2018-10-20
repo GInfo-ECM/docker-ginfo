@@ -79,7 +79,7 @@
     "note": "Proxy HTTP/HTTPS pour les applications du GInfo",
     "categories": ["Proxy"],
     "platform": "linux",
-    "logo": "https://portainer.io/images/logos/filebrowser.png",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/squid.png",
     "repository": {
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/proxy-squid/docker-compose.yml"
