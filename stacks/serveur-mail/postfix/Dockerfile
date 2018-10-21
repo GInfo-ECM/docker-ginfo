@@ -28,7 +28,7 @@ RUN sed -i 's/monitoring@domain.mail.ltd/'$monitoring_email'/g' /start.sh
 
 RUN postmap /etc/postfix/transport
 RUN postmap /etc/postfix/allowed_senders
-RUN chmod+x /start.sh
+RUN chmod +x /start.sh
 
 # Lancement
 RUN touch /var/log/syslog
