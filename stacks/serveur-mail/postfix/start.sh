@@ -14,19 +14,18 @@ do
 
 	if [ "${queue:-0}" -ge "5" ]; then
 
-    echo "Activitée anormale détectée"
-    echo $(mailq)
-    "Activite anormale sur le serveur mail"=$1
-    "Une activité anormale a été détectée sur le serveur mail : \n\n"$(mailq)=$2
-    mailing $1 $2
+        echo "Activitée anormale détectée"
+        echo $(mailq)
+        mailing "Activite anormale sur le serveur mail" "Une activité anormale a été détectée sur le serveur mail : \n\n"$(mailq)
+        echo "Mail d'avertissement envoyé"
 
-    sleep 600
+        sleep 600
 
-    else
+        else
 
-    echo $(mailq)
+        echo $(mailq)
 
-    sleep 60
+        sleep 60
 
     fi
 
