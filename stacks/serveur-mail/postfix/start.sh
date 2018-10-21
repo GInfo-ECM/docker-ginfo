@@ -1,7 +1,7 @@
 #!/bin/bash
 #Fonctions
 function mailing(){
-mail -s $1 monitoring@domain.mail.ltd -r bor+ginfo@centrale-marseille.fr -a "From: ginfo-monitoring" <<< $2
+mail -s "$1" monitoring@domain.mail.ltd -r bor+ginfo@centrale-marseille.fr -a "From: ginfo-monitoring" <<< "$2"
 echo "Mail d'avertissement envoyé"
 }
 
@@ -12,11 +12,11 @@ while true
 do
     queue=$(mailq | grep -c "^[A-F0-9]")
 
-	if [ "${queue:-0}" -ge "5" ]; then
+	if [ "${queue:-0}" -ge "30" ]; then
 
-        echo "Activitée anormale détectée"
+        echo "Activité anormale détectée"
         echo $(mailq)
-        mailing "Postfix-acitivité-anormale" "Une activité anormale a été détectée sur le serveur mail : %0D%0A$%0D%0A$(mailq)"
+        mailing "Postfix" "Une activité anormale a été détectée sur le serveur mail :"\n\n"$(mailq)"
 
         sleep 600
 
