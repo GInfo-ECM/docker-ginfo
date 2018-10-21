@@ -143,10 +143,15 @@
     },
     "env": [
     {
-      "name": "RELAY",
-      "label": "Relais Email",
-      "default": "smtp.centrale-marseille.fr"
-    }
+        "name": "RELAY",
+        "label": "Relais Email",
+        "default": "smtp.centrale-marseille.fr"
+      },
+      {
+        "name": "EMAIL_MONITORING",
+        "label": "Email de monitoring",
+        "default": "listemonitoringtest@centrale-marseille.fr"
+      }
     ]
   }
 ]

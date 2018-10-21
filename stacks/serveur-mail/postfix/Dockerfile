@@ -11,21 +11,25 @@ RUN apt-get update
 RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools \
 && apt-get install -y net-tools \
 && apt-get install -y iputils-ping \
-&& apt-get install -y nano
+&& apt-get install -y nano \
+&& apt-get install -u mailutils
 
 COPY main.cf /etc/postfix/main.cf
 COPY transport /etc/postfix/transport
 COPY allowed_senders /etc/postfix/allowed_senders
-COPY check_queue.sh /check_queue.sh
+COPY start.sh /start.sh
 
 RUN echo "fast unix - - n - - smtp -o smtp_fallback_relay=" >> /etc/postfix/master.cf
 ARG relay
+ARG monitoring_email
 RUN sed -i 's/relais.adresse.ltd/'$relay'/g' /etc/postfix/main.cf
 RUN sed -i 's/relais.adresse.ltd/'$relay'/g' /etc/postfix/transport
+RUN sed -i 's/monitoring@domain.mail.ltd/'$monitoring_email'/g' /start.sh
 
 RUN postmap /etc/postfix/transport
 RUN postmap /etc/postfix/allowed_senders
+RUN chmod+x /start.sh
 
 # Lancement
 RUN touch /var/log/syslog
-CMD service postfix start && tail -f /var/log/syslog | grep postfix
+CMD /start.sh

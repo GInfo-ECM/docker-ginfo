@@ -6,6 +6,7 @@ services:
       context: postfix
       args:
         relay: ${RELAY} #SMTP mx.centrale-marseille.fr
+        monitoring_email: ${EMAIL_MONITORING} #Où seront envoyés les mails de monitoring du serveur mail
     container_name: postfix
     restart: always
     ports:
