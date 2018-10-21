@@ -26,6 +26,10 @@ RUN sed -i 's/relais.adresse.ltd/'$relay'/g' /etc/postfix/main.cf
 RUN sed -i 's/relais.adresse.ltd/'$relay'/g' /etc/postfix/transport
 RUN sed -i 's/monitoring@domain.mail.ltd/'$monitoring_email'/g' /start.sh
 
+#Gestion de l'heure
+ENV TZ=Europe/Paris
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN postmap /etc/postfix/transport
 RUN postmap /etc/postfix/allowed_senders
 RUN chmod +x /start.sh
