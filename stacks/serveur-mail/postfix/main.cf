@@ -41,6 +41,6 @@ fast_destination_rate_delay = 0s
 fast_extra_recipient_limit = 100
 
 
-#Blocage des faux domaines
+#Blocage des faux domaines - ne marche pas encore
 smtpd_restriction_classes = insiders_only
 insiders_only = check_sender_access hash:/etc/postfix/allowed_senders, reject

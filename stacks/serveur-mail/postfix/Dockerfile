@@ -16,6 +16,7 @@ RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools \
 COPY main.cf /etc/postfix/main.cf
 COPY transport /etc/postfix/transport
 COPY allowed_senders /etc/postfix/allowed_senders
+COPY check_queue.sh /check_queue.sh
 
 RUN echo "fast unix - - n - - smtp -o smtp_fallback_relay=" >> /etc/postfix/master.cf
 ARG relay
