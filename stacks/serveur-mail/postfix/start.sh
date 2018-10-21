@@ -24,4 +24,5 @@ done
 
 mailing(){
 mail -s $1 monitoring@domain.mail.ltd -r bor+ginfo@centrale-marseille.fr -a "From: ginfo-monitoring" <<< $2
+echo "Mail d'avertissement envoyé"
 }
