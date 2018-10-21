@@ -8,13 +8,18 @@ do
 
 	if [ "${queue:-0}" -ge "5" ]; then
 
+    echo "Acitivitée anormale détectée"
     echo $(mailq)
+    "Activite anormale sur le serveur mail"=$1
+    "Une activité anormale a été détectée sur le serveur mail : \n\n"$(mailq)=$2
+    mailing $1 $2
+
     sleep 600
-    mailing "Activite anormale sur le serveur mail" "Une activité anormale a été détectée sur le serveur mail : \n"$(mailq)
 
     else
 
     echo $(mailq)
+
     sleep 60
 
     fi
