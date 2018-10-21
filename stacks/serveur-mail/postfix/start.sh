@@ -14,7 +14,7 @@ do
 
 	if [ "${queue:-0}" -ge "5" ]; then
 
-    echo "Acitivitée anormale détectée"
+    echo "Activitée anormale détectée"
     echo $(mailq)
     "Activite anormale sur le serveur mail"=$1
     "Une activité anormale a été détectée sur le serveur mail : \n\n"$(mailq)=$2
