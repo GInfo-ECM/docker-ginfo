@@ -16,8 +16,7 @@ do
 
         echo "Activitée anormale détectée"
         echo $(mailq)
-        mailing "Activite anormale sur le serveur mail" "Une activité anormale a été détectée sur le serveur mail : \n\n"$(mailq)
-        echo "Mail d'avertissement envoyé"
+        mailing "Postfix-acitivité-anormale" "Une activité anormale a été détectée sur le serveur mail : %0D%0A$%0D%0A$(mailq)"
 
         sleep 600
 
