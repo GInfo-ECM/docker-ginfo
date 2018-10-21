@@ -1,4 +1,10 @@
 #!/bin/bash
+#Fonctions
+function mailing(){
+mail -s $1 monitoring@domain.mail.ltd -r bor+ginfo@centrale-marseille.fr -a "From: ginfo-monitoring" <<< $2
+echo "Mail d'avertissement envoyé"
+}
+
 #Script qui envoie un mail si la file d'attente est surchargée
 service postfix start
 
@@ -25,9 +31,3 @@ do
     fi
 
 done
-
-
-mailing(){
-mail -s $1 monitoring@domain.mail.ltd -r bor+ginfo@centrale-marseille.fr -a "From: ginfo-monitoring" <<< $2
-echo "Mail d'avertissement envoyé"
-}
