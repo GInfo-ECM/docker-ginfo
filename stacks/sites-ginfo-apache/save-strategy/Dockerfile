@@ -11,7 +11,7 @@ RUN touch /var/log/cron.log
 COPY backup.sh /etc/backup.sh
 RUN chmod +x /etc/backup.sh
 
-RUN apt-get update \
+RUN apt update \
 && apt -y install cron \
 && apt -y install nano \
 && apt -y install mysql-client \
