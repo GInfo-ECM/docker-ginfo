@@ -16,7 +16,8 @@ RUN apt update \
 && apt -y install nano \
 && apt -y install mysql-client \
 && apt -y install tzdata \
-&& apt -y install corkscrew
+&& apt -y install corkscrew \
+&& apt -y install ssh
 
 #Gestion de l'heure
 ENV TZ=Europe/Paris
