@@ -153,5 +153,27 @@
         "default": "listemonitoringtest@centrale-marseille.fr"
       }
     ]
+  },
+  {
+    "type": 3,
+    "name": "loraserver",
+    "title": "Serveur LoRa",
+    "description": "Serveur Lora pour gérer les objets connectés",
+    "note": "Serveur Lora pour gérer les objets connectés",
+    "categories": ["Lora"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/lora.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/lora/docker-compose.yml"
+    },
+    "env": [
+      {
+        "name": "VIRTUAL_HOST",
+        "label": "Nom de domaine",
+        "description": "Le domaine à partir duquel on accèdera au site",
+        "default": "site.ginfo, site.ginfo.ec-m.fr"
+      }
+    ]
   }
 ]
