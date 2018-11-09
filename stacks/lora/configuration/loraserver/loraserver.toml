@@ -73,8 +73,8 @@ enabled_uplink_channels=[]
 
 [network_server.gateway.backend.mqtt]
 server="tcp://mosquitto:1883"
-username=""
-password=""
+username="bidon"
+password="bidon"
 
 [join_server.default]
 server="http://appserver:8003"

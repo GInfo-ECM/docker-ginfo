@@ -3,5 +3,5 @@
 
 [backend.mqtt]
 server="tcp://mosquitto:1883"
-username=""
-password=""
+username="bidon"
+password="bidon"
