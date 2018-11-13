@@ -1,4 +1,7 @@
 #!/bin/bash
+#Gestion de la création du dossier par défaut (si jamais supprimé ou premier démarrage)
+mkdir -p ${APACHE_DOCUMENT_ROOT}
+
 #Gestion de PhpMyAdmin au démarrage - ne pas supprimer (sauf si vous ne voulez plus de PhpMyAdmin)
 htpasswd -b -c /phpmyadmin/.htpasswd ${DB_USER} ${DB_PASSWORD}
 rm -f ${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo

@@ -85,6 +85,7 @@ RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 #Gestion de l'heure
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 
 #Gestion de point d'entrée
 COPY startup.sh /var/www/startup.sh

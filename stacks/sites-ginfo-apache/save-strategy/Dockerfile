@@ -11,9 +11,13 @@ RUN touch /var/log/cron.log
 COPY backup.sh /etc/backup.sh
 RUN chmod +x /etc/backup.sh
 
-RUN apt-get update
-RUN apt-get -y install cron && apt-get -y install nano && apt-get -y install mysql-client
-RUN apt-get install -y tzdata
+RUN apt update \
+&& apt -y install cron \
+&& apt -y install nano \
+&& apt -y install mysql-client \
+&& apt -y install tzdata \
+&& apt -y install corkscrew \
+&& apt -y install ssh
 
 #Gestion de l'heure
 ENV TZ=Europe/Paris
