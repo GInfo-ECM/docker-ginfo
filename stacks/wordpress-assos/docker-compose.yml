@@ -13,13 +13,13 @@ services:
       MYSQL_PASSWORD: wordpress
 
   wordpress:
+    build: wordpress
     depends_on:
     - db
-    build: wordpress
     volumes:
       - wp_data:/var/www/html
     ports:
-    - "980:80"
+    - "990:80"
     restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
@@ -28,6 +28,4 @@ services:
 
 volumes:
   db_data:
-    name: db_data
   wp_data:
-    name: wp_data
