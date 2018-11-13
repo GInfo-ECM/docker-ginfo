@@ -12,7 +12,9 @@ RUN chmod +x /bin/wp-cli.phar /bin/wp
 ADD crontab /etc/cron.d/hello-cron
 RUN chmod 0644 /etc/cron.d/hello-cron
 RUN touch /var/log/cron.log
-CMD cron
+# In wordpress : docker-entrypoint.sh is as entrypoint
+# ADD cron to this file
+RUN sed -i '/bash/a \cron' /usr/local/bin/docker-entrypoint.sh
 
 # Cleanup
 RUN apt-get clean
