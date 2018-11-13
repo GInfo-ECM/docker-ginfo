@@ -165,7 +165,6 @@
     "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/wordpress/base/logos/wordpress.png",
     "repository": {
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "branch": "wordpress",
       "stackfile": "stacks/wordpress-assos/docker-compose.yml"
     }
   }
