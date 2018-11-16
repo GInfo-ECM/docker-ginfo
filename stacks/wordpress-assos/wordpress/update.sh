@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 wp core update >> /var/log/wpupdate.log
-wp core update-db >> /val/log/wpupdatedb.log
+wp core update-db >> /var/log/wpupdatedb.log
