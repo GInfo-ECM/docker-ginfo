@@ -6,11 +6,12 @@ RUN apt-get update && apt-get install -y sudo less mysql-client cron
 # Add WP-CLI
 RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 COPY wp-su.sh /bin/wp
-RUN chmod +x /bin/wp-cli.phar /bin/wp
+COPY update.sh /usr/lib/wp-update
+RUN chmod +x /bin/wp-cli.phar /bin/wp /usr/lib/wp-update
 
 # Add crons
-ADD crontab /etc/cron.d/hello-cron
-RUN chmod +x /etc/cron.d/hello-cron
+ADD crontab /etc/cron.d/wp-cron
+RUN chmod +x /etc/cron.d/wp-cron
 RUN touch /var/log/cron.log
 # In wordpress : docker-entrypoint.sh is as entrypoint
 # ADD cron to this file
