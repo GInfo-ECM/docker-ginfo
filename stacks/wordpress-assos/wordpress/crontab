@@ -10,5 +10,5 @@
 # * * * * *  command to execute
 
 #*/2 * * * * root echo "Hello world" >> /var/log/cron.log 2>&1
-* * * * * /usr/lib/wp-update.sh
+* * * * * /usr/lib/wp-update
 
