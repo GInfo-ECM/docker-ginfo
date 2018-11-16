@@ -13,10 +13,10 @@ COPY update.sh /usr/lib/wp-update
 RUN chmod +x /usr/lib/wp-update
 RUN touch /var/log/wpupdate.log
 RUN touch /var/log/wpupdatedb.log
+RUN touch /var/log/wpcliupdate.log
 
 # Add crons
 ADD crontab /etc/cron.d/wp-cron
-RUN touch /var/log/cron.log
 RUN chmod +x /etc/cron.d/wp-cron
 # In wordpress : docker-entrypoint.sh is as entrypoint
 # ADD cron to this file
