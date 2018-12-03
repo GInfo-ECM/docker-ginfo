@@ -169,6 +169,7 @@
     }
   },
   {
+    "type": 3,
     "name": "loraserver",
     "title": "Serveur LoRa",
     "description": "Serveur Lora pour gérer les objets connectés",
