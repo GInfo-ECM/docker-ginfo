@@ -49,13 +49,6 @@ RUN apt-get update \
  && apt-get install -y traceroute \
  && apt-get install -y zip
 
-#Gestion du Mod Security
-RUN apt-get install -y libapache2-modsecurity \
- && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
- && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
- && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf \
- && echo "<Directory \${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo>\nSecRuleEngine Off\n</Directory>" >> /var/www/modsecurity.conf
-
 #Installation de phpmyadmin et sécurisation
 RUN mkdir /phpmyadmin \
  && curl https://files.phpmyadmin.net/phpMyAdmin/4.8.3/phpMyAdmin-4.8.3-all-languages.tar.gz | tar xvz -C /phpmyadmin --strip-components=1 \
@@ -69,7 +62,6 @@ RUN ln -s /var/www/.ssh /root/.ssh
 
 #Install npm and node.js
 RUN apt-get -y install gnupg && apt-get -y install gnupg1 && apt-get -y install gnupg2
-RUN apt-get update
 RUN apt-get -y install curl software-properties-common
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
@@ -85,10 +77,18 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername.conf
 
+#Gestion du reverse proxy
 COPY remoteip.conf /etc/apache2/conf-available/remoteip.conf
 RUN a2enconf remoteip.conf
 RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
+
+#Gestion du Mod Security
+RUN apt-get install -y libapache2-modsecurity \
+ && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
+ && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
+ && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf \
+ && echo "<Directory \${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo>\nSecRuleEngine Off\n</Directory>" >> /var/www/modsecurity.conf
 
 #Gestion de l'heure
 ENV TZ=Europe/Paris
