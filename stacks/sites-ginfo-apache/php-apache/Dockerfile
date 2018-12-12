@@ -50,7 +50,7 @@ RUN apt-get update \
  && apt-get install -y zip
 
 #Gestion du Mod Security
-RUN apt install -y libapache2-modsecurity \
+RUN apt-get install -y libapache2-modsecurity \
  && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
  && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
  && RUN sed -i 's/DetectionOnly/on/g' /etc/apache2/apache2.conf
