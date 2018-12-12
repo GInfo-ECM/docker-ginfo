@@ -88,7 +88,7 @@ RUN apt-get install -y libapache2-modsecurity \
  && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
  && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
  && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf \
- && echo "<Directory \${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo>\nSecRuleEngine Off\n</Directory>" >> /var/www/modsecurity.conf
+ && echo "<Directory ~ \"phpmyadmin-ginfo$\">\nSecRuleEngine Off\n</Directory>" >> /var/www/modsecurity.conf
 
 #Gestion de l'heure
 ENV TZ=Europe/Paris
