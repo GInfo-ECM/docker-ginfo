@@ -49,12 +49,6 @@ RUN apt-get update \
  && apt-get install -y traceroute \
  && apt-get install -y zip
 
-#Gestion du Mod Security
-RUN apt-get install -y libapache2-modsecurity \
- && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
- && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
- && sed -i 's/DetectionOnly/on/g' /etc/modsecurity/modsecurity.conf
-
 #Installation de phpmyadmin et sécurisation
 RUN mkdir /phpmyadmin \
  && curl https://files.phpmyadmin.net/phpMyAdmin/4.8.3/phpMyAdmin-4.8.3-all-languages.tar.gz | tar xvz -C /phpmyadmin --strip-components=1 \
