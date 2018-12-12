@@ -50,11 +50,7 @@ RUN apt-get update \
  && apt-get install -y zip
 
 #Gestion du Mod Security
-RUN apt-get install -y libapache2-modsecurity \
- && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
- && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
- && sed -i 's/DetectionOnly/On/g' /etc/modsecurity/modsecurity.conf \
- && echo "<Directory ${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo>\nSecRuleEngine Off\n</Directory>" >> /etc/modsecurity/modsecurity.conf
+RUN apt-get install -y libapache2-modsecurity
 
 #Installation de phpmyadmin et sécurisation
 RUN mkdir /phpmyadmin \
