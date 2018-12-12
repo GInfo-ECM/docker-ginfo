@@ -52,8 +52,8 @@ RUN apt-get update \
 #Gestion du Mod Security
 RUN apt-get install -y libapache2-modsecurity \
  && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
- && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
- && sed -i 's/DetectionOnly/on/g' /etc/modsecurity/modsecurity.conf
+ && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf
+# && sed -i 's/DetectionOnly/on/g' /etc/modsecurity/modsecurity.conf
 
 #Installation de phpmyadmin et sécurisation
 RUN mkdir /phpmyadmin \
