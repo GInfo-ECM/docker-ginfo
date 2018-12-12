@@ -50,7 +50,11 @@ RUN apt-get update \
  && apt-get install -y zip
 
 #Gestion du Mod Security
-RUN apt-get install -y libapache2-modsecurity
+RUN apt-get install -y libapache2-modsecurity \
+ && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
+ && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
+ && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf \
+ && echo "<Directory ${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo>\nSecRuleEngine Off\n</Directory>" >> /var/www/modsecurity.conf
 
 #Installation de phpmyadmin et sécurisation
 RUN mkdir /phpmyadmin \
@@ -65,9 +69,9 @@ RUN ln -s /var/www/.ssh /root/.ssh
 
 #Install npm and node.js
 RUN apt-get -y install gnupg && apt-get -y install gnupg1 && apt-get -y install gnupg2
-RUN apt-get -y install curl software-properties-common
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y nodejs
+#RUN apt-get -y install curl software-properties-common
+#RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+#RUN apt-get install -y nodejs
 
 #Dossier par défaut de apache et configuration du reverse proxy
 ENV APACHE_DOCUMENT_ROOT /var/www/html
