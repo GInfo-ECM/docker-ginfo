@@ -187,6 +187,22 @@
         "label": "Nom de domaine",
         "description": "Le domaine à partir duquel on accèdera au site",
         "default": "site.ginfo, site.ginfo.ec-m.fr"
+      },
+      {
+        "name": "NETWORK_ACCESS",
+        "label": "Application interne ?",
+        "description": "L'application doit elle être restreinte au réseau du GInfo",
+        "select": [
+          {
+            "text": "Oui",
+            "value": "internal",
+            "default": true
+          },
+          {
+            "text": "Non",
+            "value": ""
+          }
+        ]
       }
     ]
   }

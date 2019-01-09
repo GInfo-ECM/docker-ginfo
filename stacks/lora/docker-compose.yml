@@ -12,6 +12,7 @@ services:
     build: lora-app-server
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
+      NETWORK_ACCESS: ${NETWORK_ACCESS}
     volumes:
       - lora-app-server:/etc/lora-app-server
     networks:
