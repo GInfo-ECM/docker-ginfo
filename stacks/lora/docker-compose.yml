@@ -5,31 +5,68 @@ services:
     build: loraserver
     volumes:
       - loraserver:/etc/loraserver
+    networks:
+      - interne
 
   appserver:
     build: lora-app-server
-    ports:
-      - 8080:8080
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
     volumes:
       - lora-app-server:/etc/lora-app-server
+    networks:
+      - interne
+      - proxy
   
   geoserver:
     build: lora-geo-server
     volumes:
       - lora-geo-server:/etc/lora-geo-server
+    networks:
+      - interne
   
   postgresql:
     build: postgresql
     volumes:
-      - initdbconf:/docker-entrypoint-initdb.d
-      - data-postgresql:/var/lib/postgresql/data
+      - lora-initdbconf:/docker-entrypoint-initdb.d
+      - lora-data-postgresql:/var/lib/postgresql/data
+    networks:
+      - interne
 
   redis:
     image: redis:4-alpine
     volumes:
-      - data-redis:/data
+      - lora-data-redis:/data
+    networks:
+      - interne
 
   mosquitto:
     image: eclipse-mosquitto
     ports:
       - 1883:1883
+    networks:
+      - interne
+
+volumes:
+  loraserver:
+    name: loraserver
+  lora-app-server:
+    name: lora-app-server
+  lora-geo-server:
+    name: lora-geo-server
+  lora-initdbconf:
+    name: lora-initdbconf
+  lora-data-postgresql:
+    name: lora-data-postgresql
+  lora-data-redis:
+    name: lora-data-redis
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy-ginfo
+  interne:
+    driver: bridge
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: 'false'
