@@ -13,6 +13,8 @@ services:
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
+    expose:
+    - "8080"
     volumes:
       - lora-app-server:/etc/lora-app-server
     networks:
