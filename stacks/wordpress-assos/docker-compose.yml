@@ -2,7 +2,7 @@ version: '2'
 
 services:
   db:
-    build: mysql
+    build: mysql:5.7
     volumes:
       - db_data:/var/lib/mysql
     restart: always
