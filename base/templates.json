@@ -99,7 +99,7 @@
     "note": "VPN PPTP pour le GInfo",
     "categories": ["VPN"],
     "platform": "linux",
-    "logo": "https://portainer.io/images/logos/filebrowser.png",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/generic.png",
     "repository": {
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/vpn-pptp/docker-compose.yml"
