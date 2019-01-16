@@ -28,10 +28,7 @@ wp plugin list --field=name | while read plug; do
 		    d1=$(date --utc --date="$(date)" +"%Y-%m-%d %H:%M:%S")
 		    d2=$(date --utc --date="$date+$TIMELAPSE" +"%Y-%m-%d %H:%M:%S")
 
-		    if [[ "$d2" < "$d1" ]] # date criterion
-		    then
-		        delete_plugin $plug
-		    elif [[ $active -lt $ACTIVEINSTALLS ]] # number of installs criterion
+		    if [[ "$d2" < "$d1" ]] && [[ $active -lt $ACTIVEINSTALLS ]]  # date criterion
 		    then
 		        delete_plugin $plug
 		    fi

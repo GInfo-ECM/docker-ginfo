@@ -3,7 +3,7 @@
 ##### No need to update wp-cli
 # wp cli update >> /var/log/wpcliupdate.log 2>&1
 
-$d=date
+d=date
 echo "Tâches de routines du "$d
 
 
