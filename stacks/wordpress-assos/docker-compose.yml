@@ -22,7 +22,7 @@ services:
     - "990:80"
     restart: always
     environment:
-      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: ${USER_SFTP_SQL}
       WORDPRESS_DB_PASSWORD: ${PASSWORD_SFTP_SQL}
 
