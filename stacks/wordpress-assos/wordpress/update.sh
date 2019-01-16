@@ -6,6 +6,7 @@
 d=date
 echo "Tâches de routines du "$d
 
+cd /var/www/html
 
 echo "\n------ Updating Core ------"
 wp core update --path="/var/www/html"
