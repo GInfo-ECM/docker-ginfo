@@ -31,7 +31,7 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
-      TRUSTED_PROXIES: proxy
+      TRUSTED_PROXIES: reverse-proxy
 
 volumes:
   db_data:
