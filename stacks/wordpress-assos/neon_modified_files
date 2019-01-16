@@ -1,7 +1,4 @@
-Gestion des cron :
- - added crontab file
- - Install cron in dockerfile
-
+TODO : add internet access restricted through squid proxy
 
 Idées sécurité :
  - .htaccess pour les plugins
