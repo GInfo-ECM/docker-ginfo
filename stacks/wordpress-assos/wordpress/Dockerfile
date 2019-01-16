@@ -15,6 +15,7 @@ COPY plugins-remove.sh /usr/lib/wp-plugin-remove
 RUN chmod +x /usr/lib/wp-update
 RUN chmod +x /usr/lib/wp-theme-remove
 RUN chmod +x /usr/lib/wp-plugin-remove
+RUN chmod 770 /var/log
 
 # Add crons
 ADD crontab /etc/cron.d/wp-cron

@@ -4,7 +4,7 @@
 # For testing, use theme "default"
 
 TIMELAPSE="2 years"
-ACTIVEINSTALLS=10000
+ACTIVEINSTALLS=500
 DEFAULTTHEME=twentynineteen
 
 
@@ -38,10 +38,7 @@ do
 		    d1=$(date --utc --date="$(date)" +"%Y-%m-%d %H:%M:%S")
 		    d2=$(date --utc --date="$date+$TIMELAPSE" +"%Y-%m-%d %H:%M:%S")
 
-		    if [[ "$d2" < "$d1" ]] # date criterion
-		    then
-		        delete_theme $theme
-		    elif [[ $active -lt $ACTIVEINSTALLS ]] # number of installs criterion
+		    if [[ "$d2" < "$d1" ]] && [[ $active -lt $ACTIVEINSTALLS ]] # date criterion
 		    then
 		        delete_theme $theme
 		    fi
