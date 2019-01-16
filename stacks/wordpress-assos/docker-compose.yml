@@ -11,6 +11,8 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
+    networks:
+    - interne
 
   wordpress:
     build: wordpress
@@ -18,14 +20,34 @@ services:
     - db
     volumes:
       - wp_data:/var/www/html
-    ports:
-    - "990:80"
     restart: always
+    networks:
+    - interne
+    - proxy
+    - mailing
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      TRUSTED_PROXIES: reverse-proxy
 
 volumes:
   db_data:
+    name: db_data
   wp_data:
+    name: wp_data
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy-ginfo
+  mailing:
+    external:
+      name: postfix-wordpress
+  interne:
+    driver: bridge
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: 'false'
