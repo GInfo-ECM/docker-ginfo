@@ -23,6 +23,17 @@ RUN chmod +x /etc/cron.d/wp-cron
 # ADD cron to this file
 RUN sed -i '/bash/a \cron' /usr/local/bin/docker-entrypoint.sh
 
+#Gestion du reverse proxy
+COPY remoteip.conf /etc/apache2/conf-available/remoteip.conf
+RUN a2enconf remoteip.conf
+RUN a2enmod remoteip
+RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
+
+#Gestion de l'heure
+ENV TZ=Europe/Paris
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
+
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
