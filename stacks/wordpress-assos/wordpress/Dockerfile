@@ -11,7 +11,7 @@ RUN chmod +x /bin/wp-cli.phar /bin/wp
 # Add updates (with file removal)
 COPY update.sh /usr/lib/wp-update
 COPY themes-remove.sh /usr/lib/wp-theme-remove
-COPY plugins-remove.sh /usr/lib/wp-plugins-remove
+COPY plugins-remove.sh /usr/lib/wp-plugin-remove
 RUN chmod +x /usr/lib/wp-update
 RUN chmod +x /usr/lib/wp-theme-remove
 RUN chmod +x /usr/lib/wp-plugin-remove
