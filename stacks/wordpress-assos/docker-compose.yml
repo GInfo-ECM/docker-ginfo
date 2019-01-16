@@ -19,7 +19,7 @@ services:
     volumes:
       - wp_data:/var/www/html
     ports:
-    - "980:80"
+    - "970:80"
     restart: always
     environment:
       WORDPRESS_DB_HOST: db
