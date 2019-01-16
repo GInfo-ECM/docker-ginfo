@@ -8,9 +8,13 @@ RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-
 COPY wp-su.sh /bin/wp
 RUN chmod +x /bin/wp-cli.phar /bin/wp
 
-# Add updates
+# Add updates (with file removal)
 COPY update.sh /usr/lib/wp-update
+COPY themes-remove.sh /usr/lib/wp-theme-remove
+COPY plugins-remove.sh /usr/lib/wp-plugins-remove
 RUN chmod +x /usr/lib/wp-update
+RUN chmod +x /usr/lib/wp-theme-remove
+RUN chmod +x /usr/lib/wp-plugin-remove
 RUN touch /var/log/wpupdate.log
 RUN touch /var/log/wpupdatedb.log
 RUN touch /var/log/wpcliupdate.log

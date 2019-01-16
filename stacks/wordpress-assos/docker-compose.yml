@@ -7,10 +7,10 @@ services:
     - db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: somewordpress
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${USER_SFTP_SQL}
+      MYSQL_USER: ${USER_SFTP_SQL}
+      MYSQL_PASSWORD: ${PASSWORD_SFTP_SQL}
 
   wordpress:
     build: wordpress
@@ -23,8 +23,8 @@ services:
     restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_USER: ${USER_SFTP_SQL}
+      WORDPRESS_DB_PASSWORD: ${PASSWORD_SFTP_SQL}
 
 volumes:
   db_data:
