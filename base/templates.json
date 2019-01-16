@@ -171,8 +171,24 @@
       {
         "name": "VIRTUAL_HOST",
         "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
+        "description": "Le domaine à partir duquel on accèdera au site Wordpress",
         "default": "asso, asso.ec-m.fr"
+      },
+      {
+        "name": "NETWORK_ACCESS",
+        "label": "Application interne ?",
+        "description": "L'application doit elle être restreinte au réseau du GInfo",
+        "select": [
+          {
+            "text": "Oui",
+            "value": "internal",
+            "default": true
+          },
+          {
+            "text": "Non",
+            "value": ""
+          }
+        ]
       }]
   },
   {
