@@ -19,6 +19,8 @@ services:
     volumes:
     - site_data:/var/www
     restart: always
+    depends_on:
+    - db
     networks:
     - interne
     - proxy
@@ -39,6 +41,9 @@ services:
     - site_data:/site-to-save:ro
     - save_data:/saves
     restart: always
+    depends_on:
+    - site
+    - db
     networks:
     - interne
     environment:

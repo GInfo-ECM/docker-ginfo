@@ -6,7 +6,7 @@ mkdir -p ${APACHE_DOCUMENT_ROOT}
 htpasswd -b -c /phpmyadmin/.htpasswd ${DB_USER} ${DB_PASSWORD}
 rm -f ${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo
 ln -s /phpmyadmin ${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo
-rm -f /phpmyadmin/tmp
+rm -R /phpmyadmin/tmp
 mkdir /phpmyadmin/tmp
 chmod 777 /phpmyadmin/tmp
 rm -f /phpmyadmin/config.inc.php
