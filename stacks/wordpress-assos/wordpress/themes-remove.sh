@@ -44,12 +44,11 @@ do
 		    fi
 
 			isNotInDb=false
-			#echo $i # Put here the conditions
 		fi
 	done <<< "$(jq -c '.[]' <<< `wp theme search $theme --fields=slug,last_updated,active_installs --format=json`)"
 
 	# If the plugin is not in the wordpress db
-	if [ "$isNotInDb" = true ]
+	if [[ "$isNotInDb" = true ]]
 	then
 	    delete_theme $theme
 	fi

@@ -39,7 +39,7 @@ wp plugin list --field=name | while read plug; do
 	done <<< "$(jq -c '.[]' <<< `wp plugin search $plug --fields=slug,last_updated,active_installs --format=json`)"
 	
 	# If the plugin is not in the wordpress db
-	if [ "$isNotInDb" = true ]
+	if [[ "$isNotInDb" = true ]]
 	then
 	    delete_plugin $plug
 	fi

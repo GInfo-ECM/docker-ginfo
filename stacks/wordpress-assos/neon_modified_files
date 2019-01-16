@@ -8,6 +8,7 @@ Idées sécurité :
 
 To put in doc :
  - criterions for deleting plugins
+ - theme used by default if there is a problem with current theme
 
 ### LOG INTO CONTAINER : sudo docker exec -i -t wordpressc_wordpress_1 /bin/bash
 
