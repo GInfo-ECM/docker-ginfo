@@ -9,7 +9,9 @@
 # │ │ │ │ │
 # * * * * *  command to execute
 
-#*/2 * * * * root echo "Hello world" >> /var/log/cron.log 2>&1
+#### DEBUG
+# */2 * * * * root echo "Hello world" >> /var/log/cron.log 2>&1
+###########
 
-* * * * * root /usr/lib/wp-update
+0 4 * * * root /usr/lib/wp-update  >> /var/log/wpupdate-$d.log 2>&1
 

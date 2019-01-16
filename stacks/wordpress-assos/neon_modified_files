@@ -1,5 +1,13 @@
-
 Gestion des cron :
  - added crontab file
  - Install cron in dockerfile
- - 
+
+
+Idées sécurité :
+ - .htaccess pour les plugins
+
+To put in doc :
+ - criterions for deleting plugins
+
+### LOG INTO CONTAINER : sudo docker exec -i -t wordpressc_wordpress_1 /bin/bash
+
