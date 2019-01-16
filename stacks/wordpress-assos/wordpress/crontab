@@ -13,5 +13,5 @@
 # */2 * * * * root echo "Hello world" >> /var/log/cron.log 2>&1
 ###########
 
-15 16 * * * root /usr/lib/wp-update  >> /var/log/wpupdate-$(date +\%Y\%m\%d).log 2>&1
+15 16 * * * root /usr/lib/wp-update  >> /var/log/wpupdate-$(date +\%Y\%m\%d).log 2>/dev/null
 
