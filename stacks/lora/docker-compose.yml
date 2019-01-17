@@ -7,6 +7,7 @@ services:
       - loraserver:/etc/loraserver
     networks:
       - interne
+    restart: always
 
   appserver:
     build: lora-app-server
@@ -20,6 +21,7 @@ services:
     networks:
       - interne
       - proxy
+    restart: always
   
   geoserver:
     build: lora-geo-server
@@ -27,6 +29,7 @@ services:
       - lora-geo-server:/etc/lora-geo-server
     networks:
       - interne
+    restart: always
   
   postgresql:
     build: postgresql
@@ -35,6 +38,7 @@ services:
       - lora-data-postgresql:/var/lib/postgresql/data
     networks:
       - interne
+    restart: always
 
   redis:
     image: redis:4-alpine
@@ -42,6 +46,7 @@ services:
       - lora-data-redis:/data
     networks:
       - interne
+    restart: always
 
   mosquitto:
     image: eclipse-mosquitto
@@ -49,6 +54,7 @@ services:
       - 1883:1883
     networks:
       - interne
+    restart: always
 
 volumes:
   loraserver:
