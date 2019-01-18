@@ -55,4 +55,4 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-CMD ["/start.sh"]
+CMD ["apache2-foreground", "&", "/start.sh"]
