@@ -6,4 +6,4 @@ if ! grep -q $proxy_string "/var/www/html/wp-config.php"; then
   echo "include('/var/www/proxy_infos.inc.php');" >> /var/www/html/wp-config.php
 fi &&
 
-php-fpm
+apache2-foreground
