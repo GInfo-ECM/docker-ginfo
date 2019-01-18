@@ -34,6 +34,7 @@ ARG PROXY_HOST
 ARG PROXY_USER
 ARG PROXY_PASS
 COPY proxy_infos.inc.php /var/www/html/proxy_infos.inc.php
+RUN echo "lol_test" >> /var/www/lol.sh
 RUN echo "include('./proxy_infos.inc.php');" >> /var/www/html/wp-config.php
 RUN sed -i 's/host_proxy/${PROXY_HOST}/g' /var/www/html/proxy_infos.inc.php
 RUN sed -i 's/username_proxy/${PROXY_USER}/g' /var/www/html/proxy_infos.inc.php
