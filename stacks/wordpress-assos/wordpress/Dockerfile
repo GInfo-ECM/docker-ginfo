@@ -34,8 +34,9 @@ ARG PROXY_HOST
 ARG PROXY_USER
 ARG PROXY_PASS
 COPY proxy_infos.inc.php /var/www/proxy_infos.inc.php
-COPY start.sh /start.sh
+#COPY start.sh /start.sh
 RUN chmod +x /start.sh
+
 
 RUN sed -i 's/host_proxy/'$PROXY_HOST/'g' /var/www/proxy_infos.inc.php
 RUN sed -i 's/username_proxy/'$PROXY_USER'/g' /var/www/proxy_infos.inc.php
