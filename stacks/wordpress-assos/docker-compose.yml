@@ -32,6 +32,9 @@ services:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
       TRUSTED_PROXIES: reverse-proxy
+      PROXY_HOST: ${PROXY_HOST}
+      PROXY_PASS: ${PROXY_PASS}
+      PROXY_USER: ${PROXY_USER}
 
   save:
     build: save-strategy
