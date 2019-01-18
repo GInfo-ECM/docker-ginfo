@@ -33,9 +33,12 @@ RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 ARG PROXY_HOST
 ARG PROXY_USER
 ARG PROXY_PASS
-COPY proxy_infos.inc.php /var/www/proxy_infos.inc.php
-COPY start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
+#COPY proxy_infos.inc.php /var/www/proxy_infos.inc.php
+#COPY start.sh /usr/local/bin/start.sh
+#RUN chmod +x /usr/local/bin/start.sh
+
+ENV HTTP_PROXY "http://"$PROXY_USER":"$PROXY_PASS"@"$PROXY_HOST":3128"
+ENV HTTPS_PROXY "https://"$PROXY_USER":"$PROXY_PASS"@"$PROXY_HOST":3128"
 
 RUN sed -i 's/host_proxy/'$PROXY_HOST/'g' /var/www/proxy_infos.inc.php
 RUN sed -i 's/username_proxy/'$PROXY_USER'/g' /var/www/proxy_infos.inc.php
@@ -53,6 +56,4 @@ COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN echo "start.sh" >> /usr/local/bin/docker-entrypoint.sh
 
