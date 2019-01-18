@@ -15,6 +15,8 @@ COPY plugins-remove.sh /usr/lib/wp-plugin-remove
 RUN chmod +x /usr/lib/wp-update
 RUN chmod +x /usr/lib/wp-theme-remove
 RUN chmod +x /usr/lib/wp-plugin-remove
+RUN apt -y update
+RUN apt -y install nano
 
 # Add crons
 ADD crontab /etc/cron.d/wp-cron
