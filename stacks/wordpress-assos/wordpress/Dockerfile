@@ -41,9 +41,7 @@ RUN sed -i 's/host_proxy/'$PROXY_HOST/'g' /var/www/proxy_infos.inc.php
 RUN sed -i 's/username_proxy/'$PROXY_USER'/g' /var/www/proxy_infos.inc.php
 RUN sed -i 's/password_proxy/'$PROXY_PASS'/g' /var/www/proxy_infos.inc.php
 
-RUN echo 'if ! grep -q "WP_PROXY_HOST" "/var/www/html/wp-config.php"; then' >> /usr/local/bin/docker-entrypoint.sh
-RUN echo '  echo "include(\'/var/www/proxy_infos.inc.php\');" >> /var/www/html/wp-config.php' >> /usr/local/bin/docker-entrypoint.sh
-RUN echo 'fi' >> /usr/local/bin/docker-entrypoint.sh
+RUN COPY start.sh /usr/local/bin/docker-entrypoint.sh
 
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
