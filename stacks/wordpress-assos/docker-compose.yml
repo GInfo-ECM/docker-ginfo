@@ -31,6 +31,7 @@ services:
     - interne
     - proxy
     - mailing
+    - proxyhttp
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wordpress
@@ -70,6 +71,9 @@ networks:
   mailing:
     external:
       name: postfix-wordpress
+  proxyhttp:
+    external:
+      name: bridge-squid-int
   interne:
     driver: bridge
     internal: true
