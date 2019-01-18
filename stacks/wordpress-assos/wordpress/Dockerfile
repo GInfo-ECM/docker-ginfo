@@ -55,4 +55,4 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh && /start.sh"]
+ENTRYPOINT ["/start.sh"]

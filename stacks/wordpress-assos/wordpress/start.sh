@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/usr/local/bin/docker-entrypoint.sh
+
 sleep 10
 proxy_string="WP_PROXY_HOST"
 if ! grep -q $proxy_string "/var/www/html/wp-config.php"; then
