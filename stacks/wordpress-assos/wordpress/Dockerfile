@@ -40,9 +40,9 @@ ARG PROXY_PASS
 ENV HTTP_PROXY "http://"$PROXY_USER":"$PROXY_PASS"@"$PROXY_HOST":3128"
 ENV HTTPS_PROXY "https://"$PROXY_USER":"$PROXY_PASS"@"$PROXY_HOST":3128"
 
-RUN sed -i 's/host_proxy/'$PROXY_HOST/'g' /var/www/proxy_infos.inc.php
-RUN sed -i 's/username_proxy/'$PROXY_USER'/g' /var/www/proxy_infos.inc.php
-RUN sed -i 's/password_proxy/'$PROXY_PASS'/g' /var/www/proxy_infos.inc.php
+#RUN sed -i 's/host_proxy/'$PROXY_HOST/'g' /var/www/proxy_infos.inc.php
+#RUN sed -i 's/username_proxy/'$PROXY_USER'/g' /var/www/proxy_infos.inc.php
+#RUN sed -i 's/password_proxy/'$PROXY_PASS'/g' /var/www/proxy_infos.inc.php
 
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
