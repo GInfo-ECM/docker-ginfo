@@ -54,5 +54,3 @@ COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENTRYPOINT["docker-entrypoint.sh && start.sh"]
-
