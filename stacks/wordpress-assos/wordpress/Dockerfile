@@ -36,9 +36,9 @@ ARG PROXY_PASS
 COPY proxy_infos.inc.php /var/www/proxy_infos.inc.php
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-RUN sed -i 's/host_proxy/${PROXY_HOST}/g' /var/www/proxy_infos.inc.php
-RUN sed -i 's/username_proxy/${PROXY_USER}/g' /var/www/proxy_infos.inc.php
-RUN sed -i 's/password_proxy/${PROXY_PASS}/g' /var/www/proxy_infos.inc.php
+RUN sed -i 's/host_proxy/'$PROXY_HOST/'g' /var/www/proxy_infos.inc.php
+RUN sed -i 's/username_proxy/'$PROXY_USER'/g' /var/www/proxy_infos.inc.php
+RUN sed -i 's/password_proxy/'$PROXY_PASS'/g' /var/www/proxy_infos.inc.php
 
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
