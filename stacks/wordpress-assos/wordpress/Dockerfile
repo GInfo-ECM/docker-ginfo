@@ -53,5 +53,3 @@ COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-CMD ["php-fpm"]
