@@ -41,7 +41,7 @@ RUN sed -i 's/host_proxy/'$PROXY_HOST/'g' /var/www/proxy_infos.inc.php
 RUN sed -i 's/username_proxy/'$PROXY_USER'/g' /var/www/proxy_infos.inc.php
 RUN sed -i 's/password_proxy/'$PROXY_PASS'/g' /var/www/proxy_infos.inc.php
 
-RUN COPY start.sh /usr/local/bin/docker-entrypoint.sh
+COPY start.sh /usr/local/bin/docker-entrypoint.sh
 
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
