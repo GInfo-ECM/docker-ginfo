@@ -38,6 +38,7 @@ services:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
       TRUSTED_PROXIES: reverse-proxy
+    command: start.sh
 
   save:
     build: save-strategy
