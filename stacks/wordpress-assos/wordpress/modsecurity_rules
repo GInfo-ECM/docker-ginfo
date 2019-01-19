@@ -1,2 +1,2 @@
-#SecRule FILES "(?i)\.zip$" "t:none,log,redirect:http://google.fr,msg:'Plugin or theme upload forbidden',id:1"
 SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=upload-theme" "log,deny,msg:'Access Denied',id:2"
+SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=upload-plugin" "log,deny,msg:'Access Denied',id:3"
