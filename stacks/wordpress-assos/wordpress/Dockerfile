@@ -16,7 +16,8 @@ RUN chmod +x /usr/lib/wp-update
 RUN chmod +x /usr/lib/wp-theme-remove
 RUN chmod +x /usr/lib/wp-plugin-remove
 RUN apt -y update
-RUN apt -y install nano ping
+RUN apt -y install nano
+RUN apt -y install iputils-ping
 
 # Add crons
 ADD crontab /etc/cron.d/wp-cron
