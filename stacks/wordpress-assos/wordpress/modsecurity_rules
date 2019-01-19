@@ -1,0 +1,1 @@
+SecRule FILES "(?i)\.zip$" "t:none,log,redirect:http://google.fr,msg:'Plugin or theme upload forbidden',id:1"
