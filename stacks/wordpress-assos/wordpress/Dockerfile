@@ -16,7 +16,7 @@ RUN chmod +x /usr/lib/wp-update
 RUN chmod +x /usr/lib/wp-theme-remove
 RUN chmod +x /usr/lib/wp-plugin-remove
 RUN apt -y update
-RUN apt -y install nano
+RUN apt -y install nano ping
 
 # Add crons
 ADD crontab /etc/cron.d/wp-cron
@@ -46,6 +46,12 @@ RUN sed -i 's/password_proxy/'$PROXY_PASS'/g' /var/www/proxy_infos.inc.php
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername.conf
+
+#Gestion du Mod Security
+RUN apt-get install -y libapache2-modsecurity \
+ && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
+ && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
+ && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf
 
 #Gestion de l'heure
 ENV TZ=Europe/Paris
