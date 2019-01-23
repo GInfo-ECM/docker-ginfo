@@ -246,5 +246,19 @@
         ]
       }
     ]
+  },
+  {
+    "type": 3,
+    "name": "monitoring",
+    "title": "Serveur de Monitoring",
+    "description": "Serveurs de monitoring pour gérer les conteneurs",
+    "note": "Serveurs de monitoring pour gérer les conteneurs",
+    "categories": ["Monitoring"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/generic.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/monitoring/docker-compose.yml"
+    }
   }
 ]
