@@ -127,8 +127,8 @@ services:
     volumes:
       - ./caddy/:/etc/caddy/
     environment:
-      - ADMIN_USER=${ADMIN_USER:-admin}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - ADMIN_USER=admin
+      - ADMIN_PASSWORD=admin
     restart: always
     networks:
       - monitor-net
