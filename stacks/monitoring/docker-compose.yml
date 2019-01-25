@@ -92,9 +92,9 @@ services:
     environment:
       GF_SECURITY_ADMIN_USER: ${ADMIN_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${ADMIN_PASS}
-      GF_USERS_ALLOW_SIGN_UP: false
+      GF_USERS_ALLOW_SIGN_UP: "false"
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-      NETWORK_ACCESS: true
+      NETWORK_ACCESS: "true"
     restart: always
     expose:
       - 3000
