@@ -8,6 +8,6 @@ COPY datasources /etc/grafana/datasources
 
 COPY setup.sh /setup.sh
 
-RUN chmod +x /setup.sh
+RUN /bin/sh chmod +x /setup.sh
 
-ENTRYPOINT ["/setup.sh"]
+ENTRYPOINT ["/bin/sh", "/setup.sh"]
