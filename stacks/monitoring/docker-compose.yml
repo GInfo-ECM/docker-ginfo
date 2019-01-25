@@ -90,9 +90,9 @@ services:
       - grafana_data:/var/lib/grafana
     entrypoint: /setup.sh
     environment:
-      - GF_SECURITY_ADMIN_USER: ${ADMIN_USER}
-      - GF_SECURITY_ADMIN_PASSWORD: ${ADMIN_PASS}
-      - GF_USERS_ALLOW_SIGN_UP: false
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASS}
+      - GF_USERS_ALLOW_SIGN_UP=false
       - VIRTUAL_HOST: ${VIRTUAL_HOST}
       - NETWORK_ACCESS: true
     restart: always
@@ -124,8 +124,8 @@ services:
       - "9093:9093"
       - "9091:9091"
     environment:
-      - ADMIN_USER: ${ADMIN_USER}
-      - ADMIN_PASSWORD: ${ADMIN_PASS}
+      - ADMIN_USER=${ADMIN_USER}
+      - ADMIN_PASSWORD=${ADMIN_PASS}
     restart: always
     networks:
       - monitor-net

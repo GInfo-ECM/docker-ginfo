@@ -271,7 +271,7 @@
         "name": "ADMIN_USER",
         "label": "Pseudo de l'administrateur",
         "description": "Pseudo utilisé pour la gestion des systèmes de monitoring (Grafana etc...)",
-        "default": "monitoring.ginfo.ec-m.fr"
+        "default": "ginfo"
       },
       {
         "name": "ADMIN_PASS",
