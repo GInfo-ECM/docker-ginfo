@@ -3,6 +3,9 @@ version: '2'
 networks:
   monitor-net:
     driver: bridge
+  proxy:
+    external:
+      name: nginx-proxy-ginfo
 
 volumes:
   prometheus_data:
@@ -99,6 +102,7 @@ services:
       - "3000"
     networks:
       - monitor-net
+      - proxy
     labels:
       org.label-schema.group: "monitoring"
 
