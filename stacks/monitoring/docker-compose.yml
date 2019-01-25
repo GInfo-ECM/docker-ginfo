@@ -96,7 +96,7 @@ services:
       NETWORK_ACCESS: "true"
     restart: always
     expose:
-      - 3000
+      - "3000"
     networks:
       - monitor-net
     labels:
