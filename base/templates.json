@@ -259,6 +259,27 @@
     "repository": {
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/monitoring/docker-compose.yml"
-    }
+    },
+    "env": [
+      {
+        "name": "VIRTUAL_HOST",
+        "label": "Nom de domaine du Grafana",
+        "description": "Le domaine à partir duquel on accèdera au site des stats",
+        "default": "monitoring.ginfo.ec-m.fr"
+      },
+      {
+        "name": "ADMIN_USER",
+        "label": "Pseudo de l'administrateur",
+        "description": "Pseudo utilisé pour la gestion des systèmes de monitoring (Grafana etc...)",
+        "default": "monitoring.ginfo.ec-m.fr"
+      },
+      {
+        "name": "ADMIN_PASS",
+        "label": "Mot de passe de l'administrateur",
+        "description": "Mot de passe utilisé pour la gestion des systèmes de monitoring (Grafana etc...)",
+        "default": "Remplir absolument !"
+      }
+
+    ]
   }
 ]

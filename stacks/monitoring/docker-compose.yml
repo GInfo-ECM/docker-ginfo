@@ -5,15 +5,16 @@ networks:
     driver: bridge
 
 volumes:
-    prometheus_data: {}
-    grafana_data: {}
+  prometheus_data:
+    name: prometheus_data
+  grafana_data:
+    name: grafana_data
 
 services:
   prometheus:
-    image: prom/prometheus:v2.6.0
+    build: prometheus
     container_name: prometheus
     volumes:
-      - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -31,14 +32,12 @@ services:
       org.label-schema.group: "monitoring"
 
   alertmanager:
-    image: prom/alertmanager:v0.15.3
+    build: alertmanager
     container_name: alertmanager
-    volumes:
-      - ./alertmanager/:/etc/alertmanager/
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
-    restart: unless-stopped
+    restart: always
     expose:
       - 9093
     networks:
@@ -85,18 +84,17 @@ services:
       org.label-schema.group: "monitoring"
 
   grafana:
-    image: grafana/grafana:5.4.2
+    build: grafana
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./grafana/datasources:/etc/grafana/datasources
-      - ./grafana/dashboards:/etc/grafana/dashboards
-      - ./grafana/setup.sh:/setup.sh
     entrypoint: /setup.sh
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SECURITY_ADMIN_USER: ${ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD: ${ADMIN_PASS}
+      - GF_USERS_ALLOW_SIGN_UP: false
+      - VIRTUAL_HOST: ${VIRTUAL_HOST}
+      - NETWORK_ACCESS: true
     restart: always
     expose:
       - 3000
@@ -104,6 +102,7 @@ services:
       - monitor-net
     labels:
       org.label-schema.group: "monitoring"
+
 
   pushgateway:
     image: prom/pushgateway:v0.7.0
@@ -117,18 +116,16 @@ services:
       org.label-schema.group: "monitoring"
 
   caddy:
-    image: stefanprodan/caddy
+    build: caddy
     container_name: caddy
     ports:
       - "3000:3000"
       - "9090:9090"
       - "9093:9093"
       - "9091:9091"
-    volumes:
-      - ./caddy/:/etc/caddy/
     environment:
-      - ADMIN_USER=admin
-      - ADMIN_PASSWORD=admin
+      - ADMIN_USER: ${ADMIN_USER}
+      - ADMIN_PASSWORD: ${ADMIN_PASS}
     restart: always
     networks:
       - monitor-net
