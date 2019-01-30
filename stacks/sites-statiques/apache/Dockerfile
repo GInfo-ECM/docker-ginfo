@@ -55,6 +55,10 @@ RUN chmod +x /var/www/startup.sh
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+#Gestion du launcher
+COPY apache2-foreground /usr/bin/
+RUN chmod +x /usr/bin/apache2-foreground
+
 CMD /entrypoint.sh
 
 EXPOSE 80
