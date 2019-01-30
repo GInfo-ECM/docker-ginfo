@@ -25,10 +25,6 @@ RUN apt-get install -y nodejs
 ENV APACHE_DOCUMENT_ROOT /var/www/html
 ENV APACHE_LOG_DIR /var/www/logs
 
-#Gestion des logs
-RUN ln -s /var/log/apache2/access.log ${APACHE_DOCUMENT_ROOT}/logs/access.log
-RUN ln -s /var/log/apache2/error.log ${APACHE_DOCUMENT_ROOT}/logs/error.log
-
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
@@ -54,11 +50,19 @@ ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 
-#Gestion de point d'entrée
+#Gestion de point d'entrées
 COPY startup.sh /var/www/startup.sh
 RUN chmod +x /var/www/startup.sh
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+#Gestion des logs
+RUN touch /var/log/apache2/access.log
+RUN touch /var/log/apache2/error.log
+RUN mkdir -p ${APACHE_DOCUMENT_ROOT}/logs/
+RUN mkdir -p ${APACHE_DOCUMENT_ROOT}/logs/
+RUN ln -s /var/log/apache2/access.log ${APACHE_DOCUMENT_ROOT}/logs/access.log
+RUN ln -s /var/log/apache2/error.log ${APACHE_DOCUMENT_ROOT}/logs/error.log
 
 #Gestion du launcher
 COPY apache2-foreground /usr/bin/
