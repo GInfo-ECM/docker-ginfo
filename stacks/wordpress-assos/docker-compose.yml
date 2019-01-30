@@ -67,7 +67,7 @@ volumes:
 networks:
   proxy:
     external:
-      name: nginx-proxy-ginfo
+      name: nginx-proxy-wordpress
   mailing:
     external:
       name: postfix-wordpress

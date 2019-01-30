@@ -1,8 +1,9 @@
-FROM httpd:2.4
+FROM debian:stretch
 MAINTAINER pnahoum@ec-m.fr
 
 #Install utilities
 RUN apt-get update \
+ && apt-get install -y apache2 \
  && apt-get install -y wget \
  && apt-get install -y nano \
  && apt-get install -y iputils-ping \
@@ -54,5 +55,6 @@ RUN chmod +x /var/www/startup.sh
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-
 CMD /entrypoint.sh
+
+EXPOSE 80
