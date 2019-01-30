@@ -1,7 +1,7 @@
 [
   {
     "type": 3,
-    "title": "Site-GInfo-PHP",
+    "title": "Site PHP (pour les sites GInfo uniquement)",
     "description": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
     "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
     "categories": ["PHP"],
@@ -46,6 +46,72 @@
         "name": "DB_ROOT_PASSWORD",
         "label": "Mot de passe root",
         "description": "Mot de passe root de la base de donnée. Ne sera jamais utilisé",
+        "default": "Remplir absolument"
+      },
+      {
+        "name": "WEB_ROOT",
+        "label": "Racine de l'hébergement web",
+        "default": "/var/www/html"
+      },
+      {
+        "name": "NETWORK_ACCESS",
+        "label": "Application interne ?",
+        "description": "L'application doit elle être restreinte au réseau du GInfo",
+        "select": [
+          {
+            "text": "Oui",
+            "value": "internal",
+            "default": true
+          },
+          {
+            "text": "Non",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": 3,
+    "title": "Site statique (pour les associations)",
+    "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
+    "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
+    "categories": ["HTTPD"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/sites-statiques/docker-compose.yml"
+    },
+    "env": [
+      {
+        "name": "VIRTUAL_HOST",
+        "label": "Nom de domaine",
+        "description": "Le domaine à partir duquel on accèdera au site",
+        "default": "site.ginfo, site.ginfo.ec-m.fr"
+      },
+      {
+        "name": "EMAIL_FOR_CERTIFICATION",
+        "label": "Email pour la certification",
+        "description": "Email pour la certification LetsEncrypt",
+        "default": "email@centrale-marseille.fr"
+      },
+      {
+        "name": "UID_UTILISATEUR",
+        "label": "Uid utilisateur",
+        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+        "default": "33"
+      },
+      {
+        "name": "USER_SFTP",
+        "label": "Utilisateur",
+        "description": "Utilisateur de la machine, sera utilisé pour se connecter SFTP",
+        "default": "Remplir absolument"
+      },
+      {
+        "name": "PASSWORD_SFTP",
+        "label": "Mot de passe",
+        "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SFTP",
         "default": "Remplir absolument"
       },
       {

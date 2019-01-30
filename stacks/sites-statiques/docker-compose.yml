@@ -1,34 +1,16 @@
 version: '2'
 
 services:
-  db:
-    build: mysql
-    volumes:
-    - db_data:/var/lib/mysql
-    restart: always
-    networks:
-    - interne
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${USER_SFTP_SQL}
-      MYSQL_USER: ${USER_SFTP_SQL}
-      MYSQL_PASSWORD: ${PASSWORD_SFTP_SQL}
-
   site:
-    build: php-apache
+    build: apache
     volumes:
-    - site_data:/var/www
+    - site_statique_data:/var/www
     restart: always
-    depends_on:
-    - db
     networks:
     - interne
     - proxy
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-      DB_HOST: db:3306
-      DB_USER: ${USER_SFTP_SQL}
-      DB_PASSWORD: ${PASSWORD_SFTP_SQL}
       LETSENCRYPT_HOST: ${VIRTUAL_HOST}
       LETSENCRYPT_EMAIL: ${EMAIL_FOR_CERTIFICATION}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
@@ -38,42 +20,34 @@ services:
   save:
     build: save-strategy
     volumes:
-    - site_data:/site-to-save:ro
+    - site_statique_data:/site-to-save:ro
     - save_data:/saves
     restart: always
     depends_on:
     - site
-    - db
     networks:
     - interne
-    environment:
-      DB_HOST: db
-      DB_USER: ${USER_SFTP_SQL}
-      DB_PASSWORD: ${PASSWORD_SFTP_SQL}
 
   sftp:
     build: sftp
     restart: always
     volumes:
-    - site_data:/home/${USER_SFTP_SQL}/site
-    - save_data:/home/${USER_SFTP_SQL}/save
+    - site_statique_data:/home/${USER_SFTP}/site
+    - save_data:/home/${USER_SFTP}/save
     networks:
     - sftp
     ports:
     - "22"
-    command: ${USER_SFTP_SQL}:${PASSWORD_SFTP_SQL}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
+    command: ${USER_SFTP}:${PASSWORD_SFTP}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
     environment:
-      USER_SFTP: ${USER_SFTP_SQL}
-      PASS_SFTP: ${PASSWORD_SFTP_SQL}
+      USER_SFTP: ${USER_SFTP}
+      PASS_SFTP: ${PASSWORD_SFTP}
 
 volumes:
-  db_data:
-    name: db_data
-  site_data:
-    name: site_data
+  site_statique_data:
+    name: site_statique_data
   save_data:
     name: save_data
-
 
 networks:
   proxy:
