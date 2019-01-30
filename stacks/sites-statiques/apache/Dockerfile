@@ -59,10 +59,10 @@ RUN chmod +x /entrypoint.sh
 #Gestion des logs
 RUN touch /var/log/apache2/access.log
 RUN touch /var/log/apache2/error.log
-RUN mkdir -p ${APACHE_DOCUMENT_ROOT}/logs/
-RUN mkdir -p ${APACHE_DOCUMENT_ROOT}/logs/
-RUN ln -s /var/log/apache2/access.log ${APACHE_DOCUMENT_ROOT}/logs/access.log
-RUN ln -s /var/log/apache2/error.log ${APACHE_DOCUMENT_ROOT}/logs/error.log
+RUN mkdir -p ${APACHE_LOG_DIR}/
+RUN mkdir -p ${APACHE_DOCUMENT_ROOT}/
+RUN ln -s /var/log/apache2/access.log ${APACHE_LOG_DIR}/access.log
+RUN ln -s /var/log/apache2/error.log ${APACHE_LOG_DIR}/error.log
 
 #Gestion du launcher
 COPY apache2-foreground /usr/bin/
