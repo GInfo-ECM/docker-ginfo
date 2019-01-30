@@ -16,14 +16,19 @@ RUN mkdir /var/www/.ssh
 RUN ln -s /var/www/.ssh /root/.ssh
 
 #Install npm and node.js
-#RUN apt-get -y install gnupg && apt-get -y install gnupg1 && apt-get -y install gnupg2
-#RUN apt-get -y install curl software-properties-common
-#RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-#RUN apt-get install -y nodejs
+RUN apt-get -y install gnupg && apt-get -y install gnupg1 && apt-get -y install gnupg2
+RUN apt-get -y install curl software-properties-common
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
 
 #Dossier par défaut de apache et configuration du reverse proxy
 ENV APACHE_DOCUMENT_ROOT /var/www/html
 ENV APACHE_LOG_DIR /var/www/logs
+
+#Gestion des logs
+RUN ln -s /var/log/apache2/access.log ${APACHE_DOCUMENT_ROOT}/logs/access.log
+RUN ln -s /var/log/apache2/error.log ${APACHE_DOCUMENT_ROOT}/logs/error.log
+
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
