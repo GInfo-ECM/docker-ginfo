@@ -1,0 +1,5 @@
+#Backup tous les jours 1H du matin
+0 1 * * * root . /etc/environment; /etc/backup.sh
+# Supprime les backups de plus de 50 jours tous les 3 jours
+0 0 */3 * * root find /saves/backups/ -mtime +50 -name 'Full_Backup_*' -exec rm {} \;
+# Ne pas supprimer cette ligne, tout fichier cron doit se terminer par une ligne vide
