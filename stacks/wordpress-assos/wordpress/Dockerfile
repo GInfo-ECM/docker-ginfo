@@ -49,7 +49,7 @@ RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername.conf
 
 #Stockage des logs et des erreurs
-ENV APACHE_LOG_DIR = /var/log/apache2
+ENV APACHE_LOG_DIR = "/var/log/apache2"
 
 #Gestion du Mod Security
 RUN apt-get install -y libapache2-modsecurity \

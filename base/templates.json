@@ -238,7 +238,7 @@
         "name": "VIRTUAL_HOST",
         "label": "Nom de domaine",
         "description": "Le domaine à partir duquel on accèdera au site Wordpress",
-        "default": "asso, asso.ec-m.fr"
+        "default": "site.asso.centrale-marseille.fr, site.assos.centrale-marseille.fr"
       },
       {
         "name": "NETWORK_ACCESS",
