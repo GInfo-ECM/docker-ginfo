@@ -1,2 +1,4 @@
 SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=upload-theme" "log,deny,msg:'Access Denied',id:2"
 SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=upload-plugin" "log,deny,msg:'Access Denied',id:3"
+SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=theme-editor.php" "log,deny,msg:'Access Denied',id:4"
+SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=plugin-editor.php" "log,deny,msg:'Access Denied',id:5"

@@ -96,7 +96,7 @@ services:
       GF_SECURITY_ADMIN_PASSWORD: ${ADMIN_PASS}
       GF_USERS_ALLOW_SIGN_UP: "false"
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-      NETWORK_ACCESS: "true"
+      NETWORK_ACCESS: internal
     restart: always
     expose:
       - "3000"
