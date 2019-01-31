@@ -13,6 +13,7 @@ services:
     - "9000:9000"
     environment:
       VIRTUAL_HOST: docker.ginfo.ec-m.fr
+      NETWORK_ACCESS: internal
     networks:
     - proxy-ginfo
     - internet
