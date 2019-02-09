@@ -257,22 +257,6 @@
         ]
       },
       {
-        "name": "ACTIVATE_LETSENCRYPT",
-        "label": "Activer LetsEncrypt ?",
-        "description": "Activer UNIQUEMENT pour les noms de domaine n'appartenant pas à l'école",
-        "select": [
-          {
-            "text": "Non",
-            "value": "0",
-            "default": true
-          },
-          {
-            "text": "Oui",
-            "value": "1"
-          }
-        ]
-      },
-      {
         "name": "PROXY_HOST",
         "label": "Adresse du proxy",
         "description": "Adresse du proxy http pour permettre à wordpress d'accéder à internet",
