@@ -64,12 +64,6 @@ RUN mkdir -p ${APACHE_DOCUMENT_ROOT}/
 RUN ln -s /var/log/apache2/access.log ${APACHE_LOG_DIR}/access.log
 RUN ln -s /var/log/apache2/error.log ${APACHE_LOG_DIR}/error.log
 
-
-#Gestion d'un eventuel LetsEncrypt
-ARG ACTIVATE_LETSENCRYPT
-ARG LETSENCRYPT_DOMAIN
-ENV LETSENCRYPT_HOST=${ACTIVATE_LETSENCRYPT:+${LETSENCRYPT_DOMAIN}}
-
 #Gestion du launcher
 COPY apache2-foreground /usr/bin/
 RUN chmod +x /usr/bin/apache2-foreground
