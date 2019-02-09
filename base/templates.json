@@ -70,7 +70,7 @@
         "select": [
           {
             "text": "Non",
-            "value": "0",
+            "value": "",
             "default": true
           },
           {
