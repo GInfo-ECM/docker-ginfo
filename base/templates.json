@@ -263,7 +263,7 @@
         "select": [
           {
             "text": "Non",
-            "value": null,
+            "value": "0",
             "default": true
           },
           {
