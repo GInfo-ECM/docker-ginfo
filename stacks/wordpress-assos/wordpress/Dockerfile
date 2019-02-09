@@ -64,11 +64,6 @@ ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 
-#Gestion d'un eventuel LetsEncrypt
-ARG ACTIVATE_LETSENCRYPT
-ARG LETSENCRYPT_DOMAIN
-ENV LETSENCRYPT_HOST=${ACTIVATE_LETSENCRYPT:+${LETSENCRYPT_DOMAIN}}
-
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

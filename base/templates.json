@@ -64,20 +64,10 @@
         ]
       },
       {
-        "name": "ACTIVATE_LETSENCRYPT",
-        "label": "Activer LetsEncrypt ?",
-        "description": "Activer UNIQUEMENT pour les noms de domaine n'appartenant pas à l'école",
-        "select": [
-          {
-            "text": "Non",
-            "value": "",
-            "default": true
-          },
-          {
-            "text": "Oui",
-            "value": "1"
-          }
-        ]
+        "name": "LETSENCRYPT_HOST",
+        "label": "Domaine à certifier par Lets Encrypt",
+        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+        "default": ""
       }
     ]
   },
@@ -140,20 +130,10 @@
         ]
       },
       {
-        "name": "ACTIVATE_LETSENCRYPT",
-        "label": "Activer LetsEncrypt ?",
-        "description": "Activer UNIQUEMENT pour les noms de domaine n'appartenant pas à l'école",
-        "select": [
-          {
-            "text": "Non",
-            "value": "",
-            "default": true
-          },
-          {
-            "text": "Oui",
-            "value": "1"
-          }
-        ]
+        "name": "LETSENCRYPT_HOST",
+        "label": "Domaine à certifier par Lets Encrypt",
+        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+        "default": ""
       }
     ]
   },
@@ -295,21 +275,12 @@
         "default": "Obligatoire : à trouver sur le trousseau"
       },
       {
-        "name": "ACTIVATE_LETSENCRYPT",
-        "label": "Activer LetsEncrypt ?",
-        "description": "Activer UNIQUEMENT pour les noms de domaine n'appartenant pas à l'école",
-        "select": [
-          {
-            "text": "Non",
-            "value": "",
-            "default": true
-          },
-          {
-            "text": "Oui",
-            "value": "1"
-          }
-        ]
-      }]
+        "name": "LETSENCRYPT_HOST",
+        "label": "Domaine à certifier par Lets Encrypt",
+        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+        "default": ""
+      }
+    ]
   },
   {
     "type": 3,

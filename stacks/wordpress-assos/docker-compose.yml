@@ -22,8 +22,6 @@ services:
         PROXY_HOST: ${PROXY_HOST}
         PROXY_PASS: ${PROXY_PASS}
         PROXY_USER: ${PROXY_USER}
-        ACTIVATE_LETSENCRYPT: ${ACTIVATE_LETSENCRYPT}
-        LETSENCRYPT_DOMAIN: ${VIRTUAL_HOST}
     depends_on:
     - db
     volumes:
@@ -41,6 +39,7 @@ services:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
       TRUSTED_PROXIES: reverse-proxy
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
 
   cron:
     build: cron

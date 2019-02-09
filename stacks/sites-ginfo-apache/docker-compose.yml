@@ -17,9 +17,6 @@ services:
   site:
     build:
       context: php-apache
-      args:
-        ACTIVATE_LETSENCRYPT: ${ACTIVATE_LETSENCRYPT}
-        LETSENCRYPT_DOMAIN: ${VIRTUAL_HOST}
     volumes:
     - site_data:/var/www
     restart: always
@@ -36,6 +33,7 @@ services:
       NETWORK_ACCESS: ${NETWORK_ACCESS}
       APACHE_DOCUMENT_ROOT: ${WEB_ROOT}
       TRUSTED_PROXIES: reverse-proxy
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
 
   cron:
     build: cron
