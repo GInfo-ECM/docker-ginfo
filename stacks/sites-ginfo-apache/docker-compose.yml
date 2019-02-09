@@ -19,6 +19,7 @@ services:
       context: php-apache
       args:
         ACTIVATE_LETSENCRYPT: ${ACTIVATE_LETSENCRYPT}
+        LETSENCRYPT_DOMAIN: ${VIRTUAL_HOST}
     volumes:
     - site_data:/var/www
     restart: always

@@ -92,7 +92,8 @@ RUN apt-get install -y libapache2-modsecurity \
 
 #Gestion d'un eventuel LetsEncrypt
 ARG ACTIVATE_LETSENCRYPT
-ENV LETSENCRYPT_HOST=${ACTIVATE_LETSENCRYPT:+test.fr}
+ARG VIRTUAL_HOST
+ENV LETSENCRYPT_HOST=${ACTIVATE_LETSENCRYPT:+${VIRTUAL_HOST}}
 
 #Gestion de l'heure
 ENV TZ=Europe/Paris
