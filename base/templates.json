@@ -101,12 +101,6 @@
         "default": "site.ginfo, site.ginfo.ec-m.fr"
       },
       {
-        "name": "EMAIL_FOR_CERTIFICATION",
-        "label": "Email pour la certification",
-        "description": "Email pour la certification LetsEncrypt",
-        "default": "email@centrale-marseille.fr"
-      },
-      {
         "name": "UID_UTILISATEUR",
         "label": "Uid utilisateur",
         "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
@@ -142,6 +136,22 @@
           {
             "text": "Non",
             "value": ""
+          }
+        ]
+      },
+      {
+        "name": "ACTIVATE_LETSENCRYPT",
+        "label": "Activer LetsEncrypt ?",
+        "description": "Activer UNIQUEMENT pour les noms de domaine n'appartenant pas à l'école",
+        "select": [
+          {
+            "text": "Non",
+            "value": "",
+            "default": true
+          },
+          {
+            "text": "Oui",
+            "value": "1"
           }
         ]
       }
@@ -283,6 +293,22 @@
         "label": "Mot de passe du proxy",
         "description": "Mot de passe du proxy",
         "default": "Obligatoire : à trouver sur le trousseau"
+      },
+      {
+        "name": "ACTIVATE_LETSENCRYPT",
+        "label": "Activer LetsEncrypt ?",
+        "description": "Activer UNIQUEMENT pour les noms de domaine n'appartenant pas à l'école",
+        "select": [
+          {
+            "text": "Non",
+            "value": "",
+            "default": true
+          },
+          {
+            "text": "Oui",
+            "value": "1"
+          }
+        ]
       }]
   },
   {

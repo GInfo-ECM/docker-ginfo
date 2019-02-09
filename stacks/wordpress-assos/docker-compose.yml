@@ -22,6 +22,8 @@ services:
         PROXY_HOST: ${PROXY_HOST}
         PROXY_PASS: ${PROXY_PASS}
         PROXY_USER: ${PROXY_USER}
+        ACTIVATE_LETSENCRYPT: ${ACTIVATE_LETSENCRYPT}
+        LETSENCRYPT_DOMAIN: ${VIRTUAL_HOST}
     depends_on:
     - db
     volumes:
@@ -40,8 +42,8 @@ services:
       NETWORK_ACCESS: ${NETWORK_ACCESS}
       TRUSTED_PROXIES: reverse-proxy
 
-  save:
-    build: save-strategy
+  cron:
+    build: cron
     depends_on:
     - wordpress
     - db
