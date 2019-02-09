@@ -90,6 +90,10 @@ RUN apt-get install -y libapache2-modsecurity \
  && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf \
  && echo "<Directory \${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo>\nSecRuleEngine Off\n</Directory>" >> /var/www/modsecurity.conf
 
+#Gestion d'un eventuel LetsEncrypt
+ARG ACTIVATE_LETSENCRYPT
+ENV LETSENCRYPT_HOST=${ACTIVATE_LETSENCRYPT:+test.fr}
+
 #Gestion de l'heure
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
