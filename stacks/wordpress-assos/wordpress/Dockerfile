@@ -33,23 +33,14 @@ RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 
 #Gestion du proxy
-ARG PROXY_HOST
-ARG PROXY_USER
-ARG PROXY_PASS
 COPY proxy_infos.inc.php /var/www/proxy_infos.inc.php
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 RUN start.sh
-RUN sed -i 's/host_proxy/'$PROXY_HOST/'g' /var/www/proxy_infos.inc.php
-RUN sed -i 's/username_proxy/'$PROXY_USER'/g' /var/www/proxy_infos.inc.php
-RUN sed -i 's/password_proxy/'$PROXY_PASS'/g' /var/www/proxy_infos.inc.php
 
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername.conf
-
-#Stockage des logs et des erreurs
-#ENV APACHE_LOG_DIR = "/var/log/apache2"
 
 #Gestion du Mod Security
 RUN apt-get install -y libapache2-modsecurity \
@@ -59,6 +50,7 @@ RUN apt-get install -y libapache2-modsecurity \
 COPY modsecurity_rules /
 RUN cat /modsecurity_rules >> /var/www/modsecurity.conf
 RUN rm /modsecurity_rules
+
 #Gestion de l'heure
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
