@@ -7,6 +7,7 @@ TIMELAPSE="2 years"
 ACTIVEINSTALLS=500
 DEFAULTTHEME=twentynineteen
 
+LIST_THEMES_KEPT=("hello")
 
 delete_theme () {
     echo "Uninstalling theme $1"
@@ -24,14 +25,24 @@ delete_theme () {
 
 wp theme list --field=name | while read theme
 do
+	
+	# Skip the part of the list that we want to keep
+	for val in $LIST_THEMES_KEPT
+	do
+		if [ "${theme}x" = "${val}x" ]
+		then
+		    continue 2 # Next path
+		fi
+	done
+
 	declare -a isNotInDb
 	isNotInDb=true
 
 	while read i;
 	do
 	    slug=$(echo `jq -r '.slug' <<< ${i}`)
-        date=$(echo `jq -r '.last_updated' <<< ${i}`)
-        active=$(echo `jq -r '.active_installs' <<< ${i}`)
+            date=$(echo `jq -r '.last_updated' <<< ${i}`)
+            active=$(echo `jq -r '.active_installs' <<< ${i}`)
 
 		if [[ "$slug" == "$theme" ]]
 		then

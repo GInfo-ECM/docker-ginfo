@@ -6,6 +6,7 @@
 TIMELAPSE="2 years"
 ACTIVEINSTALLS=300
 
+LIST_PLUGINS_KEPT=("hello")
 
 delete_plugin () {
     echo "Uninstalling plugin $1"
@@ -14,14 +15,24 @@ delete_plugin () {
 
 
 wp plugin list --field=name | while read plug; do 
+	
+	# Skip the part of the list we want to keep
+	for val in $LIST_PLUGINS_KEPT
+	do
+		if [ "${plug}x" = "${val}x" ]
+		then
+		    continue 2 # Next path
+		fi
+	done
+
 	declare -a isNotInDb
 	isNotInDb=true
 	
 	while read i;
 	do
-	    slug=$(echo `jq -r '.slug' <<< ${i}`)
-        date=$(echo `jq -r '.last_updated' <<< ${i}`)
-        active=$(echo `jq -r '.active_installs' <<< ${i}`)
+		slug=$(echo `jq -r '.slug' <<< ${i}`)
+		date=$(echo `jq -r '.last_updated' <<< ${i}`)
+		active=$(echo `jq -r '.active_installs' <<< ${i}`)
 
 		if [[ "$slug" == "$plug" ]]
 		then
