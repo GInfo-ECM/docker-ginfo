@@ -21,7 +21,7 @@ services:
     depends_on:
     - db
     volumes:
-      - wp_data:/var/www/html
+      - wp_data:/var/www
     restart: always
     networks:
     - interne
