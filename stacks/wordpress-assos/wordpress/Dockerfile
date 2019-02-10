@@ -41,7 +41,7 @@ RUN start.sh
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername.conf
-RUN mkdir-p /var/www/html
+RUN mkdir -p /var/www/html
 
 #Gestion du Mod Security
 RUN apt-get install -y libapache2-modsecurity \
