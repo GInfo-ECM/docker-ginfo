@@ -51,6 +51,10 @@ COPY modsecurity_rules /
 RUN cat /modsecurity_rules >> /var/www/modsecurity.conf
 RUN rm /modsecurity_rules
 
+#Gestion des logs
+ENV APACHE_LOG_DIR /var/www/logs
+RUN mkdir -p /var/www/logs
+
 #Gestion de l'heure
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
