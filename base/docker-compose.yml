@@ -30,13 +30,30 @@ services:
     - "443:443"
     volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
-    - certificates:/etc/nginx/certs:ro
+    - certificates:/etc/nginx/certs
+    - /etc/nginx/vhost.d
+    - default_nginx_html:/usr/share/nginx/html
+
+  letsencrypt-certificator:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: reverse-proxy-letsencrypt-certificator
+    networks:
+    - proxy-ginfo
+    restart: always
+    volumes_from:
+      - reverse-proxy
+      - internet
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
 volumes:
   portainer_data:
     external: true
   certificates:
     external: true
+  default_nginx_html:
+    external: true
+
 
 networks:
   proxy-ginfo:

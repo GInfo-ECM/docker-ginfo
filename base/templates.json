@@ -19,12 +19,6 @@
         "default": "site.ginfo, site.ginfo.ec-m.fr"
       },
       {
-        "name": "EMAIL_FOR_CERTIFICATION",
-        "label": "Email pour la certification",
-        "description": "Email pour la certification LetsEncrypt",
-        "default": "email@centrale-marseille.fr"
-      },
-      {
         "name": "UID_UTILISATEUR",
         "label": "Uid utilisateur",
         "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
@@ -68,6 +62,12 @@
             "value": ""
           }
         ]
+      },
+      {
+        "name": "LETSENCRYPT_HOST",
+        "label": "Domaine à certifier par Lets Encrypt",
+        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+        "default": ""
       }
     ]
   },
@@ -89,12 +89,6 @@
         "label": "Nom de domaine",
         "description": "Le domaine à partir duquel on accèdera au site",
         "default": "site.ginfo, site.ginfo.ec-m.fr"
-      },
-      {
-        "name": "EMAIL_FOR_CERTIFICATION",
-        "label": "Email pour la certification",
-        "description": "Email pour la certification LetsEncrypt",
-        "default": "email@centrale-marseille.fr"
       },
       {
         "name": "UID_UTILISATEUR",
@@ -134,6 +128,12 @@
             "value": ""
           }
         ]
+      },
+      {
+        "name": "LETSENCRYPT_HOST",
+        "label": "Domaine à certifier par Lets Encrypt",
+        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+        "default": ""
       }
     ]
   },
@@ -273,7 +273,14 @@
         "label": "Mot de passe du proxy",
         "description": "Mot de passe du proxy",
         "default": "Obligatoire : à trouver sur le trousseau"
-      }]
+      },
+      {
+        "name": "LETSENCRYPT_HOST",
+        "label": "Domaine à certifier par Lets Encrypt",
+        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+        "default": ""
+      }
+    ]
   },
   {
     "type": 3,

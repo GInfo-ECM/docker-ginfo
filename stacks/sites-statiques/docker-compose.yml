@@ -2,7 +2,8 @@ version: '2'
 
 services:
   site:
-    build: apache
+    build:
+      context: apache
     volumes:
     - site_statique_data:/var/www
     restart: always
@@ -11,14 +12,13 @@ services:
     - proxy
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-      LETSENCRYPT_HOST: ${VIRTUAL_HOST}
-      LETSENCRYPT_EMAIL: ${EMAIL_FOR_CERTIFICATION}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
       APACHE_DOCUMENT_ROOT: ${WEB_ROOT}
       TRUSTED_PROXIES: reverse-proxy
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
 
-  save:
-    build: save-strategy
+  cron:
+    build: cron
     volumes:
     - site_statique_data:/site-to-save:ro
     - save_statique_data:/saves

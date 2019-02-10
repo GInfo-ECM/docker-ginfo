@@ -18,10 +18,6 @@ services:
     build:
       context: ./wordpress
       dockerfile: Dockerfile
-      args:
-        PROXY_HOST: ${PROXY_HOST}
-        PROXY_PASS: ${PROXY_PASS}
-        PROXY_USER: ${PROXY_USER}
     depends_on:
     - db
     volumes:
@@ -39,9 +35,13 @@ services:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
       TRUSTED_PROXIES: reverse-proxy
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+      PROXY_HOST: ${PROXY_HOST}
+      PROXY_PASS: ${PROXY_PASS}
+      PROXY_USER: ${PROXY_USER}
 
-  save:
-    build: save-strategy
+  cron:
+    build: cron
     depends_on:
     - wordpress
     - db
