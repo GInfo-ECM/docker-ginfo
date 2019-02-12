@@ -1,4 +1,4 @@
-FROM php:7.2.9-apache-stretch
+FROM php:7.2.15-apache-stretch
 MAINTAINER pnahoum@ec-m.fr
 
 RUN buildDeps=" \
