@@ -39,10 +39,10 @@ services:
     container_name: reverse-proxy-letsencrypt-certificator
     networks:
     - proxy-ginfo
+    - internet
     restart: always
     volumes_from:
       - reverse-proxy
-      - internet
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
