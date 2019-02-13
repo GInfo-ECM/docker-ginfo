@@ -56,11 +56,6 @@ ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 
-#Gestion du launcher
-COPY start-command.sh /start-command.sh
-RUN chmod +x /start-command.sh
-CMD /start-command.sh
-
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
