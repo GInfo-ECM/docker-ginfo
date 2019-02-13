@@ -1,4 +1,46 @@
+SecRuleEngine On
+SecRequestBodyAccess On
+SecRequestBodyLimit 13107200
+SecRequestBodyNoFilesLimit 131072
+SecRequestBodyInMemoryLimit 131072
+SecRequestBodyLimitAction Reject
+SecPcreMatchLimit 1000
+SecPcreMatchLimitRecursion 1000
+SecResponseBodyAccess On
+SecResponseBodyMimeType text/plain text/html text/xml
+SecResponseBodyLimit 524288
+SecResponseBodyLimitAction ProcessPartial
+SecTmpDir /tmp/
+SecDataDir /tmp/
+SecAuditEngine RelevantOnly
+SecAuditLogRelevantStatus "^(?:5|4(?!04))"
+SecAuditLogParts ABIJDEFHZ
+SecAuditLogType Serial
+SecAuditLog /var/log/modsec_audit.log
+SecArgumentSeparator &
+SecCookieFormat 0
+SecUnicodeMapFile unicode.mapping 20127
+SecStatusEngine On
+
 SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=upload-theme" "log,deny,msg:'Access Denied',id:2"
 SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=upload-plugin" "log,deny,msg:'Access Denied',id:3"
 SecRule REQUEST_URI|ARGS|REQUEST_BODY "theme-editor.php" "log,deny,msg:'Access Denied',id:4"
 SecRule REQUEST_URI|ARGS|REQUEST_BODY "plugin-editor.php" "log,deny,msg:'Access Denied',id:5"
+
+#Block WP logins with no referring URL
+<Locationmatch "/wp-login.php">
+SecRule REQUEST_METHOD "POST"  "deny,status:401,id:5000130,chain,msg:'wp-login request blocked, no referer'"
+SecRule &HTTP_REFERER "@eq 0"
+</Locationmatch>
+
+#Wordpress Brute Force detection
+SecAction phase:1,nolog,pass,initcol:ip=%{REMOTE_ADDR},id:5000134
+<Locationmatch "/wp-login.php">
+# Setup brute force detection.
+# React if block flag has been set.
+SecRule ip:bf_block "@gt 0" "deny,status:401,log,id:5000135,msg:'ip address blocked for 5 minutes, more than 10 login attempts in 3 minutes.'"
+# Setup Tracking.  On a successful login, a 302 redirect is performed, a 200 indicates login failed.
+SecRule RESPONSE_STATUS "^302" "phase:5,t:none,nolog,pass,setvar:ip.bf_counter=0,id:5000136"
+SecRule RESPONSE_STATUS "^200" "phase:5,chain,t:none,nolog,pass,setvar:ip.bf_counter=+1,deprecatevar:ip.bf_counter=1/180,id:5000137"
+SecRule ip:bf_counter "@gt 10" "t:none,setvar:ip.bf_block=1,expirevar:ip.bf_block=300,setvar:ip.bf_counter=0"
+</locationmatch>
