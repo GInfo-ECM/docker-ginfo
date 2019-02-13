@@ -95,6 +95,16 @@ ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 
+#Gestion des logs
+RUN mkdir -p ${APACHE_LOG_DIR}/
+RUN mkdir -p ${APACHE_DOCUMENT_ROOT}/
+RUN touch ${APACHE_LOG_DIR}/access.log
+RUN touch ${APACHE_LOG_DIR}/error.log
+RUN chown -R www-data:www-data ${APACHE_LOG_DIR}/
+
+#Premier fichier
+COPY index.php ${APACHE_DOCUMENT_ROOT}/index.php
+
 #Gestion de point d'entrée
 COPY startup.sh /var/www/startup.sh
 RUN chmod +x /var/www/startup.sh
