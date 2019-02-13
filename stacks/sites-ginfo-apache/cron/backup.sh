@@ -187,4 +187,8 @@ echo "#######################" >> $log_file
 # Removing lock after successful backup
 rm /var/backup_lock
 
+#Removing apache log file after cron
+> /site-to-save/logs/access.log
+> /site-to-save/logs/error.log
+
 exit 0
