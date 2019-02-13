@@ -13,7 +13,7 @@ services:
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
-      APACHE_DOCUMENT_ROOT: ${WEB_ROOT}
+      APACHE_DOCUMENT_ROOT: "/var/www/html"
       TRUSTED_PROXIES: reverse-proxy
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
 

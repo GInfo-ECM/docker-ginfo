@@ -109,11 +109,6 @@
         "default": "Remplir absolument"
       },
       {
-        "name": "WEB_ROOT",
-        "label": "Racine de l'hébergement web",
-        "default": "/var/www/html"
-      },
-      {
         "name": "NETWORK_ACCESS",
         "label": "Application interne ?",
         "description": "L'application doit elle être restreinte au réseau du GInfo",
