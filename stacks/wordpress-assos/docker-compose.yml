@@ -22,6 +22,7 @@ services:
     - db
     volumes:
       - wp_data:/var/www/html
+      - wp_misc:/var/www/misc
     restart: always
     networks:
     - interne
@@ -46,7 +47,8 @@ services:
     - wordpress
     - db
     volumes:
-    - wp_data:/site-to-save:ro
+    - wp_data:/site-to-save/html
+    - wp_misc:/site-to-save/misc
     - save_data:/saves
     restart: always
     networks:
@@ -61,6 +63,8 @@ volumes:
     name: db_data
   wp_data:
     name: wp_data
+  wp_misc:
+    name: wp_misc
   save_data:
     name: save_data
 

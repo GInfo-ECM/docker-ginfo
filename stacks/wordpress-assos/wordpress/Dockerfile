@@ -43,13 +43,13 @@ RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername.conf
 
 #Gestion du Mod Security
-COPY modsecurity_rules /var/www/modsecurity.conf
+COPY modsecurity_rules /var/www/misc/modsecurity.conf
 RUN apt-get install -y libapache2-modsecurity \
- && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf
+ && ln -s /var/www/misc/modsecurity.conf /etc/modsecurity/modsecurity.conf
 
 #Gestion des logs
-ENV APACHE_LOG_DIR /var/www/logs
-RUN mkdir -p /var/www/logs
+ENV APACHE_LOG_DIR /var/www/misc/logs
+RUN mkdir -p /var/www/misc/logs
 
 #Gestion de l'heure
 ENV TZ=Europe/Paris
