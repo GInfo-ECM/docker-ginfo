@@ -20,7 +20,7 @@ services:
   cron:
     build: cron
     volumes:
-    - site_statique_data:/site-to-save:ro
+    - site_statique_data:/site-to-save
     - save_statique_data:/saves
     restart: always
     depends_on:

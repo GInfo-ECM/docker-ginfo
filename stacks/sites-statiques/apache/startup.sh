@@ -4,4 +4,5 @@ mkdir -p ${APACHE_DOCUMENT_ROOT}
 #Importation des variables d'environnement
 > /etc/environment
 echo "export APACHE_LOG_DIR=${APACHE_LOG_DIR}" >> /etc/environment
+echo "export APACHE_DOCUMENT_ROOT=${APACHE_DOCUMENT_ROOT}" >> /etc/environment
 #Autres instructions

@@ -64,7 +64,6 @@ RUN touch ${APACHE_LOG_DIR}/error.log
 RUN chown -R www-data:www-data ${APACHE_LOG_DIR}/
 RUN echo ". /etc/environment" >> /etc/apache2/envvars
 
-
 #Gestion du launcher
 COPY apache2-foreground /usr/bin/
 RUN chmod +x /usr/bin/apache2-foreground
