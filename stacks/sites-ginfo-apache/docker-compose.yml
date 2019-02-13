@@ -38,7 +38,7 @@ services:
   cron:
     build: cron
     volumes:
-    - site_data:/site-to-save:ro
+    - site_data:/site-to-save
     - save_data:/saves
     restart: always
     depends_on:
