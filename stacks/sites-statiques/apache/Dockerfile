@@ -61,6 +61,7 @@ RUN mkdir -p ${APACHE_LOG_DIR}/
 RUN mkdir -p ${APACHE_DOCUMENT_ROOT}/
 RUN touch ${APACHE_LOG_DIR}/access.log
 RUN touch ${APACHE_LOG_DIR}/error.log
+RUN chown -R www-data:www-data ${APACHE_LOG_DIR}
 
 
 #Gestion du launcher
