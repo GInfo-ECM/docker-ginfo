@@ -38,3 +38,4 @@ for e in "${!APACHE_@}"; do
 done
 
 exec apache2ctl -DFOREGROUND "$@"
+

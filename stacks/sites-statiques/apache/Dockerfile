@@ -68,6 +68,6 @@ RUN chown -R www-data:www-data ${APACHE_LOG_DIR}
 COPY apache2-foreground /usr/bin/
 RUN chmod +x /usr/bin/apache2-foreground
 
-#CMD /entrypoint.sh
+CMD apachectl -D FOREGROUND
 
 EXPOSE 80
