@@ -77,7 +77,7 @@ networks:
       name: postfix-wordpress
   proxyhttp:
     external:
-      name: bridge-squid-int
+      name: bridge-squid-wordpress
   interne:
     driver: bridge
     internal: true

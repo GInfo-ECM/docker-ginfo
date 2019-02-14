@@ -56,6 +56,9 @@ ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 
+#Gestion de la taille des uploads
+COPY uploads.ini /usr/local/etc/php/conf.d/
+
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

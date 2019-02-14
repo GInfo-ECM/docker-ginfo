@@ -1,25 +1,4 @@
 SecRuleEngine On
-SecRequestBodyAccess On
-SecRequestBodyLimit 13107200
-SecRequestBodyNoFilesLimit 131072
-SecRequestBodyInMemoryLimit 131072
-SecRequestBodyLimitAction Reject
-SecPcreMatchLimit 1000
-SecPcreMatchLimitRecursion 1000
-SecResponseBodyAccess On
-SecResponseBodyMimeType text/plain text/html text/xml
-SecResponseBodyLimit 524288
-SecResponseBodyLimitAction ProcessPartial
-SecTmpDir /tmp/
-SecDataDir /tmp/
-SecAuditEngine RelevantOnly
-SecAuditLogRelevantStatus "^(?:5|4(?!04))"
-SecAuditLogParts ABIJDEFHZ
-SecAuditLogType Serial
-SecAuditLog /var/log/modsec_audit.log
-SecArgumentSeparator &
-SecCookieFormat 0
-SecUnicodeMapFile unicode.mapping 20127
 SecStatusEngine On
 
 SecRule REQUEST_URI|ARGS|REQUEST_BODY "action=upload-theme" "log,deny,msg:'Access Denied',id:2"
