@@ -5,7 +5,8 @@ mkdir -p ${APACHE_DOCUMENT_ROOT}
 
 #Si l'hébergement est vide, on rajoute un index par défaut (premier démarrage)
 if [ -z "$(ls -A ${APACHE_DOCUMENT_ROOT})" ]; then
-   cp /etc/apache2/index_default.php ${APACHE_DOCUMENT_ROOT}/index.php
+   cp /etc/apache2/index_default.php ${APACHE_DOCUMENT_ROOT}/index.php;
+   chown -R www-data:www-data ${APACHE_DOCUMENT_ROOT}
 fi
 
 #Gestion de PhpMyAdmin au démarrage - ne pas supprimer (sauf si vous ne voulez plus de PhpMyAdmin)
