@@ -16,7 +16,7 @@
         "name": "VIRTUAL_HOST",
         "label": "Nom de domaine",
         "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo, site.ginfo.ec-m.fr"
+        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
       },
       {
         "name": "UID_UTILISATEUR",
@@ -88,7 +88,7 @@
         "name": "VIRTUAL_HOST",
         "label": "Nom de domaine",
         "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo, site.ginfo.ec-m.fr"
+        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
       },
       {
         "name": "UID_UTILISATEUR",
@@ -295,7 +295,7 @@
         "name": "VIRTUAL_HOST",
         "label": "Nom de domaine",
         "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo, site.ginfo.ec-m.fr"
+        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
       },
       {
         "name": "NETWORK_ACCESS",
