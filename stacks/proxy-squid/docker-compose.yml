@@ -8,10 +8,12 @@ services:
        gateway: ${GATEWAY}
     ports:
       - "3128:3128"
+    container_name: squid
     cap_add:
     - NET_ADMIN
     networks:
       - bridge-squid-int
+      - bridge-squid-wordpress
       - internet
     volumes:
     - cache:/var/spool/squid
@@ -28,6 +30,9 @@ networks:
   bridge-squid-int:
     external:
       name: bridge-squid-int
+  bridge-squid-wordpress:
+    external:
+      name: bridge-squid-wordpress
   internet:
     external:
       name: internet
