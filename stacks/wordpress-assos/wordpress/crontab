@@ -14,5 +14,5 @@
 ###########
 
 #0 4 * * * root /usr/lib/wp-update  >> /var/log/wpupdate-$(date +\%Y\%m\%d).log 2>/dev/null
-8 1 * * * root /usr/lib/wp-update  >> /var/log/wpupdate-$(date +\%Y\%m\%d).log 2>/dev/null
+20 1  * * * root /usr/lib/wp-update  >> /var/log/wpupdate-$(date +\%Y\%m\%d).log 2>/dev/null
 
