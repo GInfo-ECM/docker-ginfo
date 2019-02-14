@@ -33,12 +33,14 @@ services:
     - certificates:/etc/nginx/certs
     - /etc/nginx/vhost.d
     - default_nginx_html:/usr/share/nginx/html
+    - nginx_basic_auth:/etc/nginx/htpasswd
 
   letsencrypt-certificator:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: reverse-proxy-letsencrypt-certificator
     networks:
     - proxy-ginfo
+    - proxy-wordpress
     - internet
     restart: always
     volumes_from:
@@ -53,15 +55,16 @@ volumes:
     external: true
   default_nginx_html:
     external: true
-
+  nginx_basic_auth:
+    external: true
 
 networks:
   proxy-ginfo:
     external:
-      name: nginx-proxy-wordpress
+      name: nginx-proxy-ginfo
   proxy-wordpress:
     external:
-      name: nginx-proxy-ginfo
+      name: nginx-proxy-wordpress
   internet:
     external:
       name: internet
