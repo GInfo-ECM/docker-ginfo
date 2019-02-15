@@ -1,5 +1,9 @@
 #!/bin/sh
 
+############### Printing in a log file
+logfile=/var/log/wpupdate-$(date +\%Y\%m\%d).log
+exec > $logfile 2>&1
+
 ##### No need to update wp-cli
 # wp cli update >> /var/log/wpcliupdate.log 2>&1
 
@@ -32,3 +36,4 @@ wp theme update --all
 echo "\n------ Plugins update ------"
 wp plugin list
 wp plugin update --all
+
