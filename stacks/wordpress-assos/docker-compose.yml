@@ -40,6 +40,8 @@ services:
       PROXY_HOST: ${PROXY_HOST}
       PROXY_PASS: ${PROXY_PASS}
       PROXY_USER: ${PROXY_USER}
+      LIST_THEMES_KEPT: ${LIST_THEMES_KEPT}
+      LIST_PLUGINS_KEPT: ${LIST_PLUGINS_KEPT}
 
   cron:
     build: cron

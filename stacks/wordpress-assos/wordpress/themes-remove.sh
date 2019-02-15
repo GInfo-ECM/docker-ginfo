@@ -7,7 +7,9 @@ TIMELAPSE="2 years"
 ACTIVEINSTALLS=500
 DEFAULTTHEME=twentynineteen
 
-LIST_THEMES_KEPT="" #list in format "elem1 elem2 elem3" 
+# List of themes to be kept even if the conditions for removal are met
+#LIST_THEMES_KEPT="" #list in format "elem1 elem2 elem3" 
+# Should now be an environment variable, kept here for clarity
 
 delete_theme () {
     echo "Uninstalling theme $1"

@@ -7,7 +7,8 @@ TIMELAPSE="2 years"
 ACTIVEINSTALLS=300
 
 # List of plugins not to be deleted even if conditions are true
-LIST_PLUGINS_KEPT="" 	# list in format "name1 name2 name3"
+#LIST_PLUGINS_KEPT="" 	# list in format "name1 name2 name3"
+# Should now be an environment variable, let here for the clarity
 
 delete_plugin () {
     echo "Uninstalling plugin $1"
