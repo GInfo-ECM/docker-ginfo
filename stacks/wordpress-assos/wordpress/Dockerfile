@@ -62,9 +62,11 @@ COPY uploads.ini /usr/local/etc/php/conf.d/
 #Gestion de l'envoi de mails
 RUN apt-get install -y ssmtp && \
   apt-get clean && \
-  echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf && \
   sed -i 's/mailhub=mail/mailhub=postfix:25/g' /etc/ssmtp/ssmtp.conf && \
+  sed -i 's/#rewriteDomain=/rewriteDomain=centrale-marseille.fr/g' /etc/ssmtp/ssmtp.conf && \
+  chfn -f "WordPress - GInfo Centrale Marseille" www-data && \
   echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
+
 
 # Cleanup
 RUN apt-get clean
