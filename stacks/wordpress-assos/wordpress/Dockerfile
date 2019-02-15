@@ -65,6 +65,7 @@ RUN apt-get install -y ssmtp && \
   sed -i 's/mailhub=mail/mailhub=postfix:25/g' /etc/ssmtp/ssmtp.conf && \
   sed -i 's/#rewriteDomain=/rewriteDomain=centrale-marseille.fr/g' /etc/ssmtp/ssmtp.conf && \
   chfn -f "WordPress - GInfo Centrale Marseille" www-data && \
+  echo "www-data:no-reply@centrale-marseille.fr:postfix:25" >> /etc/ssmtp/revaliases && \
   echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
 
 
