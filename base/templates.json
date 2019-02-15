@@ -277,13 +277,13 @@
       },
       {
         "name": "LIST_THEMES_KEPT",
-        "label": "Liste des thèmes à conserver même s'ils vérifient les conditions de suppression",
+        "label": "Thèmes à conserver",
         "description": "Donner sous forme de liste les thèmes à conserver dans tous les cas (memes s'ils ne vérifient pas les conditions de conservation",
         "default": ""
       },
       {
         "name": "LIST_PLUGINS_KEPT",
-        "label": "Liste des plugins à conserver même s'ils vérifient les conditions de suppression",
+        "label": "Plugins à conserver",
         "description": "Donner sous forme de liste les plugins à conserver dans tous les cas (memes s'ils ne vérifient pas les conditions de conservation",
         "default": ""
       }
