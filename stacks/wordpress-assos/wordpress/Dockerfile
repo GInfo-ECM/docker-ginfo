@@ -68,6 +68,8 @@ RUN apt-get install -y ssmtp && \
   echo "www-data:no-reply@centrale-marseille.fr:postfix:25" >> /etc/ssmtp/revaliases && \
   echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
 
+#Gestion de l'affichage des logs dans la console docker
+RUN sed -i.bck '$s/$/ \&\ntail -f ${APACHE_LOG_DIR}\/access.log \&\ntail -f ${APACHE_LOG_DIR}\/error.log/' /usr/local/bin/docker-entrypoint.sh
 
 # Cleanup
 RUN apt-get clean
