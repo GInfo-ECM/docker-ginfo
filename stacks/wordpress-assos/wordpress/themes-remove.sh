@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # For each plugin check if it fits our criterions (updated less than 3y ago, more that 100 active_installs
 
 # For testing, use theme "default"
@@ -7,7 +7,7 @@ TIMELAPSE="2 years"
 ACTIVEINSTALLS=500
 DEFAULTTHEME=twentynineteen
 
-LIST_THEMES_KEPT=(twentynineteen,twentysixteen)
+LIST_THEMES_KEPT="" #list in format "elem1 elem2 elem3" 
 
 delete_theme () {
     echo "Uninstalling theme $1"
@@ -51,10 +51,6 @@ do
 
 		    if [[ "$d2" < "$d1" ]] && [[ $active -lt $ACTIVEINSTALLS ]] # date criterion
 		    then
-			echo $d2
-			echo $d1
-			echo $active
-			echo $ACTIVEINSTALLS
 		        delete_theme $theme
 		    fi
 
