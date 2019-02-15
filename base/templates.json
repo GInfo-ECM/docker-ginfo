@@ -252,24 +252,6 @@
         ]
       },
       {
-        "name": "PROXY_HOST",
-        "label": "Adresse du proxy",
-        "description": "Adresse du proxy http pour permettre à wordpress d'accéder à internet",
-        "default": "squid"
-      },
-      {
-        "name": "PROXY_USER",
-        "label": "Utilisateur du proxy",
-        "description": "Utilisateur bridé dédié à wordpress sur le proxy",
-        "default": "gwordpress"
-      },
-      {
-        "name": "PROXY_PASS",
-        "label": "Mot de passe du proxy",
-        "description": "Mot de passe du proxy",
-        "default": "Obligatoire : à trouver sur le trousseau"
-      },
-      {
         "name": "LETSENCRYPT_HOST",
         "label": "Domaine à certifier par Lets Encrypt",
         "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
