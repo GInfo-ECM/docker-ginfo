@@ -231,9 +231,9 @@
     "env": [
       {
         "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site Wordpress",
-        "default": "site.asso.centrale-marseille.fr, site.assos.centrale-marseille.fr"
+        "label": "Nom(s) de domaine",
+        "description": "Le(s) domaine(s) à partir duquel on accèdera au site Wordpress",
+        "default": "site.asso.centrale-marseille.fr, aliassite.asso.centrale-marseille.fr"
       },
       {
         "name": "NETWORK_ACCESS",
