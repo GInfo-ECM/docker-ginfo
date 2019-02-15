@@ -21,11 +21,11 @@ wp core update-db --path="/var/www/html"
 
 
 echo "\n------ Deprecated themes removal ------"
-/usr/lib/wp-theme-removal
+/usr/lib/wp-theme-remove
 
 
 echo "\n------ Deprecated plugins removal ------"
-/usr/lib/wp-plugin-removal
+/usr/lib/wp-plugin-remove
 
 
 echo "\n------ Themes update ------"
