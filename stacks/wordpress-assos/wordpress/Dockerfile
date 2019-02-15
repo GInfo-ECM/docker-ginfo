@@ -59,6 +59,13 @@ COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 #Gestion de la taille des uploads
 COPY uploads.ini /usr/local/etc/php/conf.d/
 
+#Gestion de l'envoi de mails
+RUN apt-get install -y ssmtp && \
+  apt-get clean && \
+  echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf && \
+  sed -i 's/mailhub=mail/mailhub=postfix:25/g' /etc/ssmtp/ssmtp.conf && \
+  echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
+
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
