@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # For each plugin check if it fits our criterions (updated less than 3y ago, more that 100 active_installs
 
 # To test you can use plugin "smart-throttle"
@@ -6,7 +6,7 @@
 TIMELAPSE="2 years"
 ACTIVEINSTALLS=300
 
-LIST_PLUGINS_KEPT=("hello")
+LIST_PLUGINS_KEPT=("akismet")
 
 delete_plugin () {
     echo "Uninstalling plugin $1"
