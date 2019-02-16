@@ -51,7 +51,7 @@ do
 		    d1=$(date --utc --date="$(date)" +"%Y-%m-%d %H:%M:%S")
 		    d2=$(date --utc --date="$date+$TIMELAPSE" +"%Y-%m-%d %H:%M:%S")
 
-		    if [[ "$d2" < "$d1" ]] && [[ $active -lt $ACTIVEINSTALLS ]] # date criterion
+		    if [[ "$d2" < "$d1" ]] || [[ $active -lt $ACTIVEINSTALLS ]] # date criterion
 		    then
 		        delete_theme $theme
 		    fi
