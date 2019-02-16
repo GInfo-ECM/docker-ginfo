@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y sudo less mysql-client cron jq
 RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 COPY wp-su.sh /bin/wp
 RUN chmod +x /bin/wp-cli.phar /bin/wp
+RUN mkdir -p /root/.wp-cli/cache/
+RUN chmod 777 /root/.wp-cli/cache/
 
 # Add updates (with file removal)
 COPY update.sh /usr/lib/wp-update
@@ -61,11 +63,14 @@ COPY uploads.ini /usr/local/etc/php/conf.d/
 
 #Gestion de l'envoi de mails
 RUN apt-get install -y ssmtp && \
+  apt-get install -y colorized-logs && \
   apt-get clean && \
   sed -i 's/mailhub=mail/mailhub=postfix:25/g' /etc/ssmtp/ssmtp.conf && \
   sed -i 's/#rewriteDomain=/rewriteDomain=centrale-marseille.fr/g' /etc/ssmtp/ssmtp.conf && \
   chfn -f "WordPress - GInfo Centrale Marseille" www-data && \
+  chfn -f "Plateforme Wordpress du GInfo" root && \
   echo "www-data:no-reply@centrale-marseille.fr:postfix:25" >> /etc/ssmtp/revaliases && \
+  echo "root:no-reply@centrale-marseille.fr:postfix:25" >> /etc/ssmtp/revaliases && \
   echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
 
 #Gestion de l'affichage des logs dans la console docker
