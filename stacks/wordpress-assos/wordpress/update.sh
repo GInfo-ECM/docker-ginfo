@@ -8,7 +8,7 @@ exec > $logfile 2>&1
 #Installer
 siteurl=$(wp option get siteurl --path='/var/www/html')
 email=$(wp option get admin_email --path='/var/www/html')
-email_list="pnahoum@ec-m.fr"
+email_list="none@ec-m.fr"
 d=$(date)
 error="Error"
 success="Success"
@@ -18,12 +18,10 @@ evalCommand () {
     eval $1 > /tmp/tempwpfile 2>&1
     cmdoutput=$(cat /tmp/tempwpfile)
     if [[ $cmdoutput == *"Error"* ]]; then
-        echo "\e[0m\e[31m"
+        echo "\e[0m\e[31m$(< /tmp/tempwpfile)\e[0m"
     else
-        echo "\e[0m\e[32m"
+        echo "\e[0m\e[32m$(< /tmp/tempwpfile)\e[0m"
     fi
-    echo "$(< /tmp/tempwpfile)"
-    echo "\e[0m"
     rm /tmp/tempwpfile
 }
 
@@ -45,18 +43,18 @@ evalCommand 'wp core update-db --path="/var/www/html"'
 
 echo "\n\e[34m------ Suppression des thèmes dépréciés ------\e[0m"
 themeremove=$(/usr/lib/wp-theme-remove)
-[ -z "$themeremove" ] && echo "Aucun thème n'a été supprimé" || echo "\e[31m"$themeremove"\e[0m\n"
+[ -z "$themeremove" ] && echo "\e[0m\e[32m OK : Aucun thème n'a été supprimé\e[0m" || echo "\e[31m"$themeremove"\e[0m\n"
 
 echo "\n\e[34m------ Suppression des plugins dépréciés ------\e[0m"
 pluginremove=$(/usr/lib/wp-plugin-remove)
-[ -z "$pluginremove" ] && echo "Aucun plugin n'a été supprimé" || echo "\e[31m"$pluginremove"\e[0m\n"
+[ -z "$pluginremove" ] && echo "\e[0m\e[32m OK : Aucun plugin n'a été supprimé\e[0m" || echo "\e[31m"$pluginremove"\e[0m\n"
 
 echo "\n\e[34m------ Mise à jour des thèmes ------\e[0m"
-wp theme list
+SHELL_PIPE=0 wp theme list
 evalCommand 'wp theme update --all'
 
 echo "\n\e[34m------ Mise à jour des plugins ------\e[0m"
-wp plugin list
+SHELL_PIPE=0 wp plugin list
 evalCommand 'wp plugin update --all'
 
 echo "\n\n\e[1m------ Informations supplémentaires ------\e[0m"
