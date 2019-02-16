@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y sudo less mysql-client cron jq
 RUN mkdir /home/www-data
 RUN curl -o /home/www-data/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 COPY wp-su.sh /bin/wp
-RUN chmod +x /home/www-data /wp-cli.phar /bin/wp
+RUN chmod +x /home/www-data/wp-cli.phar /bin/wp
 RUN chown -R www-data:www-data /home/www-data
 ENV WP_CLI_CACHE_DIR /home/www-data
 
