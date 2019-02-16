@@ -1,4 +1,7 @@
 #!/bin/bash
+##### Utilisation du proxy #####
+#export http_proxy=http://squid:3128
+#export https_proxy=https://squid:3128
 ############ Définition des variables ############
 logfile=/var/log/wpupdate-last.log
 mailfilehtml=/var/log/wpupdate-last.log.html
@@ -8,7 +11,7 @@ exec > $logfile 2>&1
 siteurl=$(wp option get siteurl --path='/var/www/html')
 email=$(wp option get admin_email --path='/var/www/html')
 #Mailing list de suivi de la plateforme
-email_list="liste@ec-m.fr"
+email_list="d@ec-m.fr"
 d=$(date)
 errorCount=0
 
@@ -22,6 +25,14 @@ evalCommand () {
     else
         echo "\e[0m\e[32m$(< /tmp/tempwpfile)\e[0m"
     fi
+    rm /tmp/tempwpfile
+}
+
+#Evalue une commande et retourne sont contenu
+evalCommandNeutral() {
+    eval $1 > /tmp/tempwpfile 2>&1
+    cmdoutput=$(cat /tmp/tempwpfile)
+    echo "$(< /tmp/tempwpfile)"
     rm /tmp/tempwpfile
 }
 
@@ -52,7 +63,7 @@ SHELL_PIPE=0 wp plugin list
 evalCommand 'wp plugin update --all'
 
 echo "\n\e[34m-- Suppression des thèmes dépréciés --\e[0m"
-themeremove=$(/usr/lib/wp-theme-remove)
+themeremove=$(evalCommandNeutral /usr/lib/wp-theme-remove)
 if [ -z "$themeremove" ]
 then
       echo "\e[0m\e[32m OK : Aucun thème n'a été supprimé\e[0m"
@@ -62,7 +73,7 @@ else
 fi
 
 echo "\n\e[34m-- Suppression des plugins dépréciés --\e[0m"
-pluginremove=$(/usr/lib/wp-plugin-remove)
+pluginremove=$(evalCommandNeutral /usr/lib/wp-plugin-remove)
 if [ -z "$pluginremove" ]
 then
       echo "\e[0m\e[32m OK : Aucun plugin n'a été supprimé\e[0m"
@@ -94,7 +105,7 @@ header="To:$email,$email_list\nSubject:$errorHeader Rapport des tâches routini�
 echo -e $header > $mailfilehtml
 sed -i -e "s/strerror/$errorString/g" $logfile
 echo -e "$(< $logfile)" | ansi2html >> $mailfilehtml
-sendmail -t < /var/log/wpupdate-last.log.html
+/usr/sbin/sendmail -t < /var/log/wpupdate-last.log.html
 
 ############ Nettoyage ############
 rm $mailfilehtml
