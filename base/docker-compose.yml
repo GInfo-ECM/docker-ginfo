@@ -25,6 +25,8 @@ services:
     networks:
     - proxy-wordpress
     - proxy-ginfo
+    environment:
+      DEFAULT_HOST: default.asso.centrale-marseille.fr
     ports:
     - "80:80"
     - "443:443"
