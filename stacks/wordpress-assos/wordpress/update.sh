@@ -104,7 +104,7 @@ fi
 header="To:$email,$email_list\nSubject:$errorHeader Rapport des tâches routinières du $d pour le site $siteurl\nMIME-Version: 1.0\r\nContent-Type: text/html; charset=utf-8"
 echo -e $header > $mailfilehtml
 sed -i -e "s/strerror/$errorString/g" $logfile
-echo -e "$(< $logfile)" | ansi2html >> $mailfilehtml
+echo -e "$(< $logfile)" | ansi2html -w >> $mailfilehtml
 /usr/sbin/sendmail -t < /var/log/wpupdate-last.log.html
 
 ############ Nettoyage ############
