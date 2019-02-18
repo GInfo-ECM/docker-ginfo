@@ -11,6 +11,7 @@ DEFAULTTHEME=twentynineteen
 #LIST_THEMES_KEPT="" #list in format "elem1 elem2 elem3" 
 # Should now be an environment variable, kept here for clarity
 
+declare -a NOTHING_DELETED
 NOTHING_DELETED=true
 
 delete_theme () {

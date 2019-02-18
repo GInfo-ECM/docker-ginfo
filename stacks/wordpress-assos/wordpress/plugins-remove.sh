@@ -10,6 +10,7 @@ ACTIVEINSTALLS=300
 #LIST_PLUGINS_KEPT="" 	# list in format "name1 name2 name3"
 # Should now be an environment variable, let here for the clarity
 
+declare -a NOTHING_DELETED
 NOTHING_DELETED=true
 
 delete_plugin () {
