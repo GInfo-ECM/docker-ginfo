@@ -28,7 +28,7 @@ delete_theme () {
 }
 
 
-wp theme list --field=name | while read theme
+while read theme
 do
 	
 	# Skip the part of the list that we want to keep
@@ -82,8 +82,8 @@ do
 		echo "Error : can't check for updates, probably due to connection"
 		exit 1
 	fi
-done
+done <<< "$(wp theme list --field=name)"
 [[ $? != 0 ]] && exit $?
 
 # If nothing has been deleted then success
-if $NOTHING_DELETED; then echo "\e[0m\e[32m OK : No themes were removed \e[0m"; fi
+if $NOTHING_DELETED; then echo "\e[0m\e[32m OK : No themescat were removed \e[0m"; fi

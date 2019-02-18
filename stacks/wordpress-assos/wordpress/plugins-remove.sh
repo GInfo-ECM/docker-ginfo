@@ -19,7 +19,7 @@ delete_plugin () {
 }
 
 
-wp plugin list --field=name | while read plug; do 
+while read plug; do 
 	
 	# Skip the part of the list we want to keep
 	for val in $LIST_PLUGINS_KEPT
@@ -72,7 +72,7 @@ wp plugin list --field=name | while read plug; do
 		echo "Error : can't check for updates, probably due to connection"
 		exit 1
 	fi
-done
+done <<< "$(wp plugin list --field=name)"
 [[ $? != 0 ]] && exit $?
 
 # If nothing has been deleted then success
