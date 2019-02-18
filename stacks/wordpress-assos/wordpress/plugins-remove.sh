@@ -66,7 +66,7 @@ wp plugin list --field=name | while read plug; do
 		fi	
 	elif [ $? -eq 1 ]
 	then 
-		echo "\n Error while checking possible updates, probably due to connection with error $?"
+		echo "Error : can't check for updates, probably due to connection"
 		exit 1
 	fi
 done
@@ -75,5 +75,5 @@ done
 # If nothing has been deleted then success
 if [ $NOTHING_DELETED ]
 then
-	echo "\e[0m\e[32m OK : No plugin were removed \e[0m"
+	echo "\e[0m\e[32m OK : No plugins were removed \e[0m"
 fi

@@ -76,7 +76,7 @@ do
 		fi  		
 	elif [ $? -eq 1 ]
 	then 
-		echo "\n Error while checking possible updates, probably due to connection with error $?"
+		echo "Error : can't check for updates, probably due to connection"
 		exit 1
 	fi
 done
