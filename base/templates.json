@@ -261,7 +261,7 @@
         "name": "LIST_THEMES_KEPT",
         "label": "Thèmes à conserver",
         "description": "Donner sous forme de liste les thèmes à conserver dans tous les cas (memes s'ils ne vérifient pas les conditions de conservation)",
-        "default": ""
+        "default": "ginfo-oauth-plugin"
       },
       {
         "name": "LIST_PLUGINS_KEPT",

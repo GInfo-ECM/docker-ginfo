@@ -8,7 +8,7 @@ exec > $logfile 2>&1
 siteurl=$(wp option get siteurl --path='/var/www/html')
 email=$(wp option get admin_email --path='/var/www/html')
 #Mailing list de suivi de la plateforme
-email_list="d@ec-m.fr"
+email_list="$MAILING_LIST_SYSADMIN@listes.centrale-marseille.fr"
 d=$(date)
 errorCount=0
 
@@ -18,7 +18,7 @@ evalCommand () {
     eval $1 > /tmp/tempwpfile 2>&1
     cmdoutput=$(cat /tmp/tempwpfile)
     if [[ $cmdoutput == *"Error"* ]]; then
-        echo "\e[0m\e[31m$(< /tmp/tempwpfile)\e[0m"
+        echo "\e[0m\e[31m$(< /tmp/tempwpfile)\e[0m"xzxz
         errorCount=$((errorCount+1))
     elif [[ $cmdoutput == *"Warning"* ]]; then
         echo "\e[0m\e[33m$(< /tmp/tempwpfile)\e[0m"

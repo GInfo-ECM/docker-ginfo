@@ -2,8 +2,8 @@
 # For each plugin check if it fits our criterions (updated less than 3y ago, more that 100 active_installs
 # For testing, use theme "default"
 
-TIMELAPSE="3 years"
-ACTIVEINSTALLS=300
+TIMELAPSE="6 years"
+ACTIVEINSTALLS=1000
 DEFAULTTHEME=twentynineteen
 
 # List of themes to be kept even if the conditions for removal are met

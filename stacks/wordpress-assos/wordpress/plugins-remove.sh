@@ -2,7 +2,7 @@
 # For each plugin check if it fits our criterions (updated less than 3y ago, more that 100 active_installs
 # To test you can use plugin "smart-throttle"
 
-TIMELAPSE="3 years"
+TIMELAPSE="4 years"
 ACTIVEINSTALLS=300
 
 # List of plugins not to be deleted even if conditions are true

@@ -42,6 +42,7 @@ services:
       HTTPS_PROXY: 'http://squid:3128'
       LIST_THEMES_KEPT: ${LIST_THEMES_KEPT}
       LIST_PLUGINS_KEPT: ${LIST_PLUGINS_KEPT}
+      MAILING_LIST_SYSADMIN: 'ginfo-sysadmin'
 
   cron:
     build: cron
