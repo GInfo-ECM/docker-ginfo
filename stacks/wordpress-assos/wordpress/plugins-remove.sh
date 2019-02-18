@@ -13,7 +13,6 @@ ACTIVEINSTALLS=300
 NOTHING_DELETED=true
 
 delete_plugin () {
-    NOTHING_DELETED=false
     echo "Warning ! Uninstalling plugin $1"
     wp plugin uninstall --deactivate "$1"
 }
@@ -53,6 +52,7 @@ wp plugin list --field=name | while read plug; do
 			    if [[ "$d2" < "$d1" ]] || [[ $active -lt $ACTIVEINSTALLS ]]  # date criterion
 			    then
 				delete_plugin $plug
+				NOTHING_DELETED=false
 			    fi
 
 				isNotInDb=false
@@ -64,6 +64,7 @@ wp plugin list --field=name | while read plug; do
 		if [[ "$isNotInDb" = true ]]
 		then
 		    delete_plugin $plug
+		    NOTHING_DELETED=false
 		fi	
 	elif [ $retval -eq 1 ]
 	then 

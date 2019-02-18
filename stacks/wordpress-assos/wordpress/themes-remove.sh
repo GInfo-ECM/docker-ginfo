@@ -14,7 +14,6 @@ DEFAULTTHEME=twentynineteen
 NOTHING_DELETED=true
 
 delete_theme () {
-    NOTHING_DELETED=false
     echo "Warning ! Uninstalling theme $1"
     wp theme is-active $1
     act=$(echo $?)
@@ -64,6 +63,7 @@ do
 			    if [[ "$d2" < "$d1" ]] || [[ $active -lt $ACTIVEINSTALLS ]] # date criterion
 			    then
 				delete_theme $theme
+				NOTHING_DELETED=false
 			    fi
 
 				isNotInDb=false
@@ -74,6 +74,7 @@ do
 		if [[ "$isNotInDb" = true ]]
 		then
 		    delete_theme $theme
+		    NOTHING_DELETED=false
 		fi  	
 	elif [ $retval -eq 1 ]
 	then
