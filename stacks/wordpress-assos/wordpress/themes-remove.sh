@@ -1,6 +1,4 @@
 #!/bin/bash
-#Proxy conf#
-source /usr/lib/proxy.sh
 # For each plugin check if it fits our criterions (updated less than 3y ago, more that 100 active_installs
 # For testing, use theme "default"
 

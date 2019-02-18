@@ -40,8 +40,11 @@ COPY proxy_infos.inc.php /var/www/proxy_infos.inc.php
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 RUN start.sh
-COPY proxy.sh /usr/lib/proxy.sh
-RUN chmod +x /usr/lib/proxy.sh
+
+#Gestion des variables d'environnement
+COPY env_reset.sh /usr/lib/env_reset.sh
+RUN chmod +x /usr/lib/env_reset.sh
+RUN sed -i '/bash/a \/usr/lib/env_reset.sh' /usr/local/bin/docker-entrypoint.sh
 
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf

@@ -1,6 +1,4 @@
 #!/bin/bash
-#Proxy conf#
-source /usr/lib/proxy.sh
 ############ Définition des variables ############
 logfile=/var/log/wpupdate-last.log
 mailfilehtml=/var/log/wpupdate-last.log.html

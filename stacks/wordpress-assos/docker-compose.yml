@@ -37,6 +37,7 @@ services:
       NETWORK_ACCESS: ${NETWORK_ACCESS}
       TRUSTED_PROXIES: reverse-proxy
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+      PROXY_HOST: squid
       HTTP_PROXY: 'http://squid:3128'
       HTTPS_PROXY: 'http://squid:3128'
       LIST_THEMES_KEPT: ${LIST_THEMES_KEPT}
