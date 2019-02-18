@@ -85,7 +85,7 @@ done
 [[ $? != 0 ]] && exit $?
 
 # If nothing has been deleted then success
-if [ $NOTHING_DELETED ]
+if $NOTHING_DELETED
 then
 	echo "\e[0m\e[32m OK : No theme were removed \e[0m"
 fi
