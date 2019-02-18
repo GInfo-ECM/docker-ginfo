@@ -41,7 +41,7 @@ do
 	isNotInDb=true
 
 
-	{ research="$(jq -c '.[]' <<< `wp theme search $theme --fields=slug,last_updated,active_installs --format=json`)" &&
+	 research="$(jq -c '.[]' <<< `wp theme search $theme --fields=slug,last_updated,active_installs --format=json`)"
 
 	while read i;
 	do
@@ -62,14 +62,15 @@ do
 			isNotInDb=false
 		fi
 	done <<< $research 
+	
 	# If the plugin is not in the wordpress db
 	if [[ "$isNotInDb" = true ]]
 	then
 	    delete_theme $theme
-	fi  } || 
+	fi  
 	
-	{
-		echo "no internet connection"
-	} 
+	#{
+#		echo "no internet connection"
+#	} 
 	
 done
