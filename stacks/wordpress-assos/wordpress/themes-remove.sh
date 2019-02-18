@@ -46,8 +46,9 @@ do
 
 	research=`wp theme search $theme --fields=slug,last_updated,active_installs --format=json`
 	
+	retval=$?
 	# Checking if error (if so wp already prints something so we just prevent the deletion)
-	if [ $? -eq 0]
+	if [ $retval -eq 0 ]
 	then 
 		while read i;
 		do
@@ -73,9 +74,9 @@ do
 		if [[ "$isNotInDb" = true ]]
 		then
 		    delete_theme $theme
-		fi  		
-	elif [ $? -eq 1 ]
-	then 
+		fi  	
+	elif [ $retval -eq 1 ]
+	then
 		echo "Error : can't check for updates, probably due to connection"
 		exit 1
 	fi

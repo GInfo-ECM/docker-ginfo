@@ -34,9 +34,10 @@ wp plugin list --field=name | while read plug; do
 	isNotInDb=true
 
 	research=`wp plugin search $plug --fields=slug,last_updated,active_installs --format=json`
-	# Checking if error (if so wp already prints something so we just prevent the deletion)
 
-	if [ $? -eq 0]
+	retval=$?
+	# Checking if error (if so wp already prints something so we just prevent the deletion)
+	if [ $retval -eq 0 ]
 	then 	
 		while read i;
 		do
@@ -64,7 +65,7 @@ wp plugin list --field=name | while read plug; do
 		then
 		    delete_plugin $plug
 		fi	
-	elif [ $? -eq 1 ]
+	elif [ $retval -eq 1 ]
 	then 
 		echo "Error : can't check for updates, probably due to connection"
 		exit 1
