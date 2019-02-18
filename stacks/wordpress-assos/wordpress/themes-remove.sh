@@ -11,8 +11,11 @@ DEFAULTTHEME=twentynineteen
 #LIST_THEMES_KEPT="" #list in format "elem1 elem2 elem3" 
 # Should now be an environment variable, kept here for clarity
 
+NOTHING_DELETED=true
+
 delete_theme () {
-    echo "Uninstalling theme $1"
+    NOTHING_DELETED=false
+    echo "Warning ! Uninstalling theme $1"
     wp theme is-active $1
     act=$(echo $?)
     if [[ $act -eq 0 ]]
@@ -41,36 +44,42 @@ do
 	isNotInDb=true
 
 
-	 research="$(jq -c '.[]' <<< `wp theme search $theme --fields=slug,last_updated,active_installs --format=json`)"
+	research=`wp theme search $theme --fields=slug,last_updated,active_installs --format=json`
+	
+	# Checking if error (if so wp already prints something so we just prevent the deletion)
+	if [ $? -eq 0]
+	then 
+		while read i;
+		do
+		    slug=$(echo `jq -r '.slug' <<< ${i}`)
+		    date=$(echo `jq -r '.last_updated' <<< ${i}`)
+		    active=$(echo `jq -r '.active_installs' <<< ${i}`)
 
-	while read i;
-	do
-	    slug=$(echo `jq -r '.slug' <<< ${i}`)
-            date=$(echo `jq -r '.last_updated' <<< ${i}`)
-            active=$(echo `jq -r '.active_installs' <<< ${i}`)
+			if [[ "$slug" == "$theme" ]]
+			then
+			    d1=$(date --utc --date="$(date)" +"%Y-%m-%d %H:%M:%S")
+			    d2=$(date --utc --date="$date+$TIMELAPSE" +"%Y-%m-%d %H:%M:%S")
 
-		if [[ "$slug" == "$theme" ]]
+			    if [[ "$d2" < "$d1" ]] || [[ $active -lt $ACTIVEINSTALLS ]] # date criterion
+			    then
+				delete_theme $theme
+			    fi
+
+				isNotInDb=false
+			fi
+		done <<< $(jq -c '.[]' <<< $research )
+		
+		# If the plugin is not in the wordpress db
+		if [[ "$isNotInDb" = true ]]
 		then
-		    d1=$(date --utc --date="$(date)" +"%Y-%m-%d %H:%M:%S")
-		    d2=$(date --utc --date="$date+$TIMELAPSE" +"%Y-%m-%d %H:%M:%S")
-
-		    if [[ "$d2" < "$d1" ]] || [[ $active -lt $ACTIVEINSTALLS ]] # date criterion
-		    then
-		        delete_theme $theme
-		    fi
-
-			isNotInDb=false
-		fi
-	done <<< $research 
-	
-	# If the plugin is not in the wordpress db
-	if [[ "$isNotInDb" = true ]]
-	then
-	    delete_theme $theme
-	fi  
-	
-	#{
-#		echo "no internet connection"
-#	} 
-	
+		    delete_theme $theme
+		fi  		
+	fi
 done
+
+
+# If nothing has been deleted then success
+if [ $NOTHING_DELETED ]
+then
+	echo "Success : no theme has been deleted"
+fi
