@@ -76,7 +76,7 @@ done
 [[ $? != 0 ]] && exit $?
 
 # If nothing has been deleted then success
-if $NOTHING_DELETED
+if [[ "$NOTHING_DELETED" = true ]]
 then
 	echo "\e[0m\e[32m OK : No plugins were removed \e[0m"
 fi
