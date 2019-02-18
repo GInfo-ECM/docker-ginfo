@@ -74,6 +74,9 @@ do
 		then
 		    delete_theme $theme
 		fi  		
+	else 
+		echo "Error while checking possible updates, probably due to connection"
+		exit 1
 	fi
 done
 
