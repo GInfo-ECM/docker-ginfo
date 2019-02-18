@@ -58,15 +58,15 @@ wp plugin list --field=name | while read plug; do
 				#echo $i # Put here the conditions
 			fi
 		done <<< "$(jq -c '.[]' <<< $research )"
-		[[ $? != 0 ]] && exit $?
 
 		# If the plugin is not in the wordpress db
 		if [[ "$isNotInDb" = true ]]
 		then
 		    delete_plugin $plug
-		fi		
-	else 	
-		echo "Error while checking possible updates, probably due to connection"
+		fi	
+	elif [ $? -eq 1 ]
+	then 
+		echo "\n Error while checking possible updates, probably due to connection with error $?"
 		exit 1
 	fi
 done
@@ -75,5 +75,5 @@ done
 # If nothing has been deleted then success
 if [ $NOTHING_DELETED ]
 then
-	echo "Success : no plugin has been deleted"
+	echo "\e[0m\e[32m OK : No plugin were removed \e[0m"
 fi
