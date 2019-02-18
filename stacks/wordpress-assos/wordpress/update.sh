@@ -28,13 +28,21 @@ evalCommand () {
     rm /tmp/tempwpfile
 }
 
-#Evalue une commande et retourne sont contenu
-evalCommandNeutral() {
+#Evalue une commande et retourne sont contenu en fonction de si elle contient Error ou Warning ou rien
+evalCommandNeutral () {
     eval $1 > /tmp/tempwpfile 2>&1
     cmdoutput=$(cat /tmp/tempwpfile)
-    echo "$(< /tmp/tempwpfile)"
+    if [[ $cmdoutput == *"Error"* ]]; then
+        echo "\e[0m\e[31m$(< /tmp/tempwpfile)\e[0m"
+        errorCount=$((errorCount+1))
+    elif [[ $cmdoutput == *"Warning"* ]]; then
+        echo "\e[0m\e[33m$(< /tmp/tempwpfile)\e[0m"
+        errorCount=$((errorCount+1))
+    else
+        echo "\e[0m\e[32m$(< /tmp/tempwpfile)\e[0m"
+    fi
     rm /tmp/tempwpfile
-}
+    }
 
 ############ Début des tâches routinières ############
 cd /var/www/html
@@ -63,24 +71,10 @@ SHELL_PIPE=0 wp plugin list
 evalCommand 'wp plugin update --all'
 
 echo "\n\e[34m-- Suppression des thèmes dépréciés --\e[0m"
-themeremove=$(evalCommandNeutral /usr/lib/wp-theme-remove)
-if [ -z "$themeremove" ]
-then
-      echo "\e[0m\e[32m OK : Aucun thème n'a été supprimé\e[0m"
-else
-      echo "\e[31m"$themeremove"\e[0m\n";
-      errorCount=$((errorCount+1))
-fi
+evalCommandNeutral "/usr/lib/wp-theme-remove"
 
 echo "\n\e[34m-- Suppression des plugins dépréciés --\e[0m"
-pluginremove=$(evalCommandNeutral /usr/lib/wp-plugin-remove)
-if [ -z "$pluginremove" ]
-then
-      echo "\e[0m\e[32m OK : Aucun plugin n'a été supprimé\e[0m"
-else
-      echo "\e[31m"$pluginremove"\e[0m\n";
-      errorCount=$((errorCount+1))
-fi
+evalCommandNeutral '/usr/lib/wp-plugin-remove'
 
 echo "\n\n\e[1m------ Informations supplémentaires ------\e[0m"
 echo "\n\e[34m-- Espace disque disponible --\e[0m"
