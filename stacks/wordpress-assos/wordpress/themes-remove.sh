@@ -68,7 +68,8 @@ do
 				isNotInDb=false
 			fi
 		done <<< $(jq -c '.[]' <<< $research )
-		
+		[[ $? != 0 ]] && exit $?
+
 		# If the plugin is not in the wordpress db
 		if [[ "$isNotInDb" = true ]]
 		then
@@ -79,7 +80,7 @@ do
 		exit 1
 	fi
 done
-
+[[ $? != 0 ]] && exit $?
 
 # If nothing has been deleted then success
 if [ $NOTHING_DELETED ]

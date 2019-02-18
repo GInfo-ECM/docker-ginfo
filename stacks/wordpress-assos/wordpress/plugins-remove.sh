@@ -58,7 +58,8 @@ wp plugin list --field=name | while read plug; do
 				#echo $i # Put here the conditions
 			fi
 		done <<< "$(jq -c '.[]' <<< $research )"
-		
+		[[ $? != 0 ]] && exit $?
+
 		# If the plugin is not in the wordpress db
 		if [[ "$isNotInDb" = true ]]
 		then
@@ -69,10 +70,10 @@ wp plugin list --field=name | while read plug; do
 		exit 1
 	fi
 done
-
+[[ $? != 0 ]] && exit $?
 
 # If nothing has been deleted then success
 if [ $NOTHING_DELETED ]
 then
-	echo "Success : no theme has been deleted"
+	echo "Success : no plugin has been deleted"
 fi
