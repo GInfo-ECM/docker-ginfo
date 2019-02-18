@@ -1,10 +1,11 @@
 #!/bin/bash
+#Proxy conf#
+source /usr/lib/proxy.sh
 # For each plugin check if it fits our criterions (updated less than 3y ago, more that 100 active_installs
-
 # For testing, use theme "default"
 
-TIMELAPSE="2 years"
-ACTIVEINSTALLS=500
+TIMELAPSE="3 years"
+ACTIVEINSTALLS=300
 DEFAULTTHEME=twentynineteen
 
 # List of themes to be kept even if the conditions for removal are met
@@ -86,4 +87,4 @@ done <<< "$(wp theme list --field=name)"
 [[ $? != 0 ]] && exit $?
 
 # If nothing has been deleted then success
-if $NOTHING_DELETED; then echo "\e[0m\e[32m OK : No theme were removed \e[0m"; fi
+if $NOTHING_DELETED; then echo "\e[0m\e[32m OK : No theme was removed \e[0m"; fi

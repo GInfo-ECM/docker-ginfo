@@ -1,9 +1,12 @@
 #!/bin/bash
-# For each plugin check if it fits our criterions (updated less than 3y ago, more that 100 active_installs
 
+#Proxy conf#
+source /usr/lib/proxy.sh
+
+# For each plugin check if it fits our criterions (updated less than 3y ago, more that 100 active_installs
 # To test you can use plugin "smart-throttle"
 
-TIMELAPSE="2 years"
+TIMELAPSE="3 years"
 ACTIVEINSTALLS=300
 
 # List of plugins not to be deleted even if conditions are true
@@ -76,4 +79,4 @@ done <<< "$(wp plugin list --field=name)"
 [[ $? != 0 ]] && exit $?
 
 # If nothing has been deleted then success
-if $NOTHING_DELETED; then echo "\e[0m\e[32m OK : No plugins were removed \e[0m"; fi
+if $NOTHING_DELETED; then echo "\e[0m\e[32m OK : No plugin was removed \e[0m"; fi

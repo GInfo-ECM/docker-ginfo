@@ -35,11 +35,13 @@ RUN a2enconf remoteip.conf
 RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 
-#Gestion du proxy
+#Gestion du proxy (adresse : squid)
 COPY proxy_infos.inc.php /var/www/proxy_infos.inc.php
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 RUN start.sh
+COPY proxy.sh /usr/lib/proxy.sh
+RUN chmod +x /usr/lib/proxy.sh
 
 #Servername setup apache
 RUN echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf

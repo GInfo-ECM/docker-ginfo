@@ -1,7 +1,6 @@
 #!/bin/bash
-##### Utilisation du proxy #####
-#export http_proxy=http://squid:3128
-#export https_proxy=https://squid:3128
+#Proxy conf#
+source /usr/lib/proxy.sh
 ############ Définition des variables ############
 logfile=/var/log/wpupdate-last.log
 mailfilehtml=/var/log/wpupdate-last.log.html
@@ -16,20 +15,8 @@ d=$(date)
 errorCount=0
 
 #Execute une commande Wordpress et défini si la sortie contient une erreur ou non
-evalCommand () {
-    eval $1 > /tmp/tempwpfile 2>&1
-    cmdoutput=$(cat /tmp/tempwpfile)
-    if [[ $cmdoutput == *"Error"* ]]; then
-        echo "\e[0m\e[31m$(< /tmp/tempwpfile)\e[0m"
-        errorCount=$((errorCount+1))
-    else
-        echo "\e[0m\e[32m$(< /tmp/tempwpfile)\e[0m"
-    fi
-    rm /tmp/tempwpfile
-}
-
 #Evalue une commande et retourne sont contenu en fonction de si elle contient Error ou Warning ou rien
-evalCommandNeutral () {
+evalCommand () {
     eval $1 > /tmp/tempwpfile 2>&1
     cmdoutput=$(cat /tmp/tempwpfile)
     if [[ $cmdoutput == *"Error"* ]]; then
@@ -43,6 +30,8 @@ evalCommandNeutral () {
     fi
     rm /tmp/tempwpfile
     }
+
+
 
 ############ Début des tâches routinières ############
 cd /var/www/html
@@ -71,10 +60,10 @@ SHELL_PIPE=0 wp plugin list
 evalCommand 'wp plugin update --all'
 
 echo "\n\e[34m-- Suppression des thèmes dépréciés --\e[0m"
-evalCommandNeutral "/usr/lib/wp-theme-remove"
+evalCommand '/usr/lib/wp-theme-remove'
 
 echo "\n\e[34m-- Suppression des plugins dépréciés --\e[0m"
-evalCommandNeutral '/usr/lib/wp-plugin-remove'
+evalCommand '/usr/lib/wp-plugin-remove'
 
 echo "\n\n\e[1m------ Informations supplémentaires ------\e[0m"
 echo "\n\e[34m-- Espace disque disponible --\e[0m"
