@@ -45,6 +45,9 @@ RUN apt-get install -y libapache2-modsecurity \
  && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
  && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf
 
+#Gestion de la configuration aditionnelle du VHOST apache
+RUN touch ${APACHE_DOCUMENT_ROOT}/additional_vhost_conf.conf
+
 #Gestion de l'heure
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
