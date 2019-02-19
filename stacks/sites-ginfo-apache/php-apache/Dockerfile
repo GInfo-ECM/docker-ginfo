@@ -91,7 +91,7 @@ RUN apt-get install -y libapache2-modsecurity \
  && echo "<Directory \${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo>\nSecRuleEngine Off\n</Directory>" >> /var/www/modsecurity.conf
 
 #Gestion de la configuration aditionnelle du VHOST apache
-RUN touch ${APACHE_DOCUMENT_ROOT}/additional_vhost_conf.conf
+RUN touch /var/www/additional_vhost_conf.conf
 
 #Gestion de l'heure
 ENV TZ=Europe/Paris
