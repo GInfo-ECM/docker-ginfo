@@ -71,6 +71,9 @@ RUN echo ". /etc/environment" >> /etc/apache2/envvars
 COPY apache2-foreground /usr/bin/
 RUN chmod +x /usr/bin/apache2-foreground
 
+#Permissions générales
+RUN chown -R www-data:www-data /var/www/
+
 CMD /entrypoint.sh
 
 EXPOSE 80
