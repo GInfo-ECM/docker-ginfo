@@ -116,5 +116,7 @@ RUN chmod +x /entrypoint.sh
 #Permissions générales
 RUN chown -R www-data:www-data /var/www/
 
+RUN mkdir /test
+
 
 CMD /entrypoint.sh
