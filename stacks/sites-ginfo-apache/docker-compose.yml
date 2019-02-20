@@ -2,6 +2,7 @@ version: '2'
 
 services:
   db:
+    image: mysql-php-ginfo:latest
     build: mysql
     volumes:
     - db_data:/var/lib/mysql
@@ -15,6 +16,7 @@ services:
       MYSQL_PASSWORD: ${PASSWORD_SFTP_SQL}
 
   site:
+    image: php7.2-php-ginfo:latest
     build:
       context: php-apache
     volumes:
@@ -36,6 +38,7 @@ services:
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
 
   cron:
+    image: cron-php-ginfo:latest
     build: cron
     volumes:
     - site_data:/site-to-save
@@ -52,6 +55,7 @@ services:
       DB_PASSWORD: ${PASSWORD_SFTP_SQL}
 
   sftp:
+    image: sftp-php-ginfo:latest
     build: sftp
     restart: always
     volumes:
