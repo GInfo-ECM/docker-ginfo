@@ -17,6 +17,7 @@ services:
   site:
     build:
       context: php-apache
+    image: php7.2-php-ginfo:latest
     volumes:
     - site_data:/var/www
     restart: always
