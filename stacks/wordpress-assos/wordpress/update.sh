@@ -74,15 +74,15 @@ echo "Cette plateforme est gérée par le GInfo, merci de le contacter en cas de
 ############ Envoi du rapport par mail ############
 if [ "$errorCount" != "0" ]
 then
-      errorHeader="[Important rapport]"
+      errorHeader="[Rapport Important]"
       errorString="\\\e[31mCe rapport contient $errorCount erreur(s) ou message(s) d'alerte requérant votre attention \\\e[0m"
 else
-      errorHeader="[Rapport]"
+      errorHeader="[Rapport OK]"
       errorString=""
 fi
 
 
-header="To:$email,$email_list\nSubject:$errorHeader Rapport des tâches routinières du $d pour le site $siteurl\nMIME-Version: 1.0\r\nContent-Type: text/html; charset=utf-8"
+header="To:$email,$email_list\nSubject:$errorHeader Rapport de routine du $d pour le site $siteurl\nMIME-Version: 1.0\r\nContent-Type: text/html; charset=utf-8"
 echo -e $header > $mailfilehtml
 sed -i -e "s/strerror/$errorString/g" $logfile
 echo -e "$(< $logfile)" | ansi2html -w >> $mailfilehtml
