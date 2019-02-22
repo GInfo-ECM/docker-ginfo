@@ -9,4 +9,5 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 #Taille de l'upload des fichiers
 RUN { \
       echo 'client_max_body_size 100m;'; \
+      echo 'proxy_read_timeout 5m;'; \
     } > /etc/nginx/conf.d/my_proxy.conf
