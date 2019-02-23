@@ -3,6 +3,7 @@ version: '2'
 services:
   db:
     build: mysql
+    image: mysql-wordpressginfo:latest
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -18,6 +19,7 @@ services:
     build:
       context: ./wordpress
       dockerfile: Dockerfile
+    image: wp-wordpressginfo:latest
     depends_on:
     - db
     volumes:
@@ -46,6 +48,7 @@ services:
 
   cron:
     build: cron
+    image: cron-wordpressginfo:latest
     depends_on:
     - wordpress
     - db
