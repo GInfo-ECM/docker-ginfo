@@ -80,12 +80,9 @@ services:
       PASS_SFTP: ${PASSWORD_SFTP_SQL}
 
 volumes:
-  db_data:
-    name: db_data
-  site_data:
-    name: site_data
-  save_data:
-    name: save_data
+  db_data: {}
+  site_data: {}
+  save_data: {}
 
 
 networks:
