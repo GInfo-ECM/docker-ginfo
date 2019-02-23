@@ -74,6 +74,7 @@
   {
     "type": 3,
     "title": "Site statique (pour les associations)",
+    "name": "nomdusitestatique",
     "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
     "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
     "categories": ["HTTPD"],
@@ -88,7 +89,7 @@
         "name": "VIRTUAL_HOST",
         "label": "Nom de domaine",
         "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+        "default": "nomdusitestatique.asso.centrale-marseille.fr, nomdusitestatique.ginfo.ec-m.fr"
       },
       {
         "name": "UID_UTILISATEUR",
