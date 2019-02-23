@@ -3,6 +3,7 @@ version: '2'
 services:
   db:
     build: mysql
+    image: mysql-phpginfo:latest
     volumes:
     - db_data:/var/lib/mysql
     restart: always
@@ -15,8 +16,8 @@ services:
       MYSQL_PASSWORD: ${PASSWORD_SFTP_SQL}
 
   site:
-    build:
-      context: php-apache
+    build: php-apache
+    image: php-phpginfo:latest
     volumes:
     - site_data:/var/www
     restart: always
@@ -37,6 +38,7 @@ services:
 
   cron:
     build: cron
+    image: cron-phpginfo:latest
     volumes:
     - site_data:/site-to-save
     - save_data:/saves
@@ -53,6 +55,7 @@ services:
 
   sftp:
     build: sftp
+    image: sftp-phpginfo:latest
     restart: always
     volumes:
     - site_data:/home/${USER_SFTP_SQL}/site

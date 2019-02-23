@@ -2,8 +2,8 @@ version: '2'
 
 services:
   site:
-    build:
-      context: apache
+    build: apache
+    image: apache-statiqueginfo:latest
     volumes:
     - site_statique_data:/var/www
     restart: always
@@ -19,6 +19,7 @@ services:
 
   cron:
     build: cron
+    image: cron-statiqueginfo:latest
     volumes:
     - site_statique_data:/site-to-save
     - save_statique_data:/saves
@@ -30,6 +31,7 @@ services:
 
   sftp:
     build: sftp
+    image: sftp-statiqueginfo:latest
     restart: always
     volumes:
     - site_statique_data:/home/${USER_SFTP}/site
