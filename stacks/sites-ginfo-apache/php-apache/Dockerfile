@@ -113,7 +113,7 @@ RUN chmod +x /var/www/startup.sh
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-#Permissions générales pour autoriser le SFTP
+#Permissions générales
 RUN chown -R www-data:www-data /var/www/
 
 
