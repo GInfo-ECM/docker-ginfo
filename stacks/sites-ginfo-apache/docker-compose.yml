@@ -8,7 +8,9 @@ services:
     - db_data:/var/lib/mysql
     restart: always
     networks:
-    - interne
+      interne:
+        aliases:
+        - db
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: ${USER_SFTP_SQL}
@@ -24,8 +26,12 @@ services:
     depends_on:
     - db
     networks:
-    - interne
-    - proxy
+      interne:
+        aliases:
+        - site
+      proxy:
+        aliases:
+        - site
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       DB_HOST: db:3306
@@ -47,7 +53,9 @@ services:
     - site
     - db
     networks:
-    - interne
+      interne:
+        aliases:
+        - cron
     environment:
       DB_HOST: db
       DB_USER: ${USER_SFTP_SQL}
@@ -61,7 +69,9 @@ services:
     - site_data:/home/${USER_SFTP_SQL}/site
     - save_data:/home/${USER_SFTP_SQL}/save
     networks:
-    - sftp
+      sftp:
+        aliases:
+        - sftp
     ports:
     - "22"
     command: ${USER_SFTP_SQL}:${PASSWORD_SFTP_SQL}:${UID_UTILISATEUR}:${UID_UTILISATEUR}
