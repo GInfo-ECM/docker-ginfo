@@ -45,6 +45,7 @@ echo "\n\e[1m------ Core Wordpress, plugins et templates ------\e[0m"
 
 echo "\n\e[34m-- Core Wordpress --\e[0m"
 evalCommand 'wp core update --path="/var/www/html"'
+evalCommand 'wp language core update --path="/var/www/html"'
 
 echo "\n\e[34m-- DB du Core --\e[0m"
 evalCommand 'wp core update-db --path="/var/www/html"'
@@ -52,10 +53,12 @@ evalCommand 'wp core update-db --path="/var/www/html"'
 echo "\n\e[34m-- Mise à jour des thèmes --\e[0m"
 SHELL_PIPE=0 wp theme list
 evalCommand 'wp theme update --all'
+evalCommand 'wp language theme update --all'
 
 echo "\n\e[34m-- Mise à jour des plugins --\e[0m"
 SHELL_PIPE=0 wp plugin list
 evalCommand 'wp plugin update --all'
+evalCommand 'wp language plugin update --all'
 
 echo "\n\e[34m-- Suppression des thèmes dépréciés --\e[0m"
 evalCommand '/usr/lib/wp-theme-remove'
