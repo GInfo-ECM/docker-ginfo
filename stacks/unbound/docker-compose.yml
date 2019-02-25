@@ -6,4 +6,4 @@ services:
     container_name: dns
     restart: always
     ports:
-    - "53:53"
+    - "53:53/udp"
