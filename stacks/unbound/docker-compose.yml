@@ -8,10 +8,3 @@ services:
     restart: always
     ports:
     - "53:53"
-    networks:
-    - bridge
-
-networks:
-  bridge:
-    external:
-      name: bridge
