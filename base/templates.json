@@ -345,5 +345,19 @@
       }
 
     ]
+  },
+  {
+    "type": 3,
+    "name": "dns",
+    "title": "Serveur Unbound DNS",
+    "description": "Serveur Unbound DNS",
+    "note": "Serveur Unbound DNS",
+    "categories": ["DNS"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/dns.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/unbound/docker-compose.yml"
+    }
   }
 ]
