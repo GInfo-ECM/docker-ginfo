@@ -15,9 +15,3 @@ networks:
   bridge:
     external:
       name: bridge
-  postfix-ginfo:
-    external:
-      name: postfix-ginfo
-  postfix-wordpress:
-    external:
-      name: postfix-wordpress
