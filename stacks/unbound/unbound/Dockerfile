@@ -33,25 +33,13 @@ RUN set -e -x && \
         /var/tmp/* \
         /var/lib/apt/lists/*
 
-FROM debian:stretch
+FROM debian:stretch as unbound
 LABEL maintainer="Matthew Vance"
 
 ENV NAME=unbound \
-    UNBOUND_VERSION=1.8.2 \
-    UNBOUND_SHA256=19f2235a8936d89e7dc919bbfcef355de759f220e36bb5e1e931ac000ed04993 \
-    UNBOUND_DOWNLOAD_URL=https://nlnetlabs.nl/downloads/unbound/unbound-1.8.2.tar.gz \
-    VERSION=0 \
-    SUMMARY="${NAME} is a validating, recursive, and caching DNS resolver." \
-    DESCRIPTION="${NAME} is a validating, recursive, and caching DNS resolver."
-
-LABEL summary="${SUMMARY}" \
-      description="${DESCRIPTION}" \
-      io.k8s.description="${DESCRIPTION}" \
-      io.k8s.display-name="Unbound ${UNBOUND_VERSION}" \
-      name="mvance/${NAME}" \
-      maintainer="Matthew Vance"
-
-EXPOSE 53
+    UNBOUND_VERSION=1.9.0 \
+    UNBOUND_SHA256=415af94b8392bc6b2c52e44ac8f17935cc6ddf2cc81edfb47c5be4ad205ab917 \
+    UNBOUND_DOWNLOAD_URL=https://nlnetlabs.nl/downloads/unbound/unbound-1.9.0.tar.gz
 
 WORKDIR /tmp/src
 
@@ -70,7 +58,7 @@ RUN build_deps="curl gcc libc-dev libevent-dev libexpat1-dev make" && \
     echo "${UNBOUND_SHA256} *unbound.tar.gz" | sha256sum -c - && \
     tar xzf unbound.tar.gz && \
     rm -f unbound.tar.gz && \
-    cd unbound-1.8.2 && \
+    cd unbound-1.9.0 && \
     groupadd _unbound && \
     useradd -g _unbound -s /etc -d /dev/null _unbound && \
     ./configure \
@@ -91,6 +79,43 @@ RUN build_deps="curl gcc libc-dev libevent-dev libexpat1-dev make" && \
         /var/tmp/* \
         /var/lib/apt/lists/*
 
+
+FROM debian:stretch
+LABEL maintainer="Matthew Vance"
+
+ENV NAME=unbound \
+    VERSION=1 \
+    SUMMARY="${NAME} is a validating, recursive, and caching DNS resolver." \
+    DESCRIPTION="${NAME} is a validating, recursive, and caching DNS resolver."
+
+LABEL summary="${SUMMARY}" \
+      description="${DESCRIPTION}" \
+      io.k8s.description="${DESCRIPTION}" \
+      io.k8s.display-name="Unbound ${UNBOUND_VERSION}" \
+      name="mvance/${NAME}" \
+      maintainer="Matthew Vance"
+
+WORKDIR /tmp/src
+
+COPY --from=unbound /opt /opt
+
+RUN set -x && \
+    DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
+      bsdmainutils \
+      ca-certificates \
+      ldnsutils \
+      libevent-2.0 \
+      libexpat1 && \
+    groupadd _unbound && \
+    useradd -g _unbound -s /etc -d /dev/null _unbound && \
+    apt-get purge -y --auto-remove \
+      $build_deps && \
+    rm -rf \
+        /opt/unbound/share/man \
+        /tmp/* \
+        /var/tmp/* \
+        /var/lib/apt/lists/*
+
 COPY a-records.conf /opt/unbound/etc/unbound/
 COPY unbound.sh /
 
@@ -99,5 +124,9 @@ RUN chmod +x /unbound.sh
 WORKDIR /opt/unbound/
 
 ENV PATH /opt/unbound/sbin:"$PATH"
+
+EXPOSE 53
+
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD drill @127.0.0.1 cloudflare.com || exit 1
 
 CMD ["/unbound.sh"]
