@@ -68,7 +68,7 @@ evalCommand '/usr/lib/wp-plugin-remove'
 
 echo "\n\n\e[1m------ Informations supplémentaires ------\e[0m"
 echo "\n\e[34m-- Espace disque disponible --\e[0m"
-df /
+df -h /
 
 echo "\n\n\e[1mCe mail a été envoyé à $email et à la mailing list du GInfo $email_list"
 echo "Cette plateforme est gérée par le GInfo, merci de le contacter en cas de problème avec ce rapport."
