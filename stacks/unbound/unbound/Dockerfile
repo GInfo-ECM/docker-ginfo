@@ -6,4 +6,6 @@ RUN chmod +x /unbound.sh
 
 EXPOSE 53
 
+HEALTHCHECK NONE
+
 CMD ["/unbound.sh"]
