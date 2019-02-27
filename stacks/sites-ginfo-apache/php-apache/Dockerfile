@@ -35,6 +35,10 @@ RUN buildDeps=" \
     && a2enmod rewrite \
     && a2enmod proxy \
     && a2enmod proxy_http \
+    && a2enmod session \
+    && a2enmod session_cookie \
+    && a2enmod request \
+    && a2enmod auth_form \
     && a2enmod proxy_balancer \
     && a2enmod lbmethod_byrequests \
     && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=composer \
