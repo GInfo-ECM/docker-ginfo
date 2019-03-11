@@ -37,12 +37,6 @@
         "default": "Remplir absolument"
       },
       {
-        "name": "DB_ROOT_PASSWORD",
-        "label": "Mot de passe root",
-        "description": "Mot de passe root de la base de donnée. Ne sera jamais utilisé",
-        "default": "Remplir absolument"
-      },
-      {
         "name": "WEB_ROOT",
         "label": "Racine de l'hébergement web",
         "default": "/var/www/html"
