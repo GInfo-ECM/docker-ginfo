@@ -18,7 +18,7 @@ do
         echo $(mailq)
         mailing "Postfix" "Une activité anormale a été détectée sur le serveur mail :$(mailq)"
 
-        sleep 600
+        sleep 86400
 
         else
 
