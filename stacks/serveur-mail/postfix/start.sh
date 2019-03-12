@@ -1,7 +1,7 @@
 #!/bin/bash
 #Fonctions
 function mailing(){
-mail -s "$1" monitoring@domain.mail.ltd -r bor+ginfo@centrale-marseille.fr -a "From: ginfo-monitoring" <<< "$2"
+mail -s "$1" monitoring@domain.mail.ltd -a "From: Serveur Mail du GInfo <no-reply@centrale-marseille.fr>" <<< "$2"
 echo "Mail d'avertissement envoyé"
 }
 
