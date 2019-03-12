@@ -102,6 +102,9 @@ ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 
+#Gestion de la taille des uploads
+COPY uploads.ini /usr/local/etc/php/conf.d/
+
 #Gestion des logs
 RUN mkdir -p ${APACHE_LOG_DIR}/
 RUN touch ${APACHE_LOG_DIR}/access.log
