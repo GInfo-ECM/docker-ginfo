@@ -16,10 +16,9 @@ RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools \
 
 COPY main.cf /etc/postfix/main.cf
 COPY transport /etc/postfix/transport
-COPY allowed_senders /etc/postfix/allowed_senders
 COPY start.sh /start.sh
 
-RUN echo "fast unix - - n - - smtp -o smtp_fallback_relay=" >> /etc/postfix/master.cf
+RUN echo "fast unix - - n - - smtp" >> /etc/postfix/master.cf
 ARG relay
 ARG monitoring_email
 RUN sed -i 's/relais.adresse.ltd/'$relay'/g' /etc/postfix/main.cf
@@ -31,7 +30,6 @@ ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN postmap /etc/postfix/transport
-RUN postmap /etc/postfix/allowed_senders
 RUN chmod +x /start.sh
 
 # Lancement

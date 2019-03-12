@@ -30,17 +30,12 @@ inet_protocols = all
 transport_maps = hash:/etc/postfix/transport
 
 # Limitation globales
-smtp_destination_concurrency_limit = 1
-smtp_extra_recipient_limit = 1
-smtp_destination_rate_delay = 60s
+smtp_destination_concurrency_limit = 10
+smtp_extra_recipient_limit = 10
+smtp_destination_rate_delay = 30s
 
 # Debridage @centrale-marseille.fr
 # Faster rates for internal domains (specified in transport map)
 fast_destination_concurrency_limit = 50
 fast_destination_rate_delay = 0s
-fast_extra_recipient_limit = 100
-
-
-#Blocage des faux domaines - ne marche pas encore
-smtpd_restriction_classes = insiders_only
-insiders_only = check_sender_access hash:/etc/postfix/allowed_senders, reject
+fast_extra_recipient_limit = 50
