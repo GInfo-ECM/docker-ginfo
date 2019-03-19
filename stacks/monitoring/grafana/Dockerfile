@@ -10,6 +10,10 @@ COPY datasources /etc/grafana/datasources
 
 COPY setup.sh /setup.sh
 
+COPY customconf.ini /custom.ini
+
+RUN cat /custom.ini >> /usr/share/grafana/conf/default.ini
+
 RUN chmod +x /setup.sh
 
-ENTRYPOINT ["/bin/sh", "/setup.sh"]
+ENTRYPOINT ["/setup.sh"]

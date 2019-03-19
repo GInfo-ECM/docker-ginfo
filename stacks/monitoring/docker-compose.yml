@@ -6,6 +6,9 @@ networks:
   proxy:
     external:
       name: nginx-proxy-ginfo
+  mailing:
+    external:
+      name: postfix-ginfo
 
 volumes:
   prometheus_data:
@@ -31,6 +34,7 @@ services:
       - 9090
     networks:
       - monitor-net
+      - mailing
     labels:
       org.label-schema.group: "monitoring"
 
@@ -45,6 +49,7 @@ services:
       - 9093
     networks:
       - monitor-net
+      - mailing
     labels:
       org.label-schema.group: "monitoring"
 
@@ -103,6 +108,7 @@ services:
     networks:
       - monitor-net
       - proxy
+      - mailing
     labels:
       org.label-schema.group: "monitoring"
 
@@ -121,11 +127,6 @@ services:
   caddy:
     build: caddy
     container_name: caddy
-    ports:
-      - "3000:3000"
-      - "9090:9090"
-      - "9093:9093"
-      - "9091:9091"
     environment:
       ADMIN_USER: ${ADMIN_USER}
       ADMIN_PASSWORD: ${ADMIN_PASS}
