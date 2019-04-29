@@ -47,7 +47,7 @@ RUN apt-get autoclean && \
   rm -rf /usr/share/doc/*
 
 # Osixia/OpenLDAP extension
-# ADD bootstrap /container/service/slapd/assets/config/bootstrap
+ADD bootstrap /container/service/slapd/assets/config/bootstrap
 # ADD environment/${BUILD_ENV} /container/environment/01-custom
 
 WORKDIR /
