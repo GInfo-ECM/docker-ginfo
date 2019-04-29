@@ -353,5 +353,19 @@
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/unbound/docker-compose.yml"
     }
+  },
+  {
+    "type": 3,
+    "name": "ldap",
+    "title": "Serveur LDAP",
+    "description": "Serveur LDAP",
+    "note": "Serveur LDAP",
+    "categories": ["LDAP"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/openldap.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/ldap/docker-compose.yml"
+    }
   }
 ]
