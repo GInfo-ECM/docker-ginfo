@@ -50,6 +50,10 @@ services:
 
   mosquitto:
     image: eclipse-mosquitto
+    volumes:
+      - lora-mqtt-config:/mosquitto/config
+      - lora-mqtt-data:/mosquitto/data
+      - lora-mqtt-log:/mosquitto/log
     ports:
       - 1883:1883
     networks:
@@ -69,6 +73,12 @@ volumes:
     name: lora-data-postgresql
   lora-data-redis:
     name: lora-data-redis
+  lora-mqtt-config:
+    name: lora-mqtt-config
+  lora-mqtt-data:
+    name: lora-mqtt-data
+  lora-mqtt-log:
+    name: lora-mqtt-log
 
 networks:
   proxy:

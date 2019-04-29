@@ -366,6 +366,26 @@
     "repository": {
       "url": "https://github.com/GInfo-ECM/docker-ginfo/",
       "stackfile": "stacks/ldap/docker-compose.yml"
-    }
+    },
+    "env": [
+      {
+        "name": "LDAP_ORGANISATION",
+        "label": "Organisation",
+        "description": "Le nom de l'organisation possédant le serveur.",
+        "default": "GInfo"
+      },
+      {
+        "name": "LDAP_DOMAIN",
+        "label": "Domaine",
+        "description": "Domaine de l'organisation possédant le serveur.",
+        "default": "ginfo.ec-m.fr"
+      },
+      {
+        "name": "LDAP_ADMIN_PASSWORD",
+        "label": "Mot de passe administrateur",
+        "description": "Mot de passe du super-utilisateur.",
+        "default": ""
+      }
+    ]
   }
 ]

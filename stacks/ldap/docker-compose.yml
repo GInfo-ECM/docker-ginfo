@@ -11,7 +11,9 @@ services:
     networks:
     - ldap
     environment:
-      TRUSTED_PROXIES: reverse-proxy
+      LDAP_ORGANISATION: ${LDAP_ORGANISATION}
+      LDAP_DOMAIN: ${LDAP_DOMAIN}
+      LDAP_ADMIN_PASSWORD: ${LDAP_ADMIN_PASSWORD}
 
 volumes:
   ldap_data:
