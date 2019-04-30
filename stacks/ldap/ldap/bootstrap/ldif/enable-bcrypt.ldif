@@ -1,6 +1,5 @@
 # Add bcrypt support
 dn: cn=module{0},cn=config
-changetype: add
-objectClass: olcModuleList
-cn: module{0}
-olcModuleLoad: /usr/lib/ldap/pw-bcrypt.so
+changetype: modify
+add: olcModuleLoad
+olcModuleLoad: pw-bcrypt
