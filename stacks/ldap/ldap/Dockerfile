@@ -1,4 +1,4 @@
-FROM osixia/openldap:1.1.9
+FROM osixia/openldap:1.2.4
 
 ARG BUILD_ENV
 ENV BUILD_ENV=${BUILD_ENV:-"prod"}
