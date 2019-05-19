@@ -19,7 +19,12 @@ delete_plugin () {
 
 
 while read plug; do 
-	
+
+	if [[ $plug == *".php" ]]; then
+	    echo "Didn't update plugin $plug because it is droppin"
+	    continue 2
+    fi
+
 	# Skip the part of the list we want to keep
 	for val in $LIST_PLUGINS_KEPT
 	do
