@@ -39,7 +39,7 @@ echo "\e[1mRapport des tâches routinières du "$d" pour le site "$siteurl"\e[0m
 echo "strerror"
 
 echo "\n\e[1m------ WP CLI ------\e[0m"
-evalCommand 'wp cli update'
+evalCommand 'wp cli update --yes'
 
 echo "\n\e[1m------ Core Wordpress, plugins et templates ------\e[0m"
 
