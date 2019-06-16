@@ -387,5 +387,48 @@
         "default": ""
       }
     ]
+  },
+  {
+    "type": 3,
+    "title": "WIMS",
+    "description": "WIMS",
+    "note": "WIMS",
+    "categories": ["PHP"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/wims/docker-compose.yml"
+    },
+    "env": [
+      {
+        "name": "VIRTUAL_HOST",
+        "label": "Nom de domaine",
+        "description": "Le domaine à partir duquel on accèdera au site",
+        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+      },
+      {
+        "name": "UID_UTILISATEUR",
+        "label": "Uid utilisateur",
+        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+        "default": "33"
+      },
+      {
+        "name": "NETWORK_ACCESS",
+        "label": "Application interne ?",
+        "description": "L'application doit elle être restreinte au réseau du GInfo",
+        "select": [
+          {
+            "text": "Oui",
+            "value": "internal",
+            "default": true
+          },
+          {
+            "text": "Non",
+            "value": ""
+          }
+        ]
+      }
+    ]
   }
 ]
