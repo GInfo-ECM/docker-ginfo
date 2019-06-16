@@ -1,0 +1,36 @@
+# This is an example of identification file for connection to another platform.
+# It is used for platform authentification.
+# If you copy this file to another one in the same directory,
+# and modify the definitions, you get another platform identification
+# whose name is the name of that file.
+
+# calling the same WIMS server.
+
+# For security reasons, it is highly recommended that you only accept
+# localhost connections. Accept several sites, but no wildcard.
+ident_site=172.17.0.1
+
+# Short description
+ident_desc=This WIMS server
+
+# User agent of the connecting platform must identify itself as such.
+ident_agent=python-requests
+
+# https is highly recommended for security.
+ident_protocol=http
+
+# password must be a word composed of alpha-numeric characters.
+# This identification is disabled by the * in the password definition.
+ident_password=toto
+
+# type of remote platform.
+# available types: wims.
+ident_type=json
+
+# The address and identifier/password pair for calling back.
+back_url=http://localhost/wims/wims.cgi
+back_ident=myself
+back_password=toto
+
+# allowed or disabled requests. At most one of the two should be active.
+# ident_allow=

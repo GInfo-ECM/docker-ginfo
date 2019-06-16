@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  site:
+    build: docker-wims
+    image: docker-wims:latest
+    volumes:
+    - wims_data:/home/wims
+    restart: always
+    networks:
+    - interne
+    - proxy
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      APACHE_DOCUMENT_ROOT: ${WEB_ROOT}
+      TRUSTED_PROXIES: reverse-proxy
+
+volumes:
+  site_data:
+    driver: local
+    name: wims_data
+
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy-ginfo
+  interne:
+    driver: bridge
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: 'false'
