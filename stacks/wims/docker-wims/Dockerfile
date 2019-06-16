@@ -89,4 +89,4 @@ RUN echo 'site_manager=2' >> log/wims.conf
 COPY config/myself /home/wims/log/classes/.connections/
 COPY config/.def /home/wims/log/classes/9001/
 RUN a2enmod cgi
-#ENTRYPOINT ./bin/apache-config && service apache2 restart
+ENTRYPOINT ./bin/apache-config && service apache2 restart
