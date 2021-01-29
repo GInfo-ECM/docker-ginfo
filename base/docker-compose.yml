@@ -40,6 +40,8 @@ services:
   letsencrypt-certificator:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: reverse-proxy-letsencrypt-certificator
+    environment:
+      DEFAULT_EMAIL: ginfo@centrale-marseille.fr
     networks:
     - proxy-ginfo
     - proxy-wordpress
@@ -48,6 +50,7 @@ services:
     volumes_from:
       - reverse-proxy
     volumes:
+      - acme:/etc/acme.sh
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
 volumes:
@@ -59,6 +62,7 @@ volumes:
     external: true
   nginx_basic_auth:
     external: true
+  acme:
 
 networks:
   proxy-ginfo:
