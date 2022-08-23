@@ -38,7 +38,7 @@ services:
 
   react:
     build: nodejs-react
-    image: nodejs-react
+    image: nodejs-react:latest
     volumes:
     - react_data:/var/www
     restart: always
@@ -51,7 +51,7 @@ services:
       REACT_APP_API_URL: "api.${VIRTUAL_HOST}"
       APACHE_DOCUMENT_ROOT: ${WEB_ROOT}
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
-      TRUSTED_PROCIES: reverse-proxy
+      TRUSTED_PROXIES: reverse-proxy
 
   cron:
     build: cron
