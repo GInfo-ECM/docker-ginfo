@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Veuillez rentrer vos identifiants pour acceder a cette page"
+AuthUserFile /phpmyadmin/.htpasswd
+Require valid-user
