@@ -43,7 +43,7 @@ services:
     - react_data:/var/www
     restart: always
     depends_on:
-    - api
+    - site
     networks:
     - proxy
     environment:
