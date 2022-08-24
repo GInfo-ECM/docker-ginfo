@@ -92,6 +92,7 @@ RUN apt-get install -y libapache2-modsecurity \
  && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
  && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
  && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf \
+ && sed -i "s/setvar:'tx.allowed_methods=GET HEAD POST OPTIONS/setvar:'tx.allowed_methods=GET HEAD POST OPTIONS DELETE/g" /usr/share/modsecurity-crs/rules/REQUEST-901-INITIALIZATION.conf \
  && echo "<Directory \${APACHE_DOCUMENT_ROOT}/phpmyadmin-ginfo>\nSecRuleEngine Off\n</Directory>" >> /var/www/modsecurity.conf
 
 #Gestion de la configuration aditionnelle du VHOST apache
