@@ -44,7 +44,7 @@ RUN a2enmod rewrite \
     && a2enmod proxy_balancer \
     && a2enmod lbmethod_byrequests
 
-RUN php -r "readfile('https://getcomposer.org/installer');" | php --2 --install-dir=/usr/local/bin --filename=composer \
+RUN php -r "readfile('https://getcomposer.org/installer');" | php -- --2 --install-dir=/usr/local/bin --filename=composer \
     && chmod +x /usr/local/bin/composer
 
 #Install utilities
