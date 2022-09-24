@@ -91,7 +91,8 @@ RUN a2enmod remoteip
 RUN sed -i 's/%h/%a/g' /etc/apache2/apache2.conf
 
 #Gestion du Mod Security
-RUN apt-get install -y libapache2-modsecurity \
+RUN apt-get update
+ && apt-get install -y libapache2-modsecurity \
  && mv /etc/modsecurity/modsecurity.conf-recommended  /var/www/modsecurity.conf \
  && ln -s /var/www/modsecurity.conf /etc/modsecurity/modsecurity.conf \
  && sed -i 's/DetectionOnly/On/g' /var/www/modsecurity.conf \
