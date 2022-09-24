@@ -67,6 +67,72 @@
   },
   {
     "type": 3,
+    "title": "Site PHP 8 (pour les sites GInfo - nouvelle version - uniquement)",
+    "description": "Stack de base avec PHP8/MySQL/PHPMyAdmin pour les applications GInfo",
+    "note": "Stack de base avec PHP8/MySQL/PHPMyAdmin pour les applications GInfo",
+    "categories": ["PHP"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/sites-ginfo-apache-php-8/docker-compose.yml"
+    },
+    "env": [
+      {
+        "name": "VIRTUAL_HOST",
+        "label": "Nom de domaine",
+        "description": "Le domaine à partir duquel on accèdera au site",
+        "default": ""
+      },
+      {
+        "name": "UID_UTILISATEUR",
+        "label": "Uid utilisateur",
+        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+        "default": "33"
+      },
+      {
+        "name": "USER_SFTP_SQL",
+        "label": "Utilisateur",
+        "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
+        "default": "Remplir absolument"
+      },
+      {
+        "name": "PASSWORD_SFTP_SQL",
+        "label": "Mot de passe",
+        "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
+        "default": "Remplir absolument"
+      },
+      {
+        "name": "WEB_ROOT",
+        "label": "Racine de l'hébergement web",
+        "default": "/var/www/html/public"
+      },
+      {
+        "name": "NETWORK_ACCESS",
+        "label": "Application interne ?",
+        "description": "L'application doit elle être restreinte au réseau du GInfo",
+        "select": [
+          {
+            "text": "Oui",
+            "value": "internal"
+          },
+          {
+            "text": "Non",
+            "value": "",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "LETSENCRYPT_HOST",
+        "label": "Domaine à certifier par Lets Encrypt",
+        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "type": 3,
     "title": "Site React / PHP (pour les sites GInfo uniquement)",
     "description": "Stack de base avec Node/PHP/MySQL/PHPMyAdmin pour les applications GInfo",
     "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
