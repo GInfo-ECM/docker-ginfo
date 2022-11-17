@@ -1,0 +1,74 @@
+version: '2'
+
+services:
+  db:
+    build: pgsql
+    image: postgres
+    volumes:
+    - db_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+    - interne
+    environment:
+      POSTGRES_USER: ${USER_SFTP_SQL}
+      POSTGRES_PASSWORD: ${PASSWORD_SFTP_SQL}
+
+  site:
+    build: php8-apache
+    image: php8-phpginfo:latest
+    volumes:
+    - site_data:/var/www
+    restart: always
+    depends_on:
+    - db
+    networks:
+    - interne
+    - proxy
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      DB_HOST: db:3306
+      DB_USER: ${USER_SFTP_SQL}
+      DB_PASSWORD: ${PASSWORD_SFTP_SQL}
+      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      APACHE_DOCUMENT_ROOT: ${WEB_ROOT}
+      TRUSTED_PROXIES: reverse-proxy
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+
+  cron:
+    build: cron
+    image: cron-phpginfo:latest
+    volumes:
+    - site_data:/site-to-save
+    - save_data:/saves
+    restart: always
+    depends_on:
+    - site
+    - db
+    networks:
+    - interne
+    environment:
+      DB_HOST: db
+      DB_USER: ${USER_SFTP_SQL}
+      DB_PASSWORD: ${PASSWORD_SFTP_SQL}
+
+volumes:
+  db_data:
+    driver: local
+    name: db_data
+  site_data:
+    driver: local
+    name: site_data
+  save_data:
+    driver: local
+    name: save_data
+
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy-ginfo
+  interne:
+    driver: bridge
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: 'false'
