@@ -71,7 +71,8 @@ RUN ln -s /var/www/.ssh /root/.ssh
 RUN apt-get -y install gnupg && apt-get -y install gnupg1 && apt-get -y install gnupg2
 RUN apt-get -y install curl software-properties-common
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get install -y npm nodejs
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
 
 #Dossier par défaut de apache et configuration du reverse proxy
 ENV APACHE_DOCUMENT_ROOT /var/www/html
