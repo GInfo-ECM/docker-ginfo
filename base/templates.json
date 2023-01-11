@@ -136,9 +136,7 @@
     "title": "Site React / PHP (pour les sites GInfo uniquement)",
     "description": "Stack de base avec Node/PHP/MySQL/PHPMyAdmin pour les applications GInfo",
     "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
-    "categories": [
-      "PHP","React"
-    ],
+    "categories": ["PHP","React"],
     "platform": "linux",
     "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
     "repository": {
@@ -345,7 +343,8 @@
         "name": "GATEWAY",
         "label": "Accès internet par défaut",
         "default": "10.48.10.1"
-      }]
+      }
+    ]
   },
   {
     "type": 3,
@@ -368,7 +367,8 @@
       {
         "name": "PASSWORD",
         "label": "Mot de passe VPN"
-      }]
+      }
+    ]
   },
   {
     "type": 3,
@@ -398,7 +398,7 @@
       "stackfile": "stacks/serveur-mail/docker-compose.yml"
     },
     "env": [
-    {
+      {
         "name": "RELAY",
         "label": "Relais Email",
         "default": "smtp.centrale-marseille.fr"
@@ -464,7 +464,6 @@
         "description": "Donner sous forme de liste les plugins à conserver dans tous les cas (memes s'ils ne vérifient pas les conditions de conservation)",
         "default": "ginfo-oauth-plugin"
       }
-
     ]
   },
   {
@@ -537,7 +536,6 @@
         "description": "Mot de passe utilisé pour la gestion des systèmes de monitoring (Grafana etc...)",
         "default": "Remplir absolument !"
       }
-
     ]
   },
   {
@@ -628,6 +626,69 @@
             "value": ""
           }
         ]
+      }
+    ]
+  },
+  {
+    "type": 3,
+    "name": "nextcloud",
+    "title": "Nextcloud",
+    "description": "Instance Nextcloud avec stockage sur le NAS du GInfo",
+    "note": "Instance Nextcloud avec stockage sur le NAS du GInfo",
+    "categories": ["Nextcloud"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/nextcloud.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/nextcloud/docker-compose.yml"
+    },
+    "env": [
+      {
+        "name": "VIRTUAL_HOST",
+        "label": "Nom de domaine",
+        "description": "Le domaine à partir duquel on accèdera au site",
+        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+      },
+      {
+        "name": "NAS_USER",
+        "label": "Nom d'utilisateur (NAS)",
+        "description": "Le nom d'utilisateur à utiliser lors de la connexion au NAS"
+      },
+      {
+        "name": "NAS_PASSWORD",
+        "label": "Mot de passe (NAS)",
+        "description": "Le mot de passe à utiliser lors de la connexion au NAS"
+      },
+      {
+        "name": "NAS_FOLDER",
+        "label": "Dossier (NAS)",
+        "description": "Le sous-dossier du NAS dans lequel seront stockées les données"
+      },
+      {
+        "name": "NETWORK_ACCESS",
+        "label": "Application interne ?",
+        "description": "L'application doit elle être restreinte au réseau du GInfo",
+        "select": [
+          {
+            "text": "Oui",
+            "value": "internal"
+          },
+          {
+            "text": "Non",
+            "value": "",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "label": "Mdp admin MYSQL",
+        "description": "Le mot de passe d'administrateur de la DB"
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "label": "Mdp MYSQL",
+        "description": "Le mot de passe utilisé par l'application pour accéder à la DB"
       }
     ]
   }
