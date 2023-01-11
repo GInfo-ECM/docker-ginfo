@@ -1,0 +1,66 @@
+version: '2'
+
+volumes:
+  nextcloud:
+  db:
+  nas:
+    driver: local
+    driver_opts:
+      type: cifs
+      o: username=${NAS_USER},password=${NAS_PASSWORD},file_mode=0777,dir_mode=0777,rw
+      device: //10.61.16.18/Public/${NAS_FOLDER}
+
+services:
+  db:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    networks:
+     - interne
+
+  app:
+    image: nextcloud
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      TRUSTED_PROXIES: reverse-proxy
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: db:3306
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud:/var/www/html
+      - nas:/var/www/html/data
+    restart: always
+    networks:
+      - interne
+      - proxy
+      - mailing
+      - internet
+
+networks:
+  interne:
+    driver: bridge
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: 'false'
+  proxy:
+    external:
+      name: nginx-proxy-ginfo
+  mailing:
+    external:
+      name: postfix-ginfo
+  internet:
+    external:
+      name: aaa_internet
