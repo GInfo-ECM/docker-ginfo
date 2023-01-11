@@ -1,14 +1,19 @@
 version: '2'
 
 volumes:
-  nextcloud:
-  db:
-  nas:
+  nextcloud_data:
+    driver: local
+    name: nextclour_data
+  db_data:
+    driver: local
+    name: db_data
+  nas_data:
     driver: local
     driver_opts:
       type: cifs
       o: username=${NAS_USER},password=${NAS_PASSWORD},file_mode=0777,dir_mode=0777,rw
       device: //10.61.16.18/Public/${NAS_FOLDER}
+    name: nas_data
 
 services:
   db:
@@ -16,7 +21,7 @@ services:
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: always
     volumes:
-      - db:/var/lib/mysql
+      - db_data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
@@ -40,8 +45,8 @@ services:
     links:
       - db
     volumes:
-      - nextcloud:/var/www/html
-      - nas:/var/www/html/data
+      - nextcloud_data:/var/www/html
+      - nas_data:/var/www/html/data
     restart: always
     networks:
       - interne
