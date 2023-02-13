@@ -327,6 +327,56 @@
   },
   {
     "type": 3,
+    "title": "Site statique node 16",
+    "name": "nomdusitestatique",
+    "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations avec node 16",
+    "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations avec node 16",
+    "categories": ["HTTPD"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+    "repository": {
+      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+      "stackfile": "stacks/sites-statiques-node-16/docker-compose.yml"
+    },
+    "env": [
+      {
+        "name": "VIRTUAL_HOST",
+        "label": "Nom de domaine",
+        "description": "Le domaine à partir duquel on accèdera au site",
+        "default": "nomdusitestatique.asso.centrale-marseille.fr, nomdusitestatique.ginfo.ec-m.fr"
+      },
+      {
+        "name": "UID_UTILISATEUR",
+        "label": "Uid utilisateur",
+        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+        "default": "33"
+      },
+      {
+        "name": "NETWORK_ACCESS",
+        "label": "Application interne ?",
+        "description": "L'application doit elle être restreinte au réseau du GInfo",
+        "select": [
+          {
+            "text": "Oui",
+            "value": "internal"
+          },
+          {
+            "text": "Non",
+            "value": "",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "LETSENCRYPT_HOST",
+        "label": "Domaine à certifier par Lets Encrypt",
+        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "type": 3,
     "name": "squid",
     "title": "Squid (Proxy HTTP)",
     "description": "Proxy HTTP/HTTPS pour les applications du GInfo",

@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+  site:
+    build: apache-node16
+    image: apache-node16-statiqueginfo:latest
+    volumes:
+    - site_statique_data:/var/www
+    restart: always
+    networks:
+    - interne
+    - proxy
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      APACHE_DOCUMENT_ROOT: "/var/www/html"
+      TRUSTED_PROXIES: reverse-proxy
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+
+  cron:
+    build: cron
+    image: cron-statiqueginfo:latest
+    volumes:
+    - site_statique_data:/site-to-save
+    - save_statique_data:/saves
+    restart: always
+    depends_on:
+    - site
+    networks:
+    - interne
+
+volumes:
+  site_statique_data:
+    driver: local
+    name: site_statique_data
+  save_statique_data:
+    driver: local
+    name: save_statique_data
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy-wordpress
+  interne:
+    driver: bridge
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: 'false'
