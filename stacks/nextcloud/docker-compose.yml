@@ -3,7 +3,7 @@ version: '2'
 volumes:
   nextcloud_data:
     driver: local
-    name: nextclour_data
+    name: nextcloud_data
   db_data:
     driver: local
     name: db_data
