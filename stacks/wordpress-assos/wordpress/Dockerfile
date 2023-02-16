@@ -1,4 +1,4 @@
-FROM wordpress:5.0.3-php7.2
+FROM wordpress
 
 # Add sudo in order to run wp-cli as the www-data user
 RUN apt-get update && apt-get install -y sudo less mysql-client cron jq
