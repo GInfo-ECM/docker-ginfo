@@ -1,7 +1,7 @@
 FROM wordpress:6.2.0-php8.0
 
 # Add sudo in order to run wp-cli as the www-data user
-RUN apt-get update && apt-get install -y sudo less mysql-client cron jq
+RUN apt-get update && apt-get install -y sudo less default-mysql-client cron jq
 
 # Add WP-CLI
 RUN mkdir /home/www-data
