@@ -52,7 +52,7 @@ RUN a2enconf servername.conf
 
 #Gestion du Mod Security
 COPY modsecurity_rules /var/www/misc/modsecurity.conf
-RUN apt-get install -y libapache2-modsecurity \
+RUN apt-get install -y libapache-modsecurity \
  && ln -s /var/www/misc/modsecurity.conf /etc/modsecurity/modsecurity.conf
 
 #Gestion des logs
