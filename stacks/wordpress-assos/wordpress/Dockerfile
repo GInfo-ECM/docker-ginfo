@@ -1,4 +1,4 @@
-FROM wordpress:6.2.0-php8.0
+FROM wordpress:php7.2
 
 # Add sudo in order to run wp-cli as the www-data user
 RUN apt-get update && apt-get install -y sudo less default-mysql-client cron jq
