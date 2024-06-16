@@ -54,6 +54,16 @@ services:
       - mailing
       - internet
 
+  cron:
+    build:
+      args:
+        PHP_VERSION: "8.2" # Don't forget to also update the image tag
+      context: ./cron
+    image: ginfo-nextcloudcron:8.2 # Dont forget to also update the PHP_VERSION arg
+    volumes:
+      - nextcloud_data:/var/www/html
+    restart: always
+
 networks:
   interne:
     driver: bridge
