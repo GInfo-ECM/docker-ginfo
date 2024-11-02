@@ -2,7 +2,7 @@ version: '2'
 
 services:
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer-ce:2.21.4-alpine
     container_name: portainer
     restart: always
     command: -H unix:///var/run/docker.sock
@@ -10,9 +10,11 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     - portainer_data:/data
     ports:
+    - "8000:8000"
     - "9000:9000"
     environment:
       VIRTUAL_HOST: docker.ginfo.ec-m.fr
+      VIRTUAL_PORT: 9000
       NETWORK_ACCESS: internal
     networks:
     - proxy-ginfo
@@ -66,11 +68,11 @@ volumes:
 
 networks:
   proxy-ginfo:
-    external:
-      name: nginx-proxy-ginfo
+    external: true
+    name: nginx-proxy-ginfo
   proxy-wordpress:
-    external:
-      name: nginx-proxy-wordpress
+    external: true
+    name: nginx-proxy-wordpress
   internet:
-    external:
-      name: internet
+    external: true
+    name: internet
