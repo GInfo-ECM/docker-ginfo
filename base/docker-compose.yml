@@ -40,7 +40,7 @@ services:
     - nginx_basic_auth:/etc/nginx/htpasswd
 
   letsencrypt-certificator:
-    image: jrcs/letsencrypt-nginx-proxy-companion
+    image: nginxproxy/acme-companion
     container_name: reverse-proxy-letsencrypt-certificator
     environment:
       DEFAULT_EMAIL: ginfo@centrale-marseille.fr
