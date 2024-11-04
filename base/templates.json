@@ -1,745 +1,748 @@
-[
-  {
-    "type": 3,
-    "title": "Site PHP (pour les sites GInfo uniquement)",
-    "description": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
-    "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
-    "categories": ["PHP"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/sites-ginfo-apache/docker-compose.yml"
+{
+  "version": "2",
+  "templates": [
+    {
+      "type": 3,
+      "title": "Site PHP (pour les sites GInfo uniquement)",
+      "description": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
+      "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
+      "categories": ["PHP"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/sites-ginfo-apache/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+        },
+        {
+          "name": "UID_UTILISATEUR",
+          "label": "Uid utilisateur",
+          "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+          "default": "33"
+        },
+        {
+          "name": "USER_SFTP_SQL",
+          "label": "Utilisateur",
+          "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "PASSWORD_SFTP_SQL",
+          "label": "Mot de passe",
+          "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "WEB_ROOT",
+          "label": "Racine de l'hébergement web",
+          "default": "/var/www/html"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal",
+              "default": true
+            },
+            {
+              "text": "Non",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "name": "LETSENCRYPT_HOST",
+          "label": "Domaine à certifier par Lets Encrypt",
+          "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+          "default": ""
+        }
+      ]
     },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+    {
+      "type": 3,
+      "title": "Site PHP 8 (pour les sites GInfo - nouvelle version - uniquement)",
+      "description": "Stack de base avec PHP8/MySQL/PHPMyAdmin pour les applications GInfo",
+      "note": "Stack de base avec PHP8/MySQL/PHPMyAdmin pour les applications GInfo",
+      "categories": ["PHP"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/sites-ginfo-apache-php-8/docker-compose.yml"
       },
-      {
-        "name": "UID_UTILISATEUR",
-        "label": "Uid utilisateur",
-        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
-        "default": "33"
-      },
-      {
-        "name": "USER_SFTP_SQL",
-        "label": "Utilisateur",
-        "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "PASSWORD_SFTP_SQL",
-        "label": "Mot de passe",
-        "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "WEB_ROOT",
-        "label": "Racine de l'hébergement web",
-        "default": "/var/www/html"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal",
-            "default": true
-          },
-          {
-            "text": "Non",
-            "value": ""
-          }
-        ]
-      },
-      {
-        "name": "LETSENCRYPT_HOST",
-        "label": "Domaine à certifier par Lets Encrypt",
-        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
-        "default": ""
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "title": "Site PHP 8 (pour les sites GInfo - nouvelle version - uniquement)",
-    "description": "Stack de base avec PHP8/MySQL/PHPMyAdmin pour les applications GInfo",
-    "note": "Stack de base avec PHP8/MySQL/PHPMyAdmin pour les applications GInfo",
-    "categories": ["PHP"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/sites-ginfo-apache-php-8/docker-compose.yml"
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": ""
+        },
+        {
+          "name": "UID_UTILISATEUR",
+          "label": "Uid utilisateur",
+          "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+          "default": "33"
+        },
+        {
+          "name": "USER_SFTP_SQL",
+          "label": "Utilisateur",
+          "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "PASSWORD_SFTP_SQL",
+          "label": "Mot de passe",
+          "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "WEB_ROOT",
+          "label": "Racine de l'hébergement web",
+          "default": "/var/www/html/public"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal"
+            },
+            {
+              "text": "Non",
+              "value": "",
+              "default": true
+            }
+          ]
+        },
+        {
+          "name": "LETSENCRYPT_HOST",
+          "label": "Domaine à certifier par Lets Encrypt",
+          "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+          "default": ""
+        }
+      ]
     },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": ""
+    {
+      "type": 3,
+      "title": "Site React / PHP (pour les sites GInfo uniquement)",
+      "description": "Stack de base avec Node/PHP/MySQL/PHPMyAdmin pour les applications GInfo",
+      "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
+      "categories": ["PHP","React"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/sites-react-symfony/docker-compose.yml"
       },
-      {
-        "name": "UID_UTILISATEUR",
-        "label": "Uid utilisateur",
-        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
-        "default": "33"
-      },
-      {
-        "name": "USER_SFTP_SQL",
-        "label": "Utilisateur",
-        "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "PASSWORD_SFTP_SQL",
-        "label": "Mot de passe",
-        "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "WEB_ROOT",
-        "label": "Racine de l'hébergement web",
-        "default": "/var/www/html/public"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal"
-          },
-          {
-            "text": "Non",
-            "value": "",
-            "default": true
-          }
-        ]
-      },
-      {
-        "name": "LETSENCRYPT_HOST",
-        "label": "Domaine à certifier par Lets Encrypt",
-        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
-        "default": ""
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "title": "Site React / PHP (pour les sites GInfo uniquement)",
-    "description": "Stack de base avec Node/PHP/MySQL/PHPMyAdmin pour les applications GInfo",
-    "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
-    "categories": ["PHP","React"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/sites-react-symfony/docker-compose.yml"
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+        },
+        {
+          "name": "UID_UTILISATEUR",
+          "label": "Uid utilisateur",
+          "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+          "default": "33"
+        },
+        {
+          "name": "USER_SFTP_SQL",
+          "label": "Utilisateur",
+          "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "PASSWORD_SFTP_SQL",
+          "label": "Mot de passe",
+          "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "WEB_ROOT",
+          "label": "Racine de l'hébergement web",
+          "default": "/var/www/html"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal",
+              "default": true
+            },
+            {
+              "text": "Non",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "name": "LETSENCRYPT_HOST",
+          "label": "Domaine à certifier par Lets Encrypt",
+          "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+          "default": ""
+        }
+      ]
     },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+    {
+      "type": 3,
+      "title": "Site PHP 8 - PGSQL (pour les sites GInfo - nouvelle version & postgres - uniquement)",
+      "description": "Stack de base avec PHP8/PostgreSQL pour les applications GInfo",
+      "note": "Stack de base avec PHP8/PostgreSQL pour les applications GInfo",
+      "categories": ["PHP"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/sites-ginfo-apache-php-8-psql/docker-compose.yml"
       },
-      {
-        "name": "UID_UTILISATEUR",
-        "label": "Uid utilisateur",
-        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
-        "default": "33"
-      },
-      {
-        "name": "USER_SFTP_SQL",
-        "label": "Utilisateur",
-        "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "PASSWORD_SFTP_SQL",
-        "label": "Mot de passe",
-        "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "WEB_ROOT",
-        "label": "Racine de l'hébergement web",
-        "default": "/var/www/html"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal",
-            "default": true
-          },
-          {
-            "text": "Non",
-            "value": ""
-          }
-        ]
-      },
-      {
-        "name": "LETSENCRYPT_HOST",
-        "label": "Domaine à certifier par Lets Encrypt",
-        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
-        "default": ""
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "title": "Site PHP 8 - PGSQL (pour les sites GInfo - nouvelle version & postgres - uniquement)",
-    "description": "Stack de base avec PHP8/PostgreSQL pour les applications GInfo",
-    "note": "Stack de base avec PHP8/PostgreSQL pour les applications GInfo",
-    "categories": ["PHP"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/sites-ginfo-apache-php-8-psql/docker-compose.yml"
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": ""
+        },
+        {
+          "name": "UID_UTILISATEUR",
+          "label": "Uid utilisateur",
+          "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+          "default": "33"
+        },
+        {
+          "name": "USER_SFTP_SQL",
+          "label": "Utilisateur",
+          "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "PASSWORD_SFTP_SQL",
+          "label": "Mot de passe",
+          "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "WEB_ROOT",
+          "label": "Racine de l'hébergement web",
+          "default": "/var/www/html/public"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal"
+            },
+            {
+              "text": "Non",
+              "value": "",
+              "default": true
+            }
+          ]
+        },
+        {
+          "name": "LETSENCRYPT_HOST",
+          "label": "Domaine à certifier par Lets Encrypt",
+          "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+          "default": ""
+        }
+      ]
     },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": ""
+    {
+      "type": 3,
+      "title": "Site statique (pour les associations)",
+      "name": "nomdusitestatique",
+      "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
+      "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
+      "categories": ["HTTPD"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/sites-statiques/docker-compose.yml"
       },
-      {
-        "name": "UID_UTILISATEUR",
-        "label": "Uid utilisateur",
-        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
-        "default": "33"
-      },
-      {
-        "name": "USER_SFTP_SQL",
-        "label": "Utilisateur",
-        "description": "Utilisateur de la machine, sera utilisé pour se connecter en SQL, à la DB en SFTP.",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "PASSWORD_SFTP_SQL",
-        "label": "Mot de passe",
-        "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SQL, à la DB en SFTP …",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "WEB_ROOT",
-        "label": "Racine de l'hébergement web",
-        "default": "/var/www/html/public"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal"
-          },
-          {
-            "text": "Non",
-            "value": "",
-            "default": true
-          }
-        ]
-      },
-      {
-        "name": "LETSENCRYPT_HOST",
-        "label": "Domaine à certifier par Lets Encrypt",
-        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
-        "default": ""
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "title": "Site statique (pour les associations)",
-    "name": "nomdusitestatique",
-    "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
-    "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
-    "categories": ["HTTPD"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/sites-statiques/docker-compose.yml"
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": "nomdusitestatique.asso.centrale-marseille.fr, nomdusitestatique.ginfo.ec-m.fr"
+        },
+        {
+          "name": "UID_UTILISATEUR",
+          "label": "Uid utilisateur",
+          "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+          "default": "33"
+        },
+        {
+          "name": "USER_SFTP",
+          "label": "Utilisateur",
+          "description": "Utilisateur de la machine, sera utilisé pour se connecter SFTP",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "PASSWORD_SFTP",
+          "label": "Mot de passe",
+          "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SFTP",
+          "default": "Remplir absolument"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal",
+              "default": true
+            },
+            {
+              "text": "Non",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "name": "LETSENCRYPT_HOST",
+          "label": "Domaine à certifier par Lets Encrypt",
+          "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+          "default": ""
+        }
+      ]
     },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "nomdusitestatique.asso.centrale-marseille.fr, nomdusitestatique.ginfo.ec-m.fr"
+    {
+      "type": 3,
+      "title": "Site statique node 16",
+      "name": "nomdusitestatique",
+      "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations avec node 16",
+      "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations avec node 16",
+      "categories": ["HTTPD"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/sites-statiques-node-16/docker-compose.yml"
       },
-      {
-        "name": "UID_UTILISATEUR",
-        "label": "Uid utilisateur",
-        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
-        "default": "33"
-      },
-      {
-        "name": "USER_SFTP",
-        "label": "Utilisateur",
-        "description": "Utilisateur de la machine, sera utilisé pour se connecter SFTP",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "PASSWORD_SFTP",
-        "label": "Mot de passe",
-        "description": "Mot de passe général du conteneur, sera utilisé pour se connecter en SFTP",
-        "default": "Remplir absolument"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal",
-            "default": true
-          },
-          {
-            "text": "Non",
-            "value": ""
-          }
-        ]
-      },
-      {
-        "name": "LETSENCRYPT_HOST",
-        "label": "Domaine à certifier par Lets Encrypt",
-        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
-        "default": ""
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "title": "Site statique node 16",
-    "name": "nomdusitestatique",
-    "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations avec node 16",
-    "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations avec node 16",
-    "categories": ["HTTPD"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/sites-statiques-node-16/docker-compose.yml"
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": "nomdusitestatique.asso.centrale-marseille.fr, nomdusitestatique.ginfo.ec-m.fr"
+        },
+        {
+          "name": "UID_UTILISATEUR",
+          "label": "Uid utilisateur",
+          "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+          "default": "33"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal"
+            },
+            {
+              "text": "Non",
+              "value": "",
+              "default": true
+            }
+          ]
+        },
+        {
+          "name": "LETSENCRYPT_HOST",
+          "label": "Domaine à certifier par Lets Encrypt",
+          "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+          "default": ""
+        }
+      ]
     },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "nomdusitestatique.asso.centrale-marseille.fr, nomdusitestatique.ginfo.ec-m.fr"
+    {
+      "type": 3,
+      "name": "squid",
+      "title": "Squid (Proxy HTTP)",
+      "description": "Proxy HTTP/HTTPS pour les applications du GInfo",
+      "note": "Proxy HTTP/HTTPS pour les applications du GInfo",
+      "categories": ["Proxy"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/squid.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/proxy-squid/docker-compose.yml"
       },
-      {
-        "name": "UID_UTILISATEUR",
-        "label": "Uid utilisateur",
-        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
-        "default": "33"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal"
-          },
-          {
-            "text": "Non",
-            "value": "",
-            "default": true
-          }
-        ]
-      },
-      {
-        "name": "LETSENCRYPT_HOST",
-        "label": "Domaine à certifier par Lets Encrypt",
-        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
-        "default": ""
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "name": "squid",
-    "title": "Squid (Proxy HTTP)",
-    "description": "Proxy HTTP/HTTPS pour les applications du GInfo",
-    "note": "Proxy HTTP/HTTPS pour les applications du GInfo",
-    "categories": ["Proxy"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/squid.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/proxy-squid/docker-compose.yml"
+      "env": [
+        {
+          "name": "GATEWAY",
+          "label": "Accès internet par défaut",
+          "default": "10.48.10.1"
+        }
+      ]
     },
-    "env": [
-      {
-        "name": "GATEWAY",
-        "label": "Accès internet par défaut",
-        "default": "10.48.10.1"
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "name": "vpn",
-    "title": "VPN PPTP",
-    "description": "VPN PPTP pour le GInfo",
-    "note": "VPN PPTP pour le GInfo",
-    "categories": ["VPN"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/generic.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/vpn-pptp/docker-compose.yml"
-    },
-    "env": [
-      {
-        "name": "USERNAME",
-        "label": "Utilisateur VPN"
+    {
+      "type": 3,
+      "name": "vpn",
+      "title": "VPN PPTP",
+      "description": "VPN PPTP pour le GInfo",
+      "note": "VPN PPTP pour le GInfo",
+      "categories": ["VPN"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/generic.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/vpn-pptp/docker-compose.yml"
       },
-      {
-        "name": "PASSWORD",
-        "label": "Mot de passe VPN"
+      "env": [
+        {
+          "name": "USERNAME",
+          "label": "Utilisateur VPN"
+        },
+        {
+          "name": "PASSWORD",
+          "label": "Mot de passe VPN"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "name": "samba",
+      "title": "Serveur Samba",
+      "description": "Un serveur de fichier pour le GInfo",
+      "note": "Un serveur de fichier pour le GInfo",
+      "categories": ["Samba"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/samba.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/samba/docker-compose.yml"
       }
-    ]
-  },
-  {
-    "type": 3,
-    "name": "samba",
-    "title": "Serveur Samba",
-    "description": "Un serveur de fichier pour le GInfo",
-    "note": "Un serveur de fichier pour le GInfo",
-    "categories": ["Samba"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/samba.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/samba/docker-compose.yml"
+    },
+    {
+      "type": 3,
+      "name": "postfix",
+      "title": "Serveur Mail Postfix",
+      "description": "Un serveur pour relayer les mails du GInfo",
+      "note": "Un serveur pour relayer les mails du GInfo",
+      "categories": ["Mail"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/postfix.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/serveur-mail/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "RELAY",
+          "label": "Relais Email",
+          "default": "smtp.centrale-marseille.fr"
+        },
+        {
+          "name": "EMAIL_MONITORING",
+          "label": "Email de monitoring",
+          "default": "listemonitoringtest@centrale-marseille.fr"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "name": "nomdelassociationwordpress",
+      "title": "Wordpress Associatif",
+      "description": "Serveur wordpress avec cron updates",
+      "note": "Serveur wordpress avec cron updates",
+      "categories": ["Wordpress"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/wordpress.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/wordpress-assos/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom(s) de domaine",
+          "description": "Le(s) domaine(s) à partir duquel on accèdera au site Wordpress",
+          "default": "nomdelasso.asso.centrale-marseille.fr"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal",
+              "default": true
+            },
+            {
+              "text": "Non",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "name": "LETSENCRYPT_HOST",
+          "label": "Domaine à certifier par Lets Encrypt",
+          "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
+          "default": ""
+        },
+        {
+          "name": "LIST_THEMES_KEPT",
+          "label": "Thèmes à conserver",
+          "description": "Donner sous forme de liste les thèmes à conserver dans tous les cas (memes s'ils ne vérifient pas les conditions de conservation)",
+          "default": ""
+        },
+        {
+          "name": "LIST_PLUGINS_KEPT",
+          "label": "Plugins à conserver",
+          "description": "Donner sous forme de liste les plugins à conserver dans tous les cas (memes s'ils ne vérifient pas les conditions de conservation)",
+          "default": "ginfo-oauth-plugin"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "name": "loraserver",
+      "title": "Serveur LoRa",
+      "description": "Serveur Lora pour gérer les objets connectés",
+      "note": "Serveur Lora pour gérer les objets connectés",
+      "categories": ["Lora"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/lora.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/lora/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal",
+              "default": true
+            },
+            {
+              "text": "Non",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "name": "monitoring",
+      "title": "Serveur de Monitoring",
+      "description": "Serveurs de monitoring pour gérer les conteneurs",
+      "note": "Serveurs de monitoring pour gérer les conteneurs",
+      "categories": ["Monitoring"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/generic.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/monitoring/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine du Grafana",
+          "description": "Le domaine à partir duquel on accèdera au site des stats",
+          "default": "monitoring.ginfo.ec-m.fr"
+        },
+        {
+          "name": "ADMIN_USER",
+          "label": "Pseudo de l'administrateur",
+          "description": "Pseudo utilisé pour la gestion des systèmes de monitoring (Grafana etc...)",
+          "default": "ginfo"
+        },
+        {
+          "name": "ADMIN_PASS",
+          "label": "Mot de passe de l'administrateur",
+          "description": "Mot de passe utilisé pour la gestion des systèmes de monitoring (Grafana etc...)",
+          "default": "Remplir absolument !"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "name": "dns",
+      "title": "Serveur Unbound DNS",
+      "description": "Serveur Unbound DNS",
+      "note": "Serveur Unbound DNS",
+      "categories": ["DNS"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/dns.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/unbound/docker-compose.yml"
+      }
+    },
+    {
+      "type": 3,
+      "name": "ldap",
+      "title": "Serveur LDAP",
+      "description": "Serveur LDAP",
+      "note": "Serveur LDAP",
+      "categories": ["LDAP"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/openldap.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/ldap/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "LDAP_ORGANISATION",
+          "label": "Organisation",
+          "description": "Le nom de l'organisation possédant le serveur.",
+          "default": "GInfo"
+        },
+        {
+          "name": "LDAP_DOMAIN",
+          "label": "Domaine",
+          "description": "Domaine de l'organisation possédant le serveur.",
+          "default": "ginfo.ec-m.fr"
+        },
+        {
+          "name": "LDAP_ADMIN_PASSWORD",
+          "label": "Mot de passe administrateur",
+          "description": "Mot de passe du super-utilisateur.",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "title": "WIMS",
+      "description": "WIMS",
+      "note": "WIMS",
+      "categories": ["PHP"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/wims/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+        },
+        {
+          "name": "UID_UTILISATEUR",
+          "label": "Uid utilisateur",
+          "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
+          "default": "33"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal",
+              "default": true
+            },
+            {
+              "text": "Non",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "name": "nextcloud",
+      "title": "Nextcloud",
+      "description": "Instance Nextcloud avec stockage sur le NAS du GInfo",
+      "note": "Instance Nextcloud avec stockage sur le NAS du GInfo",
+      "categories": ["Nextcloud"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/nextcloud.png",
+      "repository": {
+        "url": "https://github.com/GInfo-ECM/docker-ginfo/",
+        "stackfile": "stacks/nextcloud/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "VIRTUAL_HOST",
+          "label": "Nom de domaine",
+          "description": "Le domaine à partir duquel on accèdera au site",
+          "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
+        },
+        {
+          "name": "NAS_USER",
+          "label": "Nom d'utilisateur (NAS)",
+          "description": "Le nom d'utilisateur à utiliser lors de la connexion au NAS"
+        },
+        {
+          "name": "NAS_PASSWORD",
+          "label": "Mot de passe (NAS)",
+          "description": "Le mot de passe à utiliser lors de la connexion au NAS"
+        },
+        {
+          "name": "NAS_FOLDER",
+          "label": "Dossier (NAS)",
+          "description": "Le sous-dossier du NAS dans lequel seront stockées les données"
+        },
+        {
+          "name": "NETWORK_ACCESS",
+          "label": "Application interne ?",
+          "description": "L'application doit elle être restreinte au réseau du GInfo",
+          "select": [
+            {
+              "text": "Oui",
+              "value": "internal"
+            },
+            {
+              "text": "Non",
+              "value": "",
+              "default": true
+            }
+          ]
+        },
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "label": "Mdp admin MYSQL",
+          "description": "Le mot de passe d'administrateur de la DB"
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "label": "Mdp MYSQL",
+          "description": "Le mot de passe utilisé par l'application pour accéder à la DB"
+        }
+      ]
     }
-  },
-  {
-    "type": 3,
-    "name": "postfix",
-    "title": "Serveur Mail Postfix",
-    "description": "Un serveur pour relayer les mails du GInfo",
-    "note": "Un serveur pour relayer les mails du GInfo",
-    "categories": ["Mail"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/postfix.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/serveur-mail/docker-compose.yml"
-    },
-    "env": [
-      {
-        "name": "RELAY",
-        "label": "Relais Email",
-        "default": "smtp.centrale-marseille.fr"
-      },
-      {
-        "name": "EMAIL_MONITORING",
-        "label": "Email de monitoring",
-        "default": "listemonitoringtest@centrale-marseille.fr"
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "name": "nomdelassociationwordpress",
-    "title": "Wordpress Associatif",
-    "description": "Serveur wordpress avec cron updates",
-    "note": "Serveur wordpress avec cron updates",
-    "categories": ["Wordpress"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/wordpress.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/wordpress-assos/docker-compose.yml"
-    },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom(s) de domaine",
-        "description": "Le(s) domaine(s) à partir duquel on accèdera au site Wordpress",
-        "default": "nomdelasso.asso.centrale-marseille.fr"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal",
-            "default": true
-          },
-          {
-            "text": "Non",
-            "value": ""
-          }
-        ]
-      },
-      {
-        "name": "LETSENCRYPT_HOST",
-        "label": "Domaine à certifier par Lets Encrypt",
-        "description": "Recopier le domaine à certifier par LetsEncrypt. Laissez vide si le domaine est de centrale marseille",
-        "default": ""
-      },
-      {
-        "name": "LIST_THEMES_KEPT",
-        "label": "Thèmes à conserver",
-        "description": "Donner sous forme de liste les thèmes à conserver dans tous les cas (memes s'ils ne vérifient pas les conditions de conservation)",
-        "default": ""
-      },
-      {
-        "name": "LIST_PLUGINS_KEPT",
-        "label": "Plugins à conserver",
-        "description": "Donner sous forme de liste les plugins à conserver dans tous les cas (memes s'ils ne vérifient pas les conditions de conservation)",
-        "default": "ginfo-oauth-plugin"
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "name": "loraserver",
-    "title": "Serveur LoRa",
-    "description": "Serveur Lora pour gérer les objets connectés",
-    "note": "Serveur Lora pour gérer les objets connectés",
-    "categories": ["Lora"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/lora.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/lora/docker-compose.yml"
-    },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal",
-            "default": true
-          },
-          {
-            "text": "Non",
-            "value": ""
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "name": "monitoring",
-    "title": "Serveur de Monitoring",
-    "description": "Serveurs de monitoring pour gérer les conteneurs",
-    "note": "Serveurs de monitoring pour gérer les conteneurs",
-    "categories": ["Monitoring"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/generic.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/monitoring/docker-compose.yml"
-    },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine du Grafana",
-        "description": "Le domaine à partir duquel on accèdera au site des stats",
-        "default": "monitoring.ginfo.ec-m.fr"
-      },
-      {
-        "name": "ADMIN_USER",
-        "label": "Pseudo de l'administrateur",
-        "description": "Pseudo utilisé pour la gestion des systèmes de monitoring (Grafana etc...)",
-        "default": "ginfo"
-      },
-      {
-        "name": "ADMIN_PASS",
-        "label": "Mot de passe de l'administrateur",
-        "description": "Mot de passe utilisé pour la gestion des systèmes de monitoring (Grafana etc...)",
-        "default": "Remplir absolument !"
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "name": "dns",
-    "title": "Serveur Unbound DNS",
-    "description": "Serveur Unbound DNS",
-    "note": "Serveur Unbound DNS",
-    "categories": ["DNS"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/dns.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/unbound/docker-compose.yml"
-    }
-  },
-  {
-    "type": 3,
-    "name": "ldap",
-    "title": "Serveur LDAP",
-    "description": "Serveur LDAP",
-    "note": "Serveur LDAP",
-    "categories": ["LDAP"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/openldap.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/ldap/docker-compose.yml"
-    },
-    "env": [
-      {
-        "name": "LDAP_ORGANISATION",
-        "label": "Organisation",
-        "description": "Le nom de l'organisation possédant le serveur.",
-        "default": "GInfo"
-      },
-      {
-        "name": "LDAP_DOMAIN",
-        "label": "Domaine",
-        "description": "Domaine de l'organisation possédant le serveur.",
-        "default": "ginfo.ec-m.fr"
-      },
-      {
-        "name": "LDAP_ADMIN_PASSWORD",
-        "label": "Mot de passe administrateur",
-        "description": "Mot de passe du super-utilisateur.",
-        "default": ""
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "title": "WIMS",
-    "description": "WIMS",
-    "note": "WIMS",
-    "categories": ["PHP"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/wims/docker-compose.yml"
-    },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
-      },
-      {
-        "name": "UID_UTILISATEUR",
-        "label": "Uid utilisateur",
-        "description": "Identifiant-Groupe de l'utilisateur Apache; souvent 33",
-        "default": "33"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal",
-            "default": true
-          },
-          {
-            "text": "Non",
-            "value": ""
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": 3,
-    "name": "nextcloud",
-    "title": "Nextcloud",
-    "description": "Instance Nextcloud avec stockage sur le NAS du GInfo",
-    "note": "Instance Nextcloud avec stockage sur le NAS du GInfo",
-    "categories": ["Nextcloud"],
-    "platform": "linux",
-    "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/nextcloud.png",
-    "repository": {
-      "url": "https://github.com/GInfo-ECM/docker-ginfo/",
-      "stackfile": "stacks/nextcloud/docker-compose.yml"
-    },
-    "env": [
-      {
-        "name": "VIRTUAL_HOST",
-        "label": "Nom de domaine",
-        "description": "Le domaine à partir duquel on accèdera au site",
-        "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
-      },
-      {
-        "name": "NAS_USER",
-        "label": "Nom d'utilisateur (NAS)",
-        "description": "Le nom d'utilisateur à utiliser lors de la connexion au NAS"
-      },
-      {
-        "name": "NAS_PASSWORD",
-        "label": "Mot de passe (NAS)",
-        "description": "Le mot de passe à utiliser lors de la connexion au NAS"
-      },
-      {
-        "name": "NAS_FOLDER",
-        "label": "Dossier (NAS)",
-        "description": "Le sous-dossier du NAS dans lequel seront stockées les données"
-      },
-      {
-        "name": "NETWORK_ACCESS",
-        "label": "Application interne ?",
-        "description": "L'application doit elle être restreinte au réseau du GInfo",
-        "select": [
-          {
-            "text": "Oui",
-            "value": "internal"
-          },
-          {
-            "text": "Non",
-            "value": "",
-            "default": true
-          }
-        ]
-      },
-      {
-        "name": "MYSQL_ROOT_PASSWORD",
-        "label": "Mdp admin MYSQL",
-        "description": "Le mot de passe d'administrateur de la DB"
-      },
-      {
-        "name": "MYSQL_PASSWORD",
-        "label": "Mdp MYSQL",
-        "description": "Le mot de passe utilisé par l'application pour accéder à la DB"
-      }
-    ]
-  }
-]
+  ]
+}
