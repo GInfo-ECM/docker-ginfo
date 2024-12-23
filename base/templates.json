@@ -6,7 +6,9 @@
       "title": "Site PHP (pour les sites GInfo uniquement)",
       "description": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
       "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
-      "categories": ["PHP"],
+      "categories": [
+        "PHP"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
       "repository": {
@@ -72,7 +74,9 @@
       "title": "Site PHP 8 (pour les sites GInfo - nouvelle version - uniquement)",
       "description": "Stack de base avec PHP8/MySQL/PHPMyAdmin pour les applications GInfo",
       "note": "Stack de base avec PHP8/MySQL/PHPMyAdmin pour les applications GInfo",
-      "categories": ["PHP"],
+      "categories": [
+        "PHP"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
       "repository": {
@@ -138,7 +142,10 @@
       "title": "Site React / PHP (pour les sites GInfo uniquement)",
       "description": "Stack de base avec Node/PHP/MySQL/PHPMyAdmin pour les applications GInfo",
       "note": "Stack de base avec PHP/MySQL/PHPMyAdmin pour les applications GInfo",
-      "categories": ["PHP","React"],
+      "categories": [
+        "PHP",
+        "React"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
       "repository": {
@@ -204,7 +211,9 @@
       "title": "Site PHP 8 - PGSQL (pour les sites GInfo - nouvelle version & postgres - uniquement)",
       "description": "Stack de base avec PHP8/PostgreSQL pour les applications GInfo",
       "note": "Stack de base avec PHP8/PostgreSQL pour les applications GInfo",
-      "categories": ["PHP"],
+      "categories": [
+        "PHP"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
       "repository": {
@@ -271,7 +280,9 @@
       "name": "nomdusitestatique",
       "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
       "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations",
-      "categories": ["HTTPD"],
+      "categories": [
+        "HTTPD"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
       "repository": {
@@ -333,7 +344,9 @@
       "name": "nomdusitestatique",
       "description": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations avec node 16",
       "note": "Stack de base Apache HTTPD (pas de PHP) pour les sites statiques des associations avec node 16",
-      "categories": ["HTTPD"],
+      "categories": [
+        "HTTPD"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
       "repository": {
@@ -383,7 +396,9 @@
       "title": "Squid (Proxy HTTP)",
       "description": "Proxy HTTP/HTTPS pour les applications du GInfo",
       "note": "Proxy HTTP/HTTPS pour les applications du GInfo",
-      "categories": ["Proxy"],
+      "categories": [
+        "Proxy"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/squid.png",
       "repository": {
@@ -404,7 +419,9 @@
       "title": "VPN PPTP",
       "description": "VPN PPTP pour le GInfo",
       "note": "VPN PPTP pour le GInfo",
-      "categories": ["VPN"],
+      "categories": [
+        "VPN"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/generic.png",
       "repository": {
@@ -428,7 +445,9 @@
       "title": "Serveur Samba",
       "description": "Un serveur de fichier pour le GInfo",
       "note": "Un serveur de fichier pour le GInfo",
-      "categories": ["Samba"],
+      "categories": [
+        "Samba"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/samba.png",
       "repository": {
@@ -442,7 +461,9 @@
       "title": "Serveur Mail Postfix",
       "description": "Un serveur pour relayer les mails du GInfo",
       "note": "Un serveur pour relayer les mails du GInfo",
-      "categories": ["Mail"],
+      "categories": [
+        "Mail"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/postfix.png",
       "repository": {
@@ -468,7 +489,9 @@
       "title": "Wordpress Associatif",
       "description": "Serveur wordpress avec cron updates",
       "note": "Serveur wordpress avec cron updates",
-      "categories": ["Wordpress"],
+      "categories": [
+        "Wordpress"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/wordpress.png",
       "repository": {
@@ -524,7 +547,9 @@
       "title": "Serveur LoRa",
       "description": "Serveur Lora pour gérer les objets connectés",
       "note": "Serveur Lora pour gérer les objets connectés",
-      "categories": ["Lora"],
+      "categories": [
+        "Lora"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/lora.png",
       "repository": {
@@ -562,7 +587,9 @@
       "title": "Serveur de Monitoring",
       "description": "Serveurs de monitoring pour gérer les conteneurs",
       "note": "Serveurs de monitoring pour gérer les conteneurs",
-      "categories": ["Monitoring"],
+      "categories": [
+        "Monitoring"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/generic.png",
       "repository": {
@@ -596,7 +623,9 @@
       "title": "Serveur Unbound DNS",
       "description": "Serveur Unbound DNS",
       "note": "Serveur Unbound DNS",
-      "categories": ["DNS"],
+      "categories": [
+        "DNS"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/dns.png",
       "repository": {
@@ -610,7 +639,9 @@
       "title": "Serveur LDAP",
       "description": "Serveur LDAP",
       "note": "Serveur LDAP",
-      "categories": ["LDAP"],
+      "categories": [
+        "LDAP"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/openldap.png",
       "repository": {
@@ -643,7 +674,9 @@
       "title": "WIMS",
       "description": "WIMS",
       "note": "WIMS",
-      "categories": ["PHP"],
+      "categories": [
+        "PHP"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/httpd.png",
       "repository": {
@@ -687,7 +720,9 @@
       "title": "Nextcloud",
       "description": "Instance Nextcloud avec stockage sur le NAS du GInfo",
       "note": "Instance Nextcloud avec stockage sur le NAS du GInfo",
-      "categories": ["Nextcloud"],
+      "categories": [
+        "Nextcloud"
+      ],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/GInfo-ECM/docker-ginfo/master/base/logos/nextcloud.png",
       "repository": {
@@ -741,6 +776,18 @@
           "name": "MYSQL_PASSWORD",
           "label": "Mdp MYSQL",
           "description": "Le mot de passe utilisé par l'application pour accéder à la DB"
+        },
+        {
+          "name": "NEXTCLOUD_VERSION",
+          "label": "Version de Nextcloud",
+          "description": "La version de Nextcloud à utiliser, en tant que tag pour l'image Docker de Nextcloud",
+          "default": "latest"
+        },
+        {
+          "name": "NAS_ADDR",
+          "label": "Adresse du NAS",
+          "Description": "L'adresse du NAS (nom de domaine ou adresse IP)",
+          "default": "nas.ginfo.ec-m.fr"
         }
       ]
     }

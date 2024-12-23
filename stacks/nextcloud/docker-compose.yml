@@ -11,8 +11,8 @@ volumes:
     driver: local
     driver_opts:
       type: cifs
-      o: username=${NAS_USER},password=${NAS_PASSWORD},file_mode=0777,dir_mode=0777,rw
-      device: //10.61.16.18/Public/${NAS_FOLDER}
+      o: addr=${NAS_ADDR},username=${NAS_USER},password=${NAS_PASSWORD},file_mode=0777,dir_mode=0777,rw,vers=3.0
+      device: //${NAS_ADDR}/Public/${NAS_FOLDER}
     name: nas_data
 
 services:
@@ -28,10 +28,10 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
     networks:
-     - interne
+      - interne
 
   app:
-    image: nextcloud
+    image: nextcloud:${NEXTCLOUD_VERSION}
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       NETWORK_ACCESS: ${NETWORK_ACCESS}
@@ -40,10 +40,6 @@ services:
       MYSQL_USER: nextcloud
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_HOST: db:3306
-    ports:
-      - 8080:80
-    links:
-      - db
     volumes:
       - nextcloud_data:/var/www/html
       - nas_data:/var/www/html/data
@@ -53,16 +49,22 @@ services:
       - proxy
       - mailing
       - internet
+    depends_on:
+      - db
 
   cron:
-    build:
-      args:
-        PHP_VERSION: "8.2" # Don't forget to also update the image tag
-      context: ./cron
-    image: ginfo-nextcloudcron:8.2 # Dont forget to also update the PHP_VERSION arg
+    image: nextcloud:${NEXTCLOUD_VERSION}
+    entrypoint: /cron.sh
+    environment:
+      TRUSTED_PROXIES: reverse-proxy
     volumes:
       - nextcloud_data:/var/www/html
+      - nas_data:/var/www/html/data
     restart: always
+    networks:
+      - interne
+    depends_on:
+      - db
 
 networks:
   interne:
