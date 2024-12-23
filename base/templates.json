@@ -731,7 +731,7 @@
       },
       "env": [
         {
-          "name": "HOSTNAME",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"

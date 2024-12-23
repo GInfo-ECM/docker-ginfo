@@ -31,7 +31,7 @@ services:
   app:
     image: nextcloud:${NEXTCLOUD_TAG}
     environment:
-      VIRTUAL_HOST: ${HOSTNAME}
+      VIRTUAL_HOST: ${APP_HOSTNAME}
       NETWORK_ACCESS: ${NETWORK_RESTRICTION}
       TRUSTED_PROXIES: reverse-proxy
       MYSQL_DATABASE: nextcloud
