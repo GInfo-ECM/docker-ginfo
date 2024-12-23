@@ -1,17 +1,17 @@
 volumes:
   nextcloud_data:
     driver: local
-    name: nextcloud_data
+    external: false
   db_data:
     driver: local
-    name: db_data
+    external: false
   nas_data:
     driver: local
     driver_opts:
       type: cifs
       o: addr=${NAS_ADDR},username=${NAS_USER},password=${NAS_PASSWORD},file_mode=0777,dir_mode=0777,rw,vers=3.0
       device: //${NAS_ADDR}/Public/${NAS_FOLDER}
-    name: nas_data
+    external: false
 
 services:
   db:
