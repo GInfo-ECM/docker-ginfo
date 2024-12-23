@@ -731,7 +731,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
@@ -752,7 +752,7 @@
           "description": "Le sous-dossier du NAS dans lequel seront stockées les données"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [

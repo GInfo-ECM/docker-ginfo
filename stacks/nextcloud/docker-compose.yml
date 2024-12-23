@@ -29,10 +29,10 @@ services:
       - interne
 
   app:
-    image: nextcloud:${NEXTCLOUD_VERSION}
+    image: nextcloud:${NEXTCLOUD_TAG}
     environment:
-      VIRTUAL_HOST: ${VIRTUAL_HOST}
-      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      VIRTUAL_HOST: ${HOSTNAME}
+      NETWORK_ACCESS: ${NETWORK_RESTRICTION}
       TRUSTED_PROXIES: reverse-proxy
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
@@ -51,7 +51,7 @@ services:
       - db
 
   cron:
-    image: nextcloud:${NEXTCLOUD_VERSION}
+    image: nextcloud:${NEXTCLOUD_TAG}
     entrypoint: /cron.sh
     environment:
       TRUSTED_PROXIES: reverse-proxy
