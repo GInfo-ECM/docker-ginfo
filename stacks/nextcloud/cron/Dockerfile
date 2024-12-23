@@ -10,7 +10,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 
 RUN chmod 0755 /usr/local/bin/install-php-extensions
 
-RUN install-php-extensions gd zip pdo_mysql ldap smbclient ftp imap bcmath gmp
+RUN install-php-extensions gd zip pdo_mysql ldap smbclient ftp imap bcmath gmp intl exif apcu redis
 
 RUN crontab -u www-data /etc/cron.d/nextcloud-maintenance
 
