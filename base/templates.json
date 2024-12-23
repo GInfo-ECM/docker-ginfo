@@ -778,7 +778,7 @@
           "description": "Le mot de passe utilisé par l'application pour accéder à la DB"
         },
         {
-          "name": "NEXTCLOUD_VERSION",
+          "name": "NEXTCLOUD_TAG",
           "label": "Version de Nextcloud",
           "description": "La version de Nextcloud à utiliser, en tant que tag pour l'image Docker de Nextcloud",
           "default": "latest"
