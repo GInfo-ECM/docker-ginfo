@@ -1,5 +1,3 @@
-version: "2"
-
 services:
   loraserver:
     build: loraserver
@@ -12,8 +10,8 @@ services:
   appserver:
     build: lora-app-server
     environment:
-      VIRTUAL_HOST: ${VIRTUAL_HOST}
-      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      VIRTUAL_HOST: ${APP_HOSTNAME}
+      NETWORK_ACCESS: ${NETWORK_RESTRICTION}
     expose:
     - "8080"
     volumes:
@@ -22,7 +20,7 @@ services:
       - interne
       - proxy
     restart: always
-  
+
   geoserver:
     build: lora-geo-server
     volumes:
@@ -30,7 +28,7 @@ services:
     networks:
       - interne
     restart: always
-  
+
   postgresql:
     build: postgresql
     volumes:
@@ -82,8 +80,8 @@ volumes:
 
 networks:
   proxy:
-    external:
-      name: nginx-proxy-ginfo
+    name: nginx-proxy-ginfo
+    external: true
   interne:
     driver: bridge
     internal: true

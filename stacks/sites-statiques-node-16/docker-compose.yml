@@ -1,5 +1,3 @@
-version: '2'
-
 services:
   site:
     build: apache-node16
@@ -11,8 +9,8 @@ services:
     - interne
     - proxy
     environment:
-      VIRTUAL_HOST: ${VIRTUAL_HOST}
-      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      VIRTUAL_HOST: ${APP_HOSTNAME}
+      NETWORK_ACCESS: ${NETWORK_RESTRICTION}
       APACHE_DOCUMENT_ROOT: "/var/www/html"
       TRUSTED_PROXIES: reverse-proxy
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
@@ -39,8 +37,8 @@ volumes:
 
 networks:
   proxy:
-    external:
-      name: nginx-proxy-wordpress
+    name: nginx-proxy-wordpress
+    external: true
   interne:
     driver: bridge
     internal: true

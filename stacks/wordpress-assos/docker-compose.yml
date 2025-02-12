@@ -1,5 +1,3 @@
-version: '2'
-
 services:
   db:
     build: mysql
@@ -35,8 +33,8 @@ services:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      VIRTUAL_HOST: ${VIRTUAL_HOST}
-      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      VIRTUAL_HOST: ${APP_HOSTNAME}
+      NETWORK_ACCESS: ${NETWORK_RESTRICTION}
       TRUSTED_PROXIES: reverse-proxy
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
       PROXY_HOST: squid
@@ -80,14 +78,14 @@ volumes:
 
 networks:
   proxy:
-    external:
-      name: nginx-proxy-wordpress
+    name: nginx-proxy-wordpress
+    external: true
   mailing:
-    external:
-      name: postfix-wordpress
+    name: postfix-wordpress
+    external: true
   proxyhttp:
-    external:
-      name: bridge-squid-wordpress
+    name: bridge-squid-wordpress
+    external: true
   interne:
     driver: bridge
     internal: true

@@ -1,5 +1,3 @@
-version: '2'
-
 services:
   postfix:
     build:
@@ -18,11 +16,11 @@ services:
 
 networks:
   internet:
-    external:
-      name: internet
+    name: internet
+    external: true
   postfix-ginfo:
-    external:
-      name: postfix-ginfo
+    name: postfix-ginfo
+    external: true
   postfix-wordpress:
-    external:
-      name: postfix-wordpress
+    name: postfix-wordpress
+    external:  true

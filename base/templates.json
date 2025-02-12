@@ -17,7 +17,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
@@ -46,7 +46,7 @@
           "default": "/var/www/html"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [
@@ -85,7 +85,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": ""
@@ -114,7 +114,7 @@
           "default": "/var/www/html/public"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [
@@ -154,7 +154,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
@@ -183,7 +183,7 @@
           "default": "/var/www/html"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [
@@ -222,7 +222,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": ""
@@ -251,7 +251,7 @@
           "default": "/var/www/html/public"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [
@@ -291,7 +291,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": "nomdusitestatique.asso.centrale-marseille.fr, nomdusitestatique.ginfo.ec-m.fr"
@@ -315,7 +315,7 @@
           "default": "Remplir absolument"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [
@@ -355,7 +355,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": "nomdusitestatique.asso.centrale-marseille.fr, nomdusitestatique.ginfo.ec-m.fr"
@@ -367,7 +367,7 @@
           "default": "33"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [
@@ -500,13 +500,13 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom(s) de domaine",
           "description": "Le(s) domaine(s) à partir duquel on accèdera au site Wordpress",
           "default": "nomdelasso.asso.centrale-marseille.fr"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [
@@ -558,13 +558,13 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [
@@ -598,7 +598,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine du Grafana",
           "description": "Le domaine à partir duquel on accèdera au site des stats",
           "default": "monitoring.ginfo.ec-m.fr"
@@ -685,7 +685,7 @@
       },
       "env": [
         {
-          "name": "VIRTUAL_HOST",
+          "name": "APP_HOSTNAME",
           "label": "Nom de domaine",
           "description": "Le domaine à partir duquel on accèdera au site",
           "default": "site.ginfo.ec-m.fr, sitealias.ginfo.ec-m.fr"
@@ -697,7 +697,7 @@
           "default": "33"
         },
         {
-          "name": "NETWORK_ACCESS",
+          "name": "NETWORK_RESTRICTION",
           "label": "Application interne ?",
           "description": "L'application doit elle être restreinte au réseau du GInfo",
           "select": [

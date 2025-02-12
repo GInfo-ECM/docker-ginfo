@@ -1,5 +1,3 @@
-version: '2'
-
 services:
   db:
     build: pgsql
@@ -25,11 +23,11 @@ services:
     - interne
     - proxy
     environment:
-      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      VIRTUAL_HOST: ${APP_HOSTNAME}
       DB_HOST: db:3306
       DB_USER: ${USER_SFTP_SQL}
       DB_PASSWORD: ${PASSWORD_SFTP_SQL}
-      NETWORK_ACCESS: ${NETWORK_ACCESS}
+      NETWORK_ACCESS: ${NETWORK_RESTRICTION}
       APACHE_DOCUMENT_ROOT: ${WEB_ROOT}
       TRUSTED_PROXIES: reverse-proxy
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
@@ -65,8 +63,8 @@ volumes:
 
 networks:
   proxy:
-    external:
-      name: nginx-proxy-ginfo
+    name: nginx-proxy-ginfo
+    external: true
   interne:
     driver: bridge
     internal: true

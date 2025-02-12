@@ -1,5 +1,3 @@
-version: '2'
-
 services:
   squid:
     build:
@@ -28,11 +26,11 @@ volumes:
 
 networks:
   bridge-squid-int:
-    external:
-      name: bridge-squid-int
+    name: bridge-squid-int
+    external: true
   bridge-squid-wordpress:
-    external:
-      name: bridge-squid-wordpress
+    name: bridge-squid-wordpress
+    external: true
   internet:
-    external:
-      name: internet
+    name: internet
+    external: true

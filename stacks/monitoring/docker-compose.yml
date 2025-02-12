@@ -1,14 +1,12 @@
-version: '2'
-
 networks:
   monitor-net:
     driver: bridge
   proxy:
-    external:
-      name: nginx-proxy-ginfo
+    name: nginx-proxy-ginfo
+    external: true
   mailing:
-    external:
-      name: postfix-ginfo
+    name: postfix-ginfo
+    external: true
 
 volumes:
   prometheus_data:
@@ -100,7 +98,7 @@ services:
       GF_SECURITY_ADMIN_USER: ${ADMIN_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${ADMIN_PASS}
       GF_USERS_ALLOW_SIGN_UP: "false"
-      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      VIRTUAL_HOST: ${APP_HOSTNAME}
       NETWORK_ACCESS: internal
     restart: always
     expose:
