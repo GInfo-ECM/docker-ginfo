@@ -40,6 +40,7 @@ services:
       PROXY_HOST: squid
       HTTP_PROXY: 'http://squid:3128'
       HTTPS_PROXY: 'http://squid:3128'
+      DEFAULT_THEME: ${DEFAULT_THEME:-twentytwentyfive}
       LIST_THEMES_KEPT: ${LIST_THEMES_KEPT}
       LIST_PLUGINS_KEPT: ${LIST_PLUGINS_KEPT}
       MAILING_LIST_SYSADMIN: 'ginfo-sysadmin'
