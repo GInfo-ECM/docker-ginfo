@@ -16,10 +16,8 @@ services:
 volumes:
   ldap_data:
     driver: local
-    name: ldap_data
   ldap_config:
     driver: local
-    name: ldap_config
 
 networks:
   ldap:

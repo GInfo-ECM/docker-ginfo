@@ -20,9 +20,7 @@ services:
 
 volumes:
   cache:
-    name: cache
   config:
-    name: config
 
 networks:
   bridge-squid-int:

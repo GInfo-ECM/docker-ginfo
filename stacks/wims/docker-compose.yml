@@ -15,9 +15,8 @@ services:
       TRUSTED_PROXIES: reverse-proxy
 
 volumes:
-  site_data:
+  wims_data:
     driver: local
-    name: wims_data
 
 
 networks:

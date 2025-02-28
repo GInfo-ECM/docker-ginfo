@@ -66,16 +66,12 @@ services:
 volumes:
   db_data:
     driver: local
-    name: db_data
   wp_data:
     driver: local
-    name: wp_data
   wp_misc:
     driver: local
-    name: wp_misc
   save_data:
     driver: local
-    name: save_data
 
 networks:
   proxy:

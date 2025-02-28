@@ -10,9 +10,7 @@ networks:
 
 volumes:
   prometheus_data:
-    name: prometheus_data
   grafana_data:
-    name: grafana_data
 
 services:
   prometheus:

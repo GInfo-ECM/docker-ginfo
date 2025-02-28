@@ -46,10 +46,8 @@ services:
 volumes:
   site_statique_data:
     driver: local
-    name: site_statique_data
   save_statique_data:
     driver: local
-    name: save_statique_data
 
 networks:
   proxy:

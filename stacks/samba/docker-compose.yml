@@ -16,10 +16,6 @@ services:
 
 volumes:
   data_samba_config:
-    name: data_samba_config
   data_samba_lib:
-    name: data_samba_lib
   data_samba_users:
-    name: data_samba_users
   data_samba_data_homes:
-    name: data_samba_data_homes
